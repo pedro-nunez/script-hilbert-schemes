@@ -176,6 +176,11 @@ Fortunately, in the case of finite groups, the various notions agree.
   \end{proof}
 \end{lm}
 
+\begin{rem}\label{rem:irreducible}
+  It follows from \Cref{lm:finitesurjective} that $\operatorname{Spec}(A^{G})$ is irreducible if $\operatorname{Spec}(A)$ was irreducible.
+  But the converse is not true, e.g.~consider $\mathbb{Z}/2\mathbb{Z}$ acting non-trivially on two points.
+\end{rem}
+
 \begin{lm}\label{lm:fibers}
   In the situation of \Cref{lm:finitetype}, the fibers of $\pi$ over closed points of $Y$ are precisely the orbits of the closed points of $X$ under the action of $G$.
   In particular, $\pi$ is $G$-invariant.
@@ -221,6 +226,122 @@ Fortunately, in the case of finite groups, the various notions agree.
     so that $\mathfrak{m}_{1} = g_{1} \cdot \mathfrak{m}_{2}$ and $x_{1} \in x_{2} \cdot G$.
   \end{proof}
 \end{lm}
+
+\begin{lm}\label{lm:topology}
+  In the situation of \Cref{lm:finitetype}, the topology on $\operatorname{Spec}(A^{G})$ is the quotient topology induced by $\pi$.
+  
+  \begin{proof}
+    We need to show that a subset $U \subseteq \operatorname{Spec}(A^{G})$ is open as soon as $\pi^{-1}(U)$ is open.
+    So let $U \subseteq \operatorname{Spec}(A^{G})$ be a subset such that $\pi^{-1}(U)$ is open in $\operatorname{Spec}(A)$.
+    Let $Z := \operatorname{Spec}(A^{G}) \setminus U$.
+    Then $\pi^{-1}(Z) = \operatorname{Spec}(A) \setminus \pi^{-1}(U)$, which by assumption is a closed subset in $\operatorname{Spec}(A)$.
+    By \Cref{lm:finitesurjective} the morphism $\pi$ is surjective, so $Z \subseteq \pi(\pi^{-1}(Z))$.
+    And $\pi(\pi^{-1}(Z)) \subseteq Z$ is always true, so we deduce that $\pi(\pi^{-1}(Z)) = Z$.
+    But again from \Cref{lm:finitesurjective} we know that $\pi$ is a finite morphism, in particular a proper morphism of schemes and hence a closed morphism of topological spaces.
+    So $Z$ is a closed subset and $U$ is open, as we wanted to show.
+  \end{proof}
+\end{lm}
+
+\begin{lm}\label{lm:invariantslocalization}
+  In the situation of \Cref{lm:finitetype}, let us denote $X = \operatorname{Spec}(A)$ and $Y = \operatorname{Spec}(A^{G})$.
+  Then $\mathscr{O}_{Y}$ is the subsheaf of $\pi_{*}\mathscr{O}_{X}$ consisting of invariant functions, i.e.~if $f \in \Gamma(V,\pi_{*}\mathscr{O}_{X}) = \Gamma(\pi^{-1}(V),\mathscr{O}_{X})$, then $f \in \Gamma(V, \mathscr{O}_{Y})$ if and only if the following diagram commutes:
+  
+  \begin{center}
+    \begin{tikzcd}
+      \pi^{-1}(V) \times G \arrow{r}{\sigma} \arrow{d}{p_{1}} & \pi^{-1}(V) \arrow{d}{f} \\
+      \pi^{-1}(V) \arrow{r}{f} & \mathbb{A}^{1}.
+    \end{tikzcd}
+  \end{center}
+
+  \begin{proof}
+    This follows from the definition of the structure sheaf on the spectrum of a ring combined with the compatibility of localization with taking subrings of invariants \cite[Exercise 5.12]{am69}.
+  \end{proof}
+
+\end{lm}
+
+\begin{cor}\label{cor:quotient}
+  In the situation of \Cref{lm:finitetype}, the induced morphism $\pi \colon \operatorname{Spec}(A) \to \operatorname{Spec}(A^{G})$ is a (categorical) quotient of $\operatorname{Spec}(A)$ by $G$.
+  Moreover, it is also a \textit{geometric quotient} in the sense of \cite[Definition 0.6]{mfk94}.
+
+  \begin{proof}
+    We check first that $\pi$ is a geometric quotient.
+    There are four items in \cite[Definition 0.6]{mfk94}:
+    \begin{enumerate}[label=\roman*)]
+      \item $G$-invariance follows from \Cref{lm:fibers}.
+      \item Surjectivity follows from \Cref{lm:finitesurjective}, and the fibers over closed points being precisely the orbits of closed points follows from \Cref{lm:fibers}.
+      \item We have seen that $\operatorname{Spec}(A^{G})$ carries the quotient topology induced by $\pi$ in \Cref{lm:topology}.
+      \item That the structure sheaf of $\operatorname{Spec}(A^{G})$ agrees with the subsheaf of $G$-invariant functions of $\pi_{*}\mathscr{O}_{\operatorname{Spec}(A)}$ was checked in \Cref{lm:invariantslocalization}.
+    \end{enumerate}
+    So $\pi$ is indeed a geometric quotient.
+    
+    We check next that it is also a categorical quotient following \cite[Porposition 0.1]{mfk94}, as in fact any geometric quotient is.
+    But first, some notation.
+    Let us call $X = \operatorname{Spec}(A)$, $Y = \operatorname{Spec}(A^{G})$ and $\Gamma = \Gamma(G, \mathscr{O}_{G})$.
+    Denote by $\sigma \colon X \times G \to X$ the group action and by $\tau \colon A \to A \otimes_{\mathbb{C}} \Gamma$ the induced morphism on coordinate rings.
+    Finally, let us also denote simply by $\rho \colon A \to A \otimes_{\mathbb{C}} \Gamma$ the morphism induced on coordinate rings by the projection $X \times G \to X$.
+
+    In order to prove the claim, we start by showing that the universal property holds in the affine case.
+    Assume then that we have some $G$-invariant $\mathbb{C}$-scheme morphism $\nu \colon X \to Z$ such that $Z = \operatorname{Spec}(B)$ and $\nu$ is induced by a $\mathbb{C}$-algebra homomorphism $v \colon B \to A$.
+    Recall that $G$-invariance means that $\nu(x \cdot g) = \nu(x)$ for all $x \in X$ and all $g \in G$, i.e.~that the following diagram of $\mathbb{C}$-schemes commutes:
+
+    \begin{center}
+      \begin{tikzcd}
+        X \times G \arrow{r}{\sigma} \arrow{d}{p_{1}} & X \arrow{d}{\nu} \\
+        X \arrow{r}{\nu} & Z
+      \end{tikzcd}
+    \end{center}
+
+    Equivalently, the following diagram of $\mathbb{C}$-algebras commutes:
+
+    \begin{center}
+      \begin{tikzcd}
+        A \otimes_{\mathbb{C}} \Gamma & A \arrow{l}{\tau} \\
+        A \arrow{u}{\rho} & B \arrow{l}{v} \arrow{u}{v}
+      \end{tikzcd}
+    \end{center}
+
+    We claim that $G$-invariance of $\nu$ translates into the image of $v$ being contained in $A^{G}$.
+    Indeed, let $f \colon Z \to \mathbb{A}^{1}$ be a regular function on $Z$, i.e.~an element of its coordinate ring $B$; and let $g \in G$.
+    We want to show that $g \cdot v(f) = v(f)$.
+    To check the equality between these two functions it suffices two check that they agree on all closed points of $X$, so let also $x \in X$ be a closed point.
+    We have
+    \begin{align*}
+      (g \cdot v(f))(x) & = v(f)(x \cdot g) \\
+      & = v(f)(\sigma(x, g)) \\
+      & = \tau(v(f))(x,g) \\
+      & = \rho(v(f))(x,g) \\
+      & = v(f)(x),
+    \end{align*}
+    hence our claim.
+    
+    But now, since the image of $v \colon B \to A$ is contained in $A^{G} \subseteq A$, there exists a unique $\mathbb{C}$-algebra homomorphism $\bar{v} \colon B \to A^{G}$ such that $v$ is the composition of $\bar{v}$ and the inclusion $A^{G}$.
+    Denoting by $\bar{\nu} \colon Y \to Z$ the corresponding $\mathbb{C}$-scheme morphism, this translates into saying that $\bar{\nu} \colon Y \to Z$ is the unique $\mathbb{C}$-scheme morphism such that $\bar{\nu} \circ \pi = \nu$.
+    So the desired universal property holds for affine schemes.
+
+    Let now $Z$ be any $\mathbb{C}$-scheme together with a $G$-invariant morhpism $\nu \colon X \to Z$.
+    Let $\{ W_{i} \}_{i \in I}$ be an affine open cover of $Z$, and let $\nu_{i} \colon \nu^{-1}(W_{i}) \to W_{i}$ denote the corestriction of $\nu$ to $W_{i}$ for each $i \in I$.
+    $G$-invariance of $\nu$ implies that $\nu^{-1}(W_{i}) \subseteq X$ is $G$-invariant, so expressing it as the union of the orbits of its elements we see that it is possible to find some subset $V_{i} \subseteq Y$ such that $\nu^{-1}(W_{i}) = \pi^{-1}(V_{i})$.
+    Since $\nu^{-1}(W_{i})$ is open, so is $\pi^{-1}(V_{i})$ and thus so is $V_{i}$, because $Y$ carries the quotient topology induced by $\pi$.
+    Let $\{ V_{i,j} \}_{j \in J_{i}}$ be an affine open cover of $V_{i}$ for each $i \in I$.
+    All the properties in the definition of a geometric quotient are local on the target, so each corestriction $\pi_{i,j} \colon \pi^{-1}(V_{i,j}) \to V_{i,j}$ is a geometric quotient.
+    Moreover, since being finite is also local on the target, each $\pi_{i,j}$ is also finite, and since $V_{i,j}$ is affine we deduce that $U_{i,j} := \pi^{-1}(V_{i,j})$ is affine as well for each $i \in I$ and each $j \in J_{i}$.
+    The last condition in the definition of geometric quotient ensures that $\pi_{i,j}$ still has the form $\operatorname{Spec}(R_{i,j}) \to \operatorname{Spec}(R_{i,j}^{G})$.
+    So we are really back in the affine case that we treated before, and therefore there exists a ``unique'' factorization as desired.
+    Uniqueness in this case is restricted to the world of affine schemes.
+    Luckily $Y$ is an affine scheme, so it is separated and the intersection of affine open subsets is again affine.
+    So the different factorizations $V_{i,j} \to W_{i}$ that we obtain agree on the affine overlaps of the various $V_{i,j}$'s, and hence they glue to a uniquely determined factorization $V_{i} \to W_{i}$ for each $i \in I$.
+    If $Y$ wasn't separated we could still check that the different morphisms that we obtain in this manner agree on the overlaps by covering the intersections of the $V_{i,j}$'s further with affine opens.
+    But we'd be running out of indices already, so let us thank separatedness for sparing us the hassle.
+    Okay, but it seems that now there isn't any way around it: the $V_{i}$'s are not affine themselves, so to check that the obtained factorizations $V_{i} \to W_{i}$ glue, it seems that we would still need to cover the intersections of different $V_{i}$'s by affine opens.
+    In any case, after a finite amount of gluing processes, this yields the desired uniquely determined factorization $Y \to Z$.
+  \end{proof}
+
+\end{cor}
+
+\begin{rem}
+  In an attempt of making the proof simpler by checking the universal property for affine schemes first we ended up making it much worse.
+  Hats off to \cite{mfk94} for their much better proof, using \cite[Exercise II.2.4]{har77} instead of the cumbersome reduction to the entirely affine case.
+\end{rem}
 
 \bibliographystyle{alpha}
 \bibliography{main}
