@@ -93,26 +93,134 @@ We will mostly follow the notes in \url{http://www.math.lsa.umich.edu/~mmustata/
   \[ (g \cdot f)(x) = f(x \cdot g). \]
 \end{rem}
 
+From now on, by an \textit{action} of a finite group $G$ on a $\mathbb{C}$-scheme (resp.~on a $\mathbb{C}$-algebra) we will always mean a right action via $\mathbb{C}$-algebra morphisms (resp.~a left action via $\mathbb{C}$-scheme morphisms).
 There are various notions of quotients in algebraic geometry, cf.~\cite[\S 0.1]{mfk94}.
 Fortunately, in the case of finite groups, the various notions agree.
 
-\begin{defn}
-  Let $G$ be a finite group and let $X$ be a scheme of finite type over $\mathbb{C}$.
-  Let $\sigma \colon X \times G \to X$ be an action of $G$ on $X$ on the right\footnote{So that $G$ acts on coordinate rings on the left.}.
-  A \textit{quotient of $X$ by $G$} is a $\mathbb{C}$-scheme $Y$ together with a $\mathbb{C}$-scheme morphism $\pi \colon X \to Y$ with the following properties:
+\begin{defn}[Categorical quotient]
+  Let $\sigma \colon X \times G \to X$ be an action of a finite group $G$ on a $\mathbb{C}$-scheme $X$.
+  A \textit{categorical quotient} of $X$ by $G$ is a pair $(Y,\pi)$ consisting of a $\mathbb{C}$-scheme $Y$ and a $\mathbb{C}$-scheme morphism $\pi \colon X \to Y$ with the following properties:
   \begin{enumerate}[label=\roman*)]
     \item $\pi$ is $G$-invariant, i.e.~we have $\pi \circ \sigma = \pi \circ p_{1}$, where $p_{1} \colon X \times G \to X$ is the projection.
-    \item $\pi$ is universal with respect to the property in $i)$, i.e.~for every $\mathbb{C}$-scheme $Z$ and every $G$-invariant $\mathbb{C}$-scheme morphism $f \colon X \to Z$, there exists a unique $\mathbb{C}$-scheme morphism $h \colon Y \to Z$ such that $h \circ \pi = f$.
+    \item $\pi$ is universal with respect to the property in $i)$, i.e.~for every pair $(Z,\psi)$ consisting of a $\mathbb{C}$-scheme $Z$ and a $G$-invariant $\mathbb{C}$-scheme morphism $\psi \colon X \to Z$, there exists a unique $\mathbb{C}$-scheme morphism $\bar{\psi} \colon Y \to Z$ such that $\bar{\psi} \circ \pi = \psi$.
   \end{enumerate}
 \end{defn}
 
-\begin{rem}
-  The previous definition is that of a \textit{categorical quotient}, cf.~\cite[Definition 0.5]{mfk94}.
-\end{rem}
+\begin{lm}\label{lm:uniquequotient}
+  Let $\sigma \colon X \times G \to X$ be an action of a finite group $G$ on a $\mathbb{C}$-scheme $X$.
+  If a categorical quotient $(Y,\pi)$ exists, it is unique up to unique isomorphism.
+  That is, if $(Y', \pi')$ is another categorical quotient, then there exists a unique $\mathbb{C}$-scheme isomorphism $\bar{\pi}' \colon Y \to Y'$ such that $\pi' = \bar{\pi}' \circ \pi$.
+  
+  \begin{proof}
+    Since the pair $(Y', \pi')$ satisfies the property $i)$ above, the universal property of $(Y, \pi)$ ensures the existence of a $\mathbb{C}$-scheme morphism $\bar{\pi}' \colon Y \to Y'$ such that $\pi' = \bar{\pi}' \circ \pi$.
+    It remains to show that this is an isomorphism.
+    The roles of $(Y, \pi)$ and $(Y', \pi')$ are symmetric, so we can also find a $\mathbb{C}$-scheme morphism $\bar{\pi} \colon Y' \to Y$ making the following diagram commute:
+
+    \begin{center}
+      \begin{tikzcd}
+        & & X \arrow[bend right=30]{dll}{\pi'} \arrow{dl}{\pi} \arrow{dr}{\pi'} \arrow[bend left=30]{drr}{\pi} & & \\
+        Y' \arrow{r}{\bar{\pi}} & Y \arrow{rr}{\bar{\pi}'} & & Y' \arrow{r}{\bar{\pi}} & Y
+      \end{tikzcd}
+    \end{center}
+
+    The uniqueness part of the universal property in $ii)$ above ensures that $\bar{\pi} \circ \bar{\pi}' = \operatorname{id}_{Y}$ and $\bar{\pi}' \circ \bar{\pi} = \operatorname{id}_{Y'}$, so $\bar{\pi}'$ is indeed a $\mathbb{C}$-scheme isomorphism.
+
+  \end{proof}
+\end{lm}
 
 \begin{rem}
-  (Categorical) quotients are unique up to unique isomorphism, meaning that given any other pair $(Y', \pi')$ with the same properties, there exists a unique $\mathbb{C}$-scheme isomorphism $\varphi \colon Y' \to Y$ such that $\pi' = \varphi \circ \pi$.
+  In view of the uniqueness given by \Cref{lm:uniquequotient}, we will sometimes denote a categorical quotient by $(X/G, \pi)$.
 \end{rem}
+
+\begin{defn}[Geometric quotient]
+  Let $\sigma \colon X \times G \to X$ be an action of a finite group $G$ on a finite type\footnote{This assumption makes condition $(2)$ below less cumbersome to formulate, cf.~\cite[Definition 0.6]{mfk94}.} $\mathbb{C}$-scheme $X$.
+  A \textit{geometric quotient} of $X$ by $G$ is a pair $(Y, \pi)$ consisting of a $\mathbb{C}$-scheme $Y$ and a $\mathbb{C}$-scheme morphism $\pi \colon X \to Y$ with the following properties:
+  \begin{enumerate}
+    \item $\pi$ is $G$-invariant, i.e.~property $i)$ above holds.
+    \item $\pi$ is surjective and the fibers of $\pi$ over closed points of $Y$ are precisely the orbits of the closed points of $X$.
+    \item $Y$ carries the quotient topology induced by $\pi$, i.e.~a subset $V \subseteq Y$ is open if and only if $\pi^{-1}(V) \subseteq X$ is open.
+    \item The structure sheaf $\mathscr{O}_{Y}$ is the subsheaf of $\pi_{*}\mathscr{O}_{X}$ consisting of $G$-invariant functions, i.e.~if $f \in \Gamma(V, \pi_{*}\mathscr{O}_{X}) = \Gamma(\pi^{-1}(V),\mathscr{O}_{X})$, then $f \in \Gamma(V, \mathscr{O}_{Y})$ if and only if
+
+      \begin{center}
+        \begin{tikzcd}
+          \pi^{-1}(V) \times G \arrow{r}{\sigma} \arrow{d}{p_{1}} & \pi^{-1}(V) \arrow{d}{f} \\
+          \pi^{-1}(V) \arrow{r}{f} & \mathbb{A}^{1}
+        \end{tikzcd}
+      \end{center}
+      commutes, where we regard the regular function$f$ as a $\mathbb{C}$-scheme morphism $f \colon \pi^{-1}(V) \to \mathbb{A}^{1}$.
+    \end{enumerate}
+\end{defn}
+
+\begin{rem}\label{rem:loct}
+  Being a geometric quotient is local on the target in the sense of \cite[Appendix C]{gw10}.
+\end{rem}
+
+\begin{prop}
+  Let $\sigma \colon X \times G \to X$ be an action of a finite group $G$ on a finite type $\mathbb{C}$-scheme $X$ and let $(Y, \pi)$ be a geometric quotient of $X$ by $G$.
+  Then $(Y, \pi)$ is also a categorical quotient.
+
+  \begin{proof}
+    We follow the proof given in \cite[Proposition 0.1]{mfk94}.
+    Suppose we are given another pair $(Z, \psi)$ with the property $i)$ above, i.e.~such that $\psi \colon X \to Z$ is a $G$-invariant $\mathbb{C}$-scheme morphism.
+    Recall from \cite[Exercise II.2.4]{har77} that if $Z = \operatorname{Spec}(B)$ was affine, then $\mathbb{C}$-scheme morphisms $Y \to Z$ correspond bijectively to $\mathbb{C}$-algebra morphisms $B \to \Gamma(Y,\mathscr{O}_{Y})$.
+    The idea is to use this combined with our understanding of $\Gamma(Y,\mathscr{O}_{Y})$ given by property $(4)$ above.
+
+    So let $\{ W_{i} \}_{i \in I}$ be an affine open cover of $Z$, say $W_{i} = \operatorname{Spec}(B_{i})$ for each $i \in I$.
+    Since $\psi$ is $G$-invariant, each $U_{i} := \psi^{-1}(W_{i})$ is an invariant open subset in $X$.
+    Therefore $\pi^{-1}(\pi(\psi^{-1}(W_{i}))) = \psi^{-1}(W_{i})$.
+    Let us call $V_{i} := \pi(\psi^{-1}(W_{i}))$ for each $i \in I$.
+    Since $Y$ carries the quotient topology induced by $\pi$ and $\pi^{-1}(V_{i}) = \psi^{-1}(W_{i})$ is open in $X$, we deduce that $V_{i}$ is also open in $Y$ for each $i \in I$.
+    Surjectivity of $\pi$ ensures that $\{ V_{i} \}_{i \in I}$ is an open cover of $Y$.
+
+    As usual with existence and uniqueness statements, it will be convenient to start by arguing the uniqueness, which will then likely give us some hints as to how to show the existence.
+    Suppose that the desired factorization $\bar{\psi} \colon Y \to Z$ existed.
+    Then, since $\psi = \bar{\psi} \circ \pi$, we have
+    \[ \bar{\psi}(V_{i}) = \bar{\psi}(\pi(\psi^{-1}(W_{i}))) = \psi(\psi^{-1}(W_{i})) \subseteq W_{i} \]
+    for each $i \in I$.
+    So for each $i \in I$, our factorization $\bar{\psi} \colon Y \to Z$ would yield a morphism $\bar{\psi}_{i} \colon V_{i} \to W_{i}$ such that $\psi_{i} = \bar{\psi}_{i} \circ \pi_{i}$, where by $\pi_{i} \colon U_{i} \to V_{i}$ and $\psi_{i} \colon U_{i} \to W_{i}$ are the morphisms induced by $\pi$ and $\psi$ respectively.
+    Since the target $W_{i} = \operatorname{Spec}(B_{i})$ of $\bar{\psi}_{i}$ is affine, \cite[Exercise II.2.4]{har77} tells us that $\bar{\psi}_{i}$ is uniquely determined by the correspdonding morphism of $\mathbb{C}$-algberas $h_{i} \colon B_{i} \to \Gamma(V_{i}, \mathscr{O}_{Y})$.
+    Commutativity of the triangle of $\mathbb{C}$-schemes
+    
+    \begin{center}
+      \begin{tikzcd}
+        U_{i} \arrow{r}{\psi_{i}} \arrow{d}{\pi_{i}} & W_{i} \\
+        V_{i} \arrow[swap]{ur}{\bar{\psi}_{i}} & 
+      \end{tikzcd}
+    \end{center}
+    translates into commutativity of the triangle of $\mathbb{C}$-algebras
+
+    \begin{center}
+      \begin{tikzcd}
+        \Gamma(U_{i}, \mathscr{O}_{X}) & B_{i} \arrow[swap]{l}{\psi^{*}_{i}} \arrow{dl}{h_{i}} \\
+        \Gamma(V_{i}, \mathscr{O}_{Y}) \arrow{u}{\pi^{*}_{i}} & 
+      \end{tikzcd}
+    \end{center}
+
+    But property $(4)$ above tells us that $\pi_{i}^{*}$ is the inclusion of the $G$-invariant regular functions on $U_{i}$, in particular an injective $\mathbb{C}$-algebra morphism.
+    So each $h_{i}$ is uniquely determined by $\psi$, hence so is each $\bar{\psi}_{i}$ and hence so is $\bar{\psi}$ itself.
+
+    Now to show existence the plan is first to show existence of the $h_{i}$ defined as above, and then check that the corresponding $\bar{\psi}_{i}$ glue together into a $\mathbb{C}$-scheme morphism $Y \to Z$.
+    So let $i \in I$ and let us show that $h_{i}$ exists, i.e.~let us show that the image of $\psi_{i}^{*}$ consists of $G$-invariant regular functions on $U_{i}$.
+    Let then $b \in B_{i}$ be a regular function on $W_{i}$, which we regard as a $\mathbb{C}$-scheme morphism $b \colon W_{i} \to \mathbb{A}^{1}$.
+    The $G$-invariance assumption on $\psi$ translates into saying that $\psi_{i}(x \cdot g) = \psi_{i}(x)$ for each closed point $x \in U_{i}$ and each $g \in G$.
+    We want to show that $g \cdot \psi_{i}^{*}(b) = \psi_{i}^{*}(b)$ for each $g \in G$, so let $g \in G$ be arbitrary.
+    We regard again regular functions as $\mathbb{C}$-scheme morphisms into $\mathbb{A}^{1}$ and check the equality on closed points of $U_{i}$:
+
+    \begin{align*}
+      (g \cdot \psi_{i}^{*}(b))(x) & = \psi_{i}^{*}(b)(x \cdot g) \\
+      & = b(\psi_{i}(x \cdot g)) \\
+      & = b(\psi_{i}(x)) \\
+      & = (\psi_{i}^{*}(b))(x).
+    \end{align*}
+    Hence the image of $\psi_{i}^{*}$ lies in the subalgebra of $G$-invariant regular functions on $U_{i}$, and thus we can find the desired factorization $h_{i}$.
+
+    The previous argument gives us a factorization $\bar{\psi}_{i} \colon V_{i} \to W_{i}$ for each $i \in I$, and it remains to show that these glue together into a morphism $\bar{\psi} \colon Y \to Z$.
+    Given $i, j \in I$, both $\bar{\psi}_{i}|_{V_{i} \cap V_{j}} \colon V_{i} \cap V_{j} \to W_{i}$ and $\bar{\psi}_{j}|_{V_{i} \cap V_{j}} \colon V_{i} \cap V_{j} \to W_{i}$ are uniquely determined by the correpsonding $\mathbb{C}$-algebra morphisms $h_{ij} , h_{ji} \colon B_{i} \to \Gamma(V_{i} \cap V_{j}, \mathscr{O}_{Y})$.
+    The arguments above show that we must have $h_{ij} = h_{ji}$, so the two morphisms agree on the intersections and we can glue them together as we wanted.
+
+  \end{proof}
+\end{prop}
+
 
 \begin{lm}\label{lm:finitetype}
   Let $G$ be a finite group.
