@@ -221,7 +221,6 @@ Fortunately, in the case of finite groups, the various notions agree.
   \end{proof}
 \end{prop}
 
-
 \begin{lm}\label{lm:finitetype}
   Let $G$ be a finite group.
   Let $A$ be a finite type $\mathbb{C}$-algebra and assume that the group $G$ acts on $A$ from the left by $\mathbb{C}$-algebra automorphisms.
@@ -367,89 +366,64 @@ Fortunately, in the case of finite groups, the various notions agree.
 
 \end{lm}
 
-\begin{cor}\label{cor:quotient}
-  In the situation of \Cref{lm:finitetype}, the induced morphism $\pi \colon \operatorname{Spec}(A) \to \operatorname{Spec}(A^{G})$ is a (categorical) quotient of $\operatorname{Spec}(A)$ by $G$.
-  Moreover, it is also a \textit{geometric quotient} in the sense of \cite[Definition 0.6]{mfk94}.
+\begin{cor}\label{cor:affinequotient}
+  In the situation of \Cref{lm:finitetype}, the induced morphism $\pi \colon \operatorname{Spec}(A) \to \operatorname{Spec}(A^{G})$ is a geometric quotient of $\operatorname{Spec}(A)$ by $G$.
 
   \begin{proof}
-    We check first that $\pi$ is a geometric quotient.
-    There are four items in \cite[Definition 0.6]{mfk94}:
-    \begin{enumerate}[label=\roman*)]
+    Each of the necessary properties was already proven in the lemmas above:
+    \begin{enumerate}
       \item $G$-invariance follows from \Cref{lm:fibers}.
       \item Surjectivity follows from \Cref{lm:finitesurjective}, and the fibers over closed points being precisely the orbits of closed points follows from \Cref{lm:fibers}.
       \item We have seen that $\operatorname{Spec}(A^{G})$ carries the quotient topology induced by $\pi$ in \Cref{lm:topology}.
       \item That the structure sheaf of $\operatorname{Spec}(A^{G})$ agrees with the subsheaf of $G$-invariant functions of $\pi_{*}\mathscr{O}_{\operatorname{Spec}(A)}$ was checked in \Cref{lm:invariantslocalization}.
     \end{enumerate}
-    So $\pi$ is indeed a geometric quotient.
-    
-    We check next that it is also a categorical quotient following \cite[Porposition 0.1]{mfk94}, as in fact any geometric quotient is.
-    But first, some notation.
-    Let us call $X = \operatorname{Spec}(A)$, $Y = \operatorname{Spec}(A^{G})$ and $\Gamma = \Gamma(G, \mathscr{O}_{G})$.
-    Denote by $\sigma \colon X \times G \to X$ the group action and by $\tau \colon A \to A \otimes_{\mathbb{C}} \Gamma$ the induced morphism on coordinate rings.
-    Finally, let us also denote simply by $\rho \colon A \to A \otimes_{\mathbb{C}} \Gamma$ the morphism induced on coordinate rings by the projection $X \times G \to X$.
-
-    In order to prove the claim, we start by showing that the universal property holds in the affine case.
-    Assume then that we have some $G$-invariant $\mathbb{C}$-scheme morphism $\nu \colon X \to Z$ such that $Z = \operatorname{Spec}(B)$ and $\nu$ is induced by a $\mathbb{C}$-algebra homomorphism $v \colon B \to A$.
-    Recall that $G$-invariance means that $\nu(x \cdot g) = \nu(x)$ for all $x \in X$ and all $g \in G$, i.e.~that the following diagram of $\mathbb{C}$-schemes commutes:
-
-    \begin{center}
-      \begin{tikzcd}
-        X \times G \arrow{r}{\sigma} \arrow{d}{p_{1}} & X \arrow{d}{\nu} \\
-        X \arrow{r}{\nu} & Z
-      \end{tikzcd}
-    \end{center}
-
-    Equivalently, the following diagram of $\mathbb{C}$-algebras commutes:
-
-    \begin{center}
-      \begin{tikzcd}
-        A \otimes_{\mathbb{C}} \Gamma & A \arrow{l}{\tau} \\
-        A \arrow{u}{\rho} & B \arrow{l}{v} \arrow{u}{v}
-      \end{tikzcd}
-    \end{center}
-
-    We claim that $G$-invariance of $\nu$ translates into the image of $v$ being contained in $A^{G}$.
-    Indeed, let $f \colon Z \to \mathbb{A}^{1}$ be a regular function on $Z$, i.e.~an element of its coordinate ring $B$; and let $g \in G$.
-    We want to show that $g \cdot v(f) = v(f)$.
-    To check the equality between these two functions it suffices two check that they agree on all closed points of $X$, so let also $x \in X$ be a closed point.
-    We have
-    \begin{align*}
-      (g \cdot v(f))(x) & = v(f)(x \cdot g) \\
-      & = v(f)(\sigma(x, g)) \\
-      & = \tau(v(f))(x,g) \\
-      & = \rho(v(f))(x,g) \\
-      & = v(f)(x),
-    \end{align*}
-    hence our claim.
-    
-    But now, since the image of $v \colon B \to A$ is contained in $A^{G} \subseteq A$, there exists a unique $\mathbb{C}$-algebra homomorphism $\bar{v} \colon B \to A^{G}$ such that $v$ is the composition of $\bar{v}$ and the inclusion $A^{G}$.
-    Denoting by $\bar{\nu} \colon Y \to Z$ the corresponding $\mathbb{C}$-scheme morphism, this translates into saying that $\bar{\nu} \colon Y \to Z$ is the unique $\mathbb{C}$-scheme morphism such that $\bar{\nu} \circ \pi = \nu$.
-    So the desired universal property holds for affine schemes.
-
-    Let now $Z$ be any $\mathbb{C}$-scheme together with a $G$-invariant morhpism $\nu \colon X \to Z$.
-    Let $\{ W_{i} \}_{i \in I}$ be an affine open cover of $Z$, and let $\nu_{i} \colon \nu^{-1}(W_{i}) \to W_{i}$ denote the corestriction of $\nu$ to $W_{i}$ for each $i \in I$.
-    $G$-invariance of $\nu$ implies that $\nu^{-1}(W_{i}) \subseteq X$ is $G$-invariant, so expressing it as the union of the orbits of its elements we see that it is possible to find some subset $V_{i} \subseteq Y$ such that $\nu^{-1}(W_{i}) = \pi^{-1}(V_{i})$.
-    Since $\nu^{-1}(W_{i})$ is open, so is $\pi^{-1}(V_{i})$ and thus so is $V_{i}$, because $Y$ carries the quotient topology induced by $\pi$.
-    Let $\{ V_{i,j} \}_{j \in J_{i}}$ be an affine open cover of $V_{i}$ for each $i \in I$.
-    All the properties in the definition of a geometric quotient are local on the target, so each corestriction $\pi_{i,j} \colon \pi^{-1}(V_{i,j}) \to V_{i,j}$ is a geometric quotient.
-    Moreover, since being finite is also local on the target, each $\pi_{i,j}$ is also finite, and since $V_{i,j}$ is affine we deduce that $U_{i,j} := \pi^{-1}(V_{i,j})$ is affine as well for each $i \in I$ and each $j \in J_{i}$.
-    The last condition in the definition of geometric quotient ensures that $\pi_{i,j}$ still has the form $\operatorname{Spec}(R_{i,j}) \to \operatorname{Spec}(R_{i,j}^{G})$.
-    So we are really back in the affine case that we treated before, and therefore there exists a ``unique'' factorization as desired.
-    Uniqueness in this case is restricted to the world of affine schemes.
-    Luckily $Y$ is an affine scheme, so it is separated and the intersection of affine open subsets is again affine.
-    So the different factorizations $V_{i,j} \to W_{i}$ that we obtain agree on the affine overlaps of the various $V_{i,j}$'s, and hence they glue to a uniquely determined factorization $V_{i} \to W_{i}$ for each $i \in I$.
-    If $Y$ wasn't separated we could still check that the different morphisms that we obtain in this manner agree on the overlaps by covering the intersections of the $V_{i,j}$'s further with affine opens.
-    But we'd be running out of indices already, so let us thank separatedness for sparing us the hassle.
-    Okay, but it seems that now there isn't any way around it: the $V_{i}$'s are not affine themselves, so to check that the obtained factorizations $V_{i} \to W_{i}$ glue, it seems that we would still need to cover the intersections of different $V_{i}$'s by affine opens.
-    In any case, after a finite amount of gluing processes, this yields the desired uniquely determined factorization $Y \to Z$.
+    So $\pi$ is indeed a geometric quotient.  
   \end{proof}
 
 \end{cor}
 
-\begin{rem}
-  In an attempt of making the proof simpler by checking the universal property for affine schemes first we ended up making it much worse.
-  Hats off to \cite{mfk94} for their much better proof, using \cite[Exercise II.2.4]{har77} instead of the cumbersome reduction to the entirely affine case.
+\begin{rem}\label{rem:loct2}
+  Recall from \Cref{rem:loct} that being a geometric quotient is local on the target, so in the situation of \Cref{cor:affinequotient} we can moreover say that $\pi|_{\pi^{-1}(V)} \colon \pi^{-1}(V) \to V$ is a geometric quotient of the $G$-invariant open $\pi^{-1}(V)$ by $G$ for every open subset $V \subseteq \operatorname{Spec}(A^{G})$.
 \end{rem}
+
+\begin{lm}\label{lm:affinecover}
+  Let $\sigma \colon X \times G \to X$ be an action of a finite group on a finite type $\mathbb{C}$-scheme $X$.
+  Suppose there exists an affine open cover $\{ U_{i} \}_{i \in I}$ of $X$ such that $U_{i}$ is $G$-invariant for every $i \in I$.
+  Then the geometric quotient of $X$ by $G$ exists.
+
+  \begin{proof}
+    For each $i \in I$ we get an action of $G$ on the affine scheme $U_{i}$, which is of finite type over $\mathbb{C}$.
+    By \Cref{cor:affinequotient} we may form the geometric quotient $\pi_{i} \colon U_{i} \to U_{i}/G$ for each $i \in I$.
+    For $i, j \in I$ let us denote by $U_{i,j}$ the intersection $U_{i} \cap U_{j}$.
+    The geometric quotient $\pi_{i}$ is by definition surjective, so we have $\pi_{i}^{-1}(\pi_{i}(U_{i,j})) = U_{i,j}$.
+    And $U_{i}/G$ carries by definition the quotient topology induced by $\pi_{i}$, so $\pi_{i}(U_{i,j})$ is open in $U_{i}/G$.
+    We denote by $\pi_{i,j} \colon \pi_{i}^{-1}(\pi_{i}(U_{i,j})) \to \pi_{i}(U_{i,j})$ the corresponding corestriction for all $i, j \in I$.
+    Since geometric quotients are local on the target, both $\pi_{i,j}$ and $\pi_{j,i}$ are geometric quotients of $U_{i,j}$ by $G$.
+    We have seen that geometric quotients are categorical quotients, hence unique up to unique isomorphism, so this ensures the existence of uniquely determined isomorphisms
+    \[ \varphi_{i,j} \colon \pi_{i}(U_{i,j}) \cong \pi_{j}(U_{i,j}) \]
+    for each $i, j \in I$.
+    Uniqueness ensures that $\varphi_{i,j}^{-1} = \varphi_{j,i}$, so in order to glue it remains to show the cocycle condition.
+    Let $i, j, k \in I$.
+    We need to show that $\varphi_{i,j}(\pi_{i}(U_{i,j})\cap \pi_{i}(U_{i,k})) = \pi_{j}(U_{i,j}) \cap \pi_{j}(U_{j,k})$ and that $\varphi_{i,k} = \varphi_{j,k} \circ \varphi_{i,j}$ on $\pi_{i}(U_{i,j}) \cap \pi_{i}(U_{i,k})$.
+    Let $U_{i,j,k}$ denote $U_{i} \cap U_{j} \cap U_{k}$.
+    Then $\pi_{j}(U_{i,j}) \cap \pi_{j}(U_{j,k}) = \pi_{j}(U_{i,j,k})$, because $\pi_{j}(U_{i,j,k}) \subsetneq \pi_{j}(U_{i,j}) \cap \pi_{j}(U_{j,k})$ would mean that we can find $x \in U_{i,j} \setminus U_{i,j,k}$ and $y \in U_{j,k} \setminus U_{i,j,k}$ such that $\pi_{j}(x) = \pi_{j}(y)$; since $\pi_{j}$ is a geometric quotient, its fibers are precisely the $G$-orbits of points in $U_{j}$, and this would contradict $G$-invariance of $U_{i}$ as the following picture shows:
+
+    \begin{figure}[H]
+      \centering
+      \includegraphics[scale=.9]{pictures/glueing.png}
+    \end{figure}
+
+    So in this case we do have $\pi_{j}(U_{i,j,k}) = \pi_{j}(U_{i,j}) \cap \pi_{j}(U_{j,k})$.
+    And similarly $\pi_{i}(U_{i,j}) \cap \pi_{i}(U_{i,k}) = \pi_{i}(U_{i,j,k})$, so we need to show that $\varphi_{i,j}(\pi_{i}(U_{i,j,k})) = \pi_{j}(U_{i,j,k})$.
+    But by construction we have $\varphi_{i,j} \circ \pi_{i,j} = \pi_{j,i}$, and this implies the desired equality.
+    Hence $\varphi_{i,k}|_{\pi_{i}(U_{i,j,k})}$ and $\varphi_{j,k} \circ \varphi_{i,j}|_{\pi_{i}(U_{i,j,k})}$ are two isomorphisms between $\pi_{i}(U_{i,j,k})$ and $\pi_{k}(U_{i,k}) \cap \pi_{k}(U_{i,j}) = \pi_{k}(U_{i,j,k})$.
+    But the corestriction of each $\pi_{i}$ to $\pi_{i}(U_{i,j,k})$ is also a geometric quotient of $U_{i,j,k}$ by $G$, so there exist unique isomorphisms $\psi_{i,k} \colon \pi_{i}(U_{i,j,k}) \cong \pi_{k}(U_{i,j,k})$ under $U_{i,j,k}$.
+    In particular, since $\varphi_{i,k}|_{\pi_{i}(U_{i,j,k})}$ and $\varphi_{j,k} \circ \varphi_{i,j}|_{\pi_{i}(U_{i,j,k})}$ are two such isomorphisms, they must be equal, as we wanted to show.
+    Hence the cocycle condition is satisfied and we may glue the $\pi_{i}$ together to obtain a $\mathbb{C}$-scheme morphism $\pi \colon X \to Z$ for some $\mathbb{C}$-scheme $Z$ obtained by glueing the $U_{i}/G$ together \cite[Exercise II.2.12]{har77}.
+    Finally, since being a geometric quotient is local on the target, it suffices to show that this resulting morphism $\pi \colon X \to Z$ is a geometric quotient on an open cover of $Z$.
+    But by construction $Z$ has an open cover $\{ V_{i} \}_{i \in I}$ in which each $V_{i}$ is identified with $U_{i}/G$ in such a way that the corresponding corestriction $\pi|_{\pi^{-1}(V_{i})} \colon \pi^{-1}(V_{i}) \to V_{i}$ is identified with the geometric quotient $\pi_{i} \colon U_{i} \to U_{i}/G$, so we are done.
+  \end{proof}
+\end{lm}
 
 \bibliographystyle{alpha}
 \bibliography{main}
