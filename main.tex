@@ -425,6 +425,82 @@ Fortunately, in the case of finite groups, the various notions agree.
   \end{proof}
 \end{lm}
 
+\begin{lm}\label{lm:avoidpoints}
+  Let $X$ be a quasi-projective $\mathbb{C}$-scheme and let $x_{1},\ldots, x_{m} \in X$ be finitely many closed points.
+  Then there exists an affine open subset $U \subseteq X$ such that $x_{i} \in U$ for all $i \in \{ 1, \ldots, m\}$.
+  \begin{proof}
+    We reproduce here the argument given in the notes that we are following most of the time, cited above.
+    We regard $X$ as a locally closed subset of some $\mathbb{P}^{n}$.
+    Then we look at its Zariski closure $\bar{X}$.
+    If we find a hypersurface $H \subseteq \mathbb{P}^{n}$ which contains $\bar{X} \setminus X$ but not $x_{1}, \ldots, x_{m}$, then we are done, because $\mathbb{P}^{n} \setminus H$ is affine\footnote{If $H$ is a hyperplane, then $\mathbb{P}^{n} \setminus H \cong \mathbb{A}^{n}$.
+    If $H$ is a hypersurface of degree $d$, then we may regard it as the intersection of a hyperplane with the image of $\mathbb{P}^{n}$ under the corresponding Veronese embedding, so the image of $\mathbb{P}^{n} \setminus H$ would be a closed subset inside the affine space given by the complement of this hyperplane, hence affine itself.} and $U := X \setminus H = \bar{X} \setminus H$ is closed inside an affine, hence affine itself.
+    
+    The main ingredient to find the hypersurface $H$ is the graded prime avoidance lemma \cite[\href{https://stacks.math.columbia.edu/tag/00JS}{Tag 00JS}]{stacks-project}.
+    Let $\mathbb{C}[z_{0},\ldots,z_{n}]$ be the homogeneous coordinate ring of $\mathbb{P}^{n}$.
+    If $\bar{X} = X$, we take $I$ to be $(z_{0}, \ldots, z_{n})$.
+    Otherwise we take $I$ to be the homogeneous ideal of $\bar{X} \setminus X$.
+    We take $\mathfrak{p}_{i}$ to be the maximal ideal corresponding to the point $x_{i}$ for each $i \in \{1, \ldots, m\}$.
+    Let $i \in \{ 1, \ldots, m\}$.
+    We have $(z_{0}, \ldots, z_{n}) \not\subset \mathfrak{p}_{i}$, because the maximal ideal $(z_{0}, \ldots, z_{n})$ does not correspond to any point in $\mathbb{P}^{n}$.
+    And $x_{i} \not \in \bar{X} \setminus X$, because $x_{i} \in X$ by assumption.
+    So in any case we have $I \not \subset \mathfrak{p}_{i}$.
+    Hence we may apply graded prime avoidance to deduce the existence of a homogeneous polynomial of positive degree $f \in I$ which is not in any of the $\mathfrak{p}_{i}$, i.e.~such that $x_{i}$ is not in the hypersurface defined by $f$ for any $i \in \{1, \ldots, m\}$.
+  \end{proof}
+\end{lm}
+
+\begin{thm}\label{thm:quotient}
+  Let $\sigma \colon X \times G \to X$ be an action of a finite group on a quasi-projective $\mathbb{C}$-scheme.
+  Then the geometric quotient $\pi \colon X \to X/G$ of $X$ by $G$ exists.
+  The resulting $\mathbb{C}$-scheme $X/G$ is separated and of finite type over $\mathbb{C}$.
+  Moreover, let $\mathbf{P}$ be any of the following properties:
+  \begin{enumerate}[label=(\alph*)]
+    \item irreducible,
+    \item reduced,
+    \item integral,
+    \item normal,
+    \item affine,
+    \item projective.
+  \end{enumerate}
+  If $X$ has $\mathbf{P}$, then $X/G$ has $\mathbf{P}$.
+  In particular, if $X$ is a (projective) variety, then $X/G$ is a (projective) variety.
+
+  \begin{proof}
+    We start by checking the existence of the geometric quotient with \Cref{lm:affinecover}.
+    Since $X$ is quasi-projective over $\mathbb{C}$, it is also of finite type over $\mathbb{C}$, so it remains to find a $G$-invariant affine open cover of $X$.
+    The orbit of every closed point $x \in X$ is contained in some affine open subset $U_{x}$ by \Cref{lm:avoidpoints}.
+    It may be the case that $U_{x}$ is not yet $G$-invariant, but in any case the open neighborhood $\cap_{g \in G} U_{x}\cdot g$ of $x$ is $G$-invariant.
+    Since $X$ is quasi-projective over $\mathbb{C}$, it is also separated, so the intersection of finitely many affine open subsets is again an affine open subset.
+    Therefore we are able to find a $G$-invariant affine open neighborhood around each closed point of $X$, and by \Cref{lm:affinecover} the geometric quotient $\pi \colon X \to X/G$ of $X$ by $G$ exists.
+
+    We show next separatedness of $X/G$ over $\mathbb{C}$.
+    Note that $\pi \colon X \to X/G$ is finite and surjective, because we may check these properties on an open cover of the target and by construction of $X/G$ we may then assume that we are in the situation of \Cref{lm:finitesurjective}.
+    We can then apply \cite[\href{https://stacks.math.columbia.edu/tag/09MQ}{Tag 09MQ}]{stacks-project} to deduce separatedness of $X/G$ over $\mathbb{C}$.
+
+    The construction of $X/G$ combined with \Cref{lm:finitetype} shows that $X/G$ is locally of finite type over $\mathbb{C}$, and since $X$ is quasi-compact and $\pi$ is surjective, so is $X/G$.
+    Hence $X/G$ is of finite type over $\mathbb{C}$.
+    
+    About the remaining properties $\mathbf{P}$ in the statement:
+    \begin{enumerate}[label=(\alph*)]
+      \item Since $\pi$ is surjective, so $X/G$ is irreducible as soon as $X$ is.
+      \item Reducedness can be checked locally on $X/G$, so by construction of $X/G$ we may assume that we are in the situation of \Cref{cor:affinequotient}.
+        But the corresponding ring morphism $A^{G} \to A$ is just the inclusion, so $A^{G}$ is reduced as soon as $A$ is reduced.
+      \item The same argument as for reducedness applies, or one can also argue using that being integral is equivalent to being reduced and irreducible.
+      \item Normality can again be checked locally on $X/G$, so we may assume that we are in the situation of \Cref{cor:affinequotient}.
+        We need to show that $A^{G}$ is an integrally closed domain if $A$ is an integrally closed domain.
+        For this we use compatibility of taking $G$-invariant subrings with localization \cite[Exercise 5.12]{am69}.
+        Let $f \in (A^{G})_{(0)} = (A_{(0)})^{G}$ be a $G$-invariant element in the field of fractions of $A^{G}$, which is the subfield of $G$-invariant elements of the field of fractions of $A$.
+        Suppose that $f$ is integral over $A^{G}$, i.e.~supposet that $f$ is the root of some monic polynomial with coefficients in $A^{G}$.
+        We regard this monic polynomial as a monic polynomial with coefficients in $A$, which shows that $f$ is an element of $A_{(0)}$ which is integral over $A$.
+        Since $A$ is integrally closed, this element of $A_{(0)}$ must already be in $A$.
+        And it is $G$-invariant as well, so $f \in A^{G}$.
+      \item If $X$ is affine, then we may apply \Cref{cor:affinequotient} directly to conclude that $X/G$ is affine as well.
+      \item Properness of $X/G$ over $\mathbb{C}$ follows from the things that we have shown already, since the image of a proper scheme in a separated scheme of finite type is proper \cite[\href{https://stacks.math.columbia.edu/tag/03GN}{Tag 03GN}]{stacks-project}.
+        An argument for the projectivity, which in fact shows that $X/G$ is quasi-projective as soon as $X$ is, can be found in \cite[Proposition IV.1.5]{knu71}.
+        Projectivity would also follows from the GIT machinery, but we were intentionally trying to avoid getting into that here.
+    \end{enumerate}
+  \end{proof}
+\end{thm}
+
 \bibliographystyle{alpha}
 \bibliography{main}
 \vfill
