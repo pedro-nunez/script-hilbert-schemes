@@ -78,11 +78,89 @@
 \section{Conventions and notation}
 
 We always work over $\mathbb{C}$.
-By a variety we mean an integral separated scheme of finite type over $\mathbb{C}$.
+By a variety we mean an integral separated scheme of finite type over $\mathbb{C}$ as in \cite{har77}.
+
+The main references for the talk are \cite[\S 1]{nak99} and the notes in \url{http://www.math.utah.edu/~filipazz/seminar_notes/fall_2016/Hilbert_scheme_points.pdf}.
+
+\section{Introduction}
+
+We would like to parametrize unordered tuples of $n$-points on a smooth projective surface $X$.
+Consider the $n$-fold product $X \times \cdots \times X$ of $X$ with itself.
+This gives us ordered tuples with potential repetitions.
+To avoid repetitions we can remove the closed subset of all tuples with at least two equal points; this gives us a dense open subset of the product.
+To forget about the order of the tuples we may quotient out by the action of the symmetric group $\mathfrak{S}_{n}$ permuting the factors.
+This gives us a smooth variety parametrizing unordered tuples of $n$-points on $X$, but we would now like to compactify this parameter space.
+
+A natural candidate would be the quotient of the whole $n$-fold product $X \times \cdots \times X$ by the $\mathfrak{S}_{n}$ action permuting the factors, which is called the $n$-th symmetric power of $X$, denoted $S^{n}X$.
+But $S^{n}X$ has singularities, so instead we look at the Hilbert scheme of $n$-points on $X$, denoted $X^{[n]}$.
+We will see that there is a morphism $\pi \colon X^{[n]} \to S^{n}X$, called the \textit{Hilbert--Chow} morphism, which is a resolution of singularities.
+
+\section{Symmetric products and their stratification}
+
+\begin{defn}[Symmetric powers]
+  Let $X$ be a quasi-projective variety and let $n \in \mathbb{N}_{>0}$.
+  Let $\mathfrak{S}_{n}$ denote the symmetric group of order $n$.
+  We define the \textit{$n$-th symmetric power of $X$}, denoted $S^{n}X$, to be the quotient of the $n$-fold product $X \times \cdots \times X$ with itself by the action of $\mathfrak{S}_{n}$ which permutes the factors.
+\end{defn}
+
+\begin{rem}
+  Quotients of varieties by algebraic actions of finite groups are discussed in \Cref{sec:quotient}.
+  It is shown in \Cref{thm:quotient} that the quotient $S^{n}X$ exists as a scheme and is in fact a quasi-projective variety.
+  The fibers of the quotient morphism over closed points are precisely the orbits of closed points in $X$, and the quotient space carries the quotient topology induced by the quotient morphism.
+  Moreover, let $\mathbf{P}$ be any of the following properties:
+  \begin{itemize}
+    \item affine,
+    \item projective,
+    \item normal.
+  \end{itemize}
+  If $X$ is $\mathbf{P}$, then $S^{n}X$ is $\mathbf{P}$.
+  In particular, $S^{n}X$ is a normal projective variety if $X$ was a smooth projective variety.
+\end{rem}
+
+\begin{exmp}
+  Let $n \in \mathbb{N}_{>0}$.
+  Then $S^{n}(\mathbb{A}^{1}) \cong \mathbb{A}^{n}$.
+  Indeed, it follows from \Cref{cor:affinequotient} that
+  \[ S^{n}(\mathbb{A}^{1}) = \operatorname{Spec}\left(\mathbb{C}[x_{1}, \ldots, x_{n}]^{\mathfrak{S}_{n}}\right), \]
+  so the claim follows from the \href{https://en.wikipedia.org/wiki/Elementary_symmetric_polynomial#Fundamental_theorem_of_symmetric_polynomials}{fundamental theorem of symmetric polynomials}.
+\end{exmp}
+
+In order to show later that the yet-to-be-defined Hilbert--Chow morphism $\pi \colon X^{[n]} \to S^{n}X$ is a resolution of singularities in the case of surfaces, it will be convenient to consider the following stratification of $S^{n}X$.
+Let $k \in \mathbb{N}_{>0}$ such that $k \leq n$.
+Consider a tuple $\nu = (\nu_{1}, \ldots, \nu_{k})$ be with $\nu_{1} \geq \nu_{2} \geq \ldots \geq \nu_{k} > 0$ such that $n = \nu_{1} + \ldots + \nu_{k}$.
+Call this a \textit{partition of $n$} of \textit{length} $l(\nu) := k$.
+Then, for each partition $\nu$ of $n$, we define
+\[ S^{n}_{\nu}X := \left\{ \quad \sum_{i = 1}^{k} \nu_{i}[x_{i}] \in S^{n}X \quad \middle| \quad x_{i} \neq x_{j} \text{ for } i \neq j \quad \right\}. \]
+
+\color{red} This is a stratification of $S^{n}X$ \color{black} and \color{red} $\dim(S^{n}_{\nu}X) = l(\nu)\dim(X)$\color{black}.
+Moreover, the \color{red} open \color{black} stratum $S^{n}_{(1,\ldots,1)}X$ is smooth if $X$ is smooth, because \color{red} the quotient by a free action of a finite group on a smooth variety is smooth\color{black}.
+
+\section{Hilbert--Chow morphism}
+
+\begin{prop}
+  Let $X$ be a quasi-projective surface and let $n \in \mathbb{N}_{>0}$.
+  Let $X^{[n]}$ be the Hilbert scheme of $n$-points on $X$ and let $S^{n}X$ be the $n$-th symmetric power of $X$.
+  Then the set-theoretic morphism defined on closed points as
+  \begin{align*}
+    \pi \colon X^{[n]} & \longrightarrow S^{n}X \\
+    [Z] & \longmapsto \sum_{x \in X} \dim_{\mathbb{C}}(\mathscr{O}_{Z,x})[x] 
+  \end{align*}
+  defines a $\mathbb{C}$-scheme morphism called the \textit{Hilbert--Chow morphism}.
+
+  \begin{proof}
+    We follow the proof in \cite[\S 3.2]{leh00}.
+    Let $f \in X^{[n]}(T)$and let $\mathcal{Z}$ be the corresponding family over $T$, i.e.~$\mathcal{Z} \subseteq T \times X$ and the restriction of the projection $\mathcal{Z} \to T$ is a finite flat morphism of degree $n$.
+    Let $t_{0} \in T$ be a closed point, which corresponds to a 
+  \end{proof}
+\end{prop}
+
+\section{Case of curves}
+
+\section{Hilbert scheme of points on a surface}
 
 \appendix
 
-\section{Quotients of quasi-projective varieties by finite groups}
+\section{Quotients of quasi-projective varieties by finite groups}\label{sec:quotient}
 
 We will mostly follow the notes in \url{http://www.math.lsa.umich.edu/~mmustata/appendix.pdf} in this appendix.
 
@@ -496,7 +574,7 @@ Fortunately, in the case of finite groups, the various notions agree.
       \item If $X$ is affine, then we may apply \Cref{cor:affinequotient} directly to conclude that $X/G$ is affine as well.
       \item Properness of $X/G$ over $\mathbb{C}$ follows from the things that we have shown already, since the image of a proper scheme in a separated scheme of finite type is proper \cite[\href{https://stacks.math.columbia.edu/tag/03GN}{Tag 03GN}]{stacks-project}.
         An argument for the projectivity, which in fact shows that $X/G$ is quasi-projective as soon as $X$ is, can be found in \cite[Proposition IV.1.5]{knu71}.
-        Projectivity would also follows from the GIT machinery, but we were intentionally trying to avoid getting into that here.
+        Projectivity would also follow from the GIT machinery, but we were intentionally trying to avoid getting into that here.
     \end{enumerate}
   \end{proof}
 \end{thm}
