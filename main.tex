@@ -64,7 +64,7 @@
 \maketitle
 
 \begin{abstract}
-  Script for the 7\textsuperscript{th} talk of the seminar on Heisenberg algebras and Hilbert schemes of points on surfaces organized by Mara Ungureanu during the Summer Term 2021 at the University of Freiburg.
+  Script for the seventh talk of the seminar on Heisenberg algebras and Hilbert schemes of points on surfaces organized by Mara Ungureanu during the Summer Term 2021 at the University of Freiburg.
 \end{abstract}
 
 \tableofcontents
@@ -225,10 +225,54 @@ Then, for each partition $\nu$ of $n$, we define
 \end{prop}
 
 \begin{exmp}
-  Explicit description for $\mathbb{A}^{2}$ in terms of \cite[Theorem 1.9]{nak99}.
+  Let us look at the case of $X = \mathbb{A}^{2}$ and $n = 2$.
+  In the last talk we saw how to describe $(\mathbb{A}^{2})^{[2]}$ in terms of endomorphisms of $\mathbb{C}^{2}$ \cite[Theorem 1.9]{nak99}.
+  Namely, a closed point in $(\mathbb{A}^{2})^{[2]}$ corresponds to the equivalence class of a triple $(A,B,v)$ in which $A$ and $B$ are $2 \times 2$ matrices with complex coefficients, $v \in \mathbb{C}^{2}$ is a vector, and the following conditions hold:
+  \begin{enumerate}
+    \item The matrices commute, i.e.~$AB = BA$.
+    \item (``Stability'') There is no proper subspace $W \subseteq \mathbb{C}^{2}$ such that $v \in W$, $AW \subseteq W$ and $BW \subseteq W$.
+  \end{enumerate}
+  Two such triples $(A,B,v)$ and $(A',B',v')$ are equivalent if and only if there exists $P \in \operatorname{GL}_{2}(\mathbb{C})$ such that
+  \[ (A', B', v') = (PAP^{-1}, PBP^{-1}, Pv). \]
+  Since $A$ and $B$ commute, we can triangulize them simultaneously, i.e.~we may find a representative of $[(A,B,v)]$ in which both matrices are upper triangular.
+  Indeed, it suffices to show that $A$ and $B$ have a common eigenvector.
+  For any eigenvalue $\lambda$ of $A$, the subspace $\ker(A -\lambda I_{2 \times 2})$ is $B$-invariant, because if $Au = \lambda u$, then
+  \[ ABu = BAu = B\lambda u = \lambda Bu. \]
+  Since we are working over an algebraically closed field, the non-zero $B$-invariant subspace $\ker(A - \lambda I_{2 \times 2})$ contains an eigenvector of $B$.
+  This is then an eigenvector of $A$ and of $B$ at the same time, and after changing basis on $\mathbb{C}^{2}$ and setting this eigenvector as the first element of the new basis we obtain the desired simultaneous triangulizations of $A$ and $B$.
+
+  So assume from now on that
+  \[ A = \begin{pmatrix} \lambda_{1} & a \\
+  0 & \lambda_{2} \end{pmatrix}
+  \quad \text{ and } \quad B = \begin{pmatrix}
+    \mu_{1} & b \\
+    0 & \mu_{2} \end{pmatrix}.
+  \]
+  We can then recover the corresponding ideal $I \subseteq \mathbb{C}[x,y]$ as the kernel of
+  \begin{align*}
+    \phi \colon \mathbb{C}[x,y] & \longrightarrow \mathbb{C}^{2} \\
+    f(x,y) & \longmapsto f(A,B)v.
+  \end{align*}
+  The stability condition implies that $\phi$ is surjective, so $I$ is indeed an ideal of colength $2$.
+  A direct computation shows that $\phi((x-\lambda_{1})(y - \mu_{2}))= 0$.
+  Since $A$ and $B$ commute, their roles are interchangeable, so we also have $\phi((x - \lambda_{2})(y - \mu_{1})) = 0$, which can also be seen by direct computation using the fact that commutativity of $A$ and $B$ translates into $\lambda_{1} b + \mu_{2} a = \mu_{1} a + \lambda_{2} b$.
+  The Cayley--Hamilton theorem implies that
+  \[ \phi((x - \lambda_{1})(x - \lambda_{2})) = \phi((y - \mu_{1})(y - \mu_{2})) = 0. \]
+  Therefore $I = (x - \lambda_{1}, y - \mu_{1})(x - \lambda_{2}, y - \mu_{2})$ and hence
+  \[ \pi([(A,B,v)]) = [(\lambda_{1}, \mu_{1})] + [(\lambda_{2}, \mu_{2})]. \]
+  Suppose that $(\lambda_{1}, \mu_{1}) \neq (\lambda_{2}, \mu_{2})$.
+  Assume without loss of generality that $\lambda_{1} \neq \lambda_{2}$.
+  Then $A$ is diagonalizable, so we may find a representative of $[(A,B,v)]$ in which $a = 0$.
+  Call it $(A,B,v)$ again.
+  Then the commutativity of $A$ and $B$ imposes the relation $(\lambda_{1}-\lambda_{2})b = 0$, and since $\lambda_{1} - \lambda_{2} \neq 0$ we must have $b = 0$ as well.
+  So in this case $[(A,B,v)]$ is uniquely determined by $[(\lambda_{1},\mu_{1})] + [(\lambda_{2}, \mu_{2})]$.
+  This shows that $\pi$ is injective over the smooth dense open subset $V := S^{2}_{(1,1)}\mathbb{A}^{2}$.
+  Since it is also surjective and $S^{2}_{(1,1)}$ is smooth, it is an isomorphism by a combination of various versions of Zariski's Main Theorem, cf.~\url{https://mathoverflow.net/a/264216}.
+  Using that we already know $(\mathbb{A}^{2})^{[2]}$ to be smooth from \cite[Theorem 1.9]{nak99}, we can also argue analytically to obtain the same conclusion, namely, that $\pi$ is an isomorphism over the smooth dense open subset $S^{2}_{(1,1)}\mathbb{A}^{2} \subseteq S^{2}\mathbb{A}^{2}$.
+
+  The same holds for $n > 2$.
+  This can be checked with the same arguments as above, only that the notation and the computations become a little less explicit, cf.~\cite[Example 1.12.(4)]{nak99}.
 \end{exmp}
-
-
 
 \section{Case of curves}
 
