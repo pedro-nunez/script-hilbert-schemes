@@ -81,7 +81,7 @@ We always work over $\mathbb{C}$.
 By a variety we mean an integral separated scheme of finite type over $\mathbb{C}$ as in \cite{har77}.
 Similarly, curves and surfaces are always implicitly assumed to be irreducible.
 
-The main references for the talk are \cite[\S 1]{nak99} and the notes in \url{http://www.math.utah.edu/~filipazz/seminar_notes/fall_2016/Hilbert_scheme_points.pdf}.
+The main reference for the talk is \cite[\S 1]{nak99}.
 
 \section{Introduction}
 
@@ -118,7 +118,7 @@ We will see that there is a morphism $\pi \colon X^{[n]} \to S^{n}X$, called the
   In particular, $S^{n}X$ is a normal projective variety if $X$ was a smooth projective variety.
 \end{rem}
 
-\begin{exmp}
+\begin{exmp}\label{exmp:affineline}
   Let $n \in \mathbb{N}_{>0}$.
   Then $S^{n}(\mathbb{A}^{1}) \cong \mathbb{A}^{n}$.
   Indeed, it follows from \Cref{cor:affinequotient} that
@@ -211,6 +211,9 @@ Then, for each partition $\nu$ of $n$, we define
   \end{proof}
 \end{lm}
 
+% TODO add \cite[Examples 3.5 and 3.6]{rot16}
+\color{red} Add \cite[Examples 3.5 and 3.6]{rot16} here! \color{black}
+
 \section{Hilbert--Chow morphism}
 
 \begin{prop}[{\cite[\S 3.2]{leh00} or \cite[p.~41]{ber08}}]
@@ -276,13 +279,59 @@ Then, for each partition $\nu$ of $n$, we define
 
 \section{Case of curves}
 
+We have seen in \Cref{exmp:affineline} that $S^{n}\mathbb{A}^{1} \cong \mathbb{A}^{n}$.
+We also have:
+
+\begin{exmp}\label{exmp:projectiveline}
+  Let $n \in \mathbb{N}_{>0}$.
+  Then $S^{n}(\mathbb{P}^{1}) \cong \mathbb{P}^{n}$.
+
+  \begin{proof}[Sketch]
+    This sketch of proof is taken from \cite[Example 3.4]{rot16}.
+    Consider a point
+    \[ \sum_{i = 1}^{n} [[u_{i}:v_{i}]] \in S^{n}(\mathbb{P}^{1}). \]
+    Then we consider the homogeneous polynomial
+    \[ \prod_{i = 1}^{n} (u_{i}y - v_{i}x) = a_{n} x^{n} + a_{1} x^{n-1}y + \ldots + a_{n}y^{n}. \]
+    The coefficients give us a point $[a_{0} : \ldots : a_{n} ] \in \mathbb{P}^{n}$.
+    % TODO why is this morphism algebraic?
+    \color{red} why is this morphism algebraic? \color{black}
+    And the point $[a_{0} : \ldots : a_{n}]$ determines uniquely the original unordered tuple as the set of roots of the corresponding homogeneous polynomial.
+  \end{proof}
+\end{exmp}
+
+In particular, both $\mathbb{A}^{1}$ and $\mathbb{P}^{1}$ have smooth symmetric products.
+More generally:
+
+\begin{prop}[{\cite[Proposition 3.1]{rot16}}]
+  Let $n \in \mathbb{N}_{>0}$ and let $X$ be a smooth curve.
+  Then $S^{n}X$ is smooth.
+
+  \begin{proof}
+    We have seen this already in the case of $\mathbb{A}^{1}$ in \Cref{exmp:affineline}.
+    The idea is to reduce to this case arguing locally analytically.
+    The completion of the algebraic local ring at a closed point is isomorphic to the completion of the analytic local ring at the corresponding point of the associated complex analytic space \cite[Proposition 3]{ser56}.
+    A noetherian local ring is regular if and only if its completion is regular \cite[\href{https://stacks.math.columbia.edu/tag/07NY}{Tag 07NY}]{stacks-project}.
+    Let $Z := X^{\times n}$ be the $n$-fold product of the curve $X$ with itself, so that $W := S^{n}X$ is the quotient of $Z$ by the action of $G := \mathfrak{S}_{n}$ which permutes the factors in $Z$.
+    Let $q \colon Z \to W$ be the quotient morphism.
+    The statement is local on $W$, so we may assume that $W$ is affine, hence that $Z$ is affine as well because $q$ is finite.
+    Say $Z = \operatorname{Spec}(A)$, $W = \operatorname{Spec}(A^{G})$ and $q = (-) \cap A^{G}$, cf.~\Cref{cor:affinequotient}.
+    Let $\mathfrak{m} \in \operatorname{Spec}(A)$.
+    Since taking $G$-invariants commutes with localization \cite[Exercise 5.12]{am69} we have
+    \[ (A^{G})_{q(\mathfrak{m})} = (A^{G})_{\mathfrak{m} \cap A^{G}} = (A_{\mathfrak{m}})^{G}. \]
+    Taking completions commutes with taking $\mathfrak{S}_{n}$-invariants, so we also have
+    \[ (A^{G})_{q(\mathfrak{m})}^{\hat{}} = (\hat{A}_{\mathfrak{m}})^{G}. \]
+    \color{red} Finish later! \color{black}
+    % TODO finish!
+  \end{proof}
+\end{prop}
+
 \section{Hilbert scheme of points on a surface}
 
 \appendix
 
 \section{Quotients of quasi-projective varieties by finite groups}\label{sec:quotient}
 
-We will mostly follow the notes in \url{http://www.math.lsa.umich.edu/~mmustata/appendix.pdf} in this appendix.
+We will mostly follow the notes in \cite[Appendix A]{mus11} in this appendix.
 
 \begin{rem}
   Let $G$ be a finite group and let $X = \operatorname{Spec}{A}$ be an affine variety.
@@ -694,7 +743,7 @@ Fortunately, in the case of finite groups, the various notions agree.
       \item If $X$ is affine, then we may apply \Cref{cor:affinequotient} directly to conclude that $X/G$ is affine as well.
       \item Properness of $X/G$ over $\mathbb{C}$ follows from the things that we have shown already, since the image of a proper scheme in a separated scheme of finite type is proper \cite[\href{https://stacks.math.columbia.edu/tag/03GN}{Tag 03GN}]{stacks-project}.
         An argument for the projectivity, which in fact shows that $X/G$ is quasi-projective as soon as $X$ is, can be found in \cite[Proposition IV.1.5]{knu71}.
-        Projectivity would also follow from the GIT machinery, but we were intentionally trying to avoid getting into that here.
+        Projectivity would also follow from the more general GIT machinery.
     \end{enumerate}
   \end{proof}
 \end{thm}
