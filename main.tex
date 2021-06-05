@@ -80,28 +80,30 @@
 We always work over $\mathbb{C}$.
 By a variety we mean an integral separated scheme of finite type over $\mathbb{C}$ as in \cite{har77}.
 Similarly, curves and surfaces are always implicitly assumed to be irreducible.
-
 The main reference for the talk is \cite[\S 1]{nak99}.
+
+Let $n > 0$ be a natural number and let $X$ be a quasi-projective scheme.
+Then we denote by $\mathfrak{S}_{n}$ the symmetric group of order $n$, by $X^{\times n}$ the $n$-fold product of $X$ with itself and by $X^{[n]}$ the Hilbert scheme of $n$-points on $X$.
+
+Let us fix the natural number $n > 0$ from now on.
 
 \section{Introduction}
 
 We would like to parametrize unordered tuples of $n$-points on a smooth projective surface $X$.
-Consider the $n$-fold product $X \times \cdots \times X$ of $X$ with itself.
-This gives us ordered tuples with potential repetitions.
+The product $X^{\times n}$ gives us ordered tuples with potential repetitions.
 To avoid repetitions we can remove the closed subset of all tuples with at least two equal points; this gives us a dense open subset of the product.
-To forget about the order of the tuples we may quotient out by the action of the symmetric group $\mathfrak{S}_{n}$ permuting the factors.
+To forget about the order of the tuples we may quotient out by the action of $\mathfrak{S}_{n}$ permuting the factors.
 This gives us a smooth variety parametrizing unordered tuples of $n$-points on $X$, but we would now like to compactify this parameter space.
 
-A natural candidate would be the quotient of the whole $n$-fold product $X \times \cdots \times X$ by the $\mathfrak{S}_{n}$ action permuting the factors, which is called the $n$-th symmetric product of $X$, denoted $S^{n}X$.
-But $S^{n}X$ has singularities, so instead we look at the Hilbert scheme of $n$-points on $X$, denoted $X^{[n]}$.
+A natural candidate would be the quotient $S^{n}X$ of the whole $X^{\times n}$ by the $\mathfrak{S}_{n}$ action.
+But $S^{n}X$ has singularities, so instead we look at the Hilbert scheme of points $X^{[n]}$.
 We will see that there is a morphism $\pi \colon X^{[n]} \to S^{n}X$, called the \textit{Hilbert--Chow} morphism, which is a resolution of singularities.
 
 \section{Symmetric products and their stratification}
 
 \begin{defn}[Symmetric products]
-  Let $X$ be a quasi-projective variety and let $n \in \mathbb{N}_{>0}$.
-  Let $\mathfrak{S}_{n}$ denote the symmetric group of order $n$.
-  We define the \textit{$n$-th symmetric product of $X$}, denoted $S^{n}X$, to be the quotient of the $n$-fold product $X \times \cdots \times X$ with itself by the action of $\mathfrak{S}_{n}$ which permutes the factors.
+  Let $X$ be a quasi-projective variety.
+  We define the \textit{$n$-th symmetric product of $X$}, denoted $S^{n}X$, to be the quotient of $X^{\times n}$ by the action of $\mathfrak{S}_{n}$ which permutes the factors.
 \end{defn}
 
 \begin{rem}
@@ -119,11 +121,13 @@ We will see that there is a morphism $\pi \colon X^{[n]} \to S^{n}X$, called the
 \end{rem}
 
 \begin{exmp}\label{exmp:affineline}
-  Let $n \in \mathbb{N}_{>0}$.
-  Then $S^{n}(\mathbb{A}^{1}) \cong \mathbb{A}^{n}$.
-  Indeed, it follows from \Cref{cor:affinequotient} that
-  \[ S^{n}(\mathbb{A}^{1}) = \operatorname{Spec}\left(\mathbb{C}[x_{1}, \ldots, x_{n}]^{\mathfrak{S}_{n}}\right), \]
-  so the claim follows from the \href{https://en.wikipedia.org/wiki/Elementary_symmetric_polynomial#Fundamental_theorem_of_symmetric_polynomials}{fundamental theorem of symmetric polynomials}.
+  $S^{n}(\mathbb{A}^{1}) \cong \mathbb{A}^{n}$.
+  
+  \begin{proof}
+    Indeed, it follows from \Cref{cor:affinequotient} that
+    \[ S^{n}(\mathbb{A}^{1}) = \operatorname{Spec}\left(\mathbb{C}[x_{1}, \ldots, x_{n}]^{\mathfrak{S}_{n}}\right), \]
+    so the claim follows from the \href{https://en.wikipedia.org/wiki/Elementary_symmetric_polynomial#Fundamental_theorem_of_symmetric_polynomials}{fundamental theorem of symmetric polynomials}.
+  \end{proof}
 \end{exmp}
 
 In order to show later that the yet-to-be-defined Hilbert--Chow morphism $\pi \colon X^{[n]} \to S^{n}X$ is a resolution of singularities in the case of surfaces, it will be convenient to consider the following stratification of $S^{n}X$.
@@ -135,8 +139,7 @@ Then, for each partition $\nu$ of $n$, we define
 \[ S^{n}_{\nu}X := \left\{ \quad \sum_{i = 1}^{k} \nu_{i}[x_{i}] \in S^{n}X \quad \middle| \quad x_{i} \neq x_{j} \text{ for } i \neq j \quad \right\}. \]
 
 \begin{lm}\label{lm:stratification}
-  Let $n \in \mathbb{N}_{>0}$ and let us denote by $P(n)$ the set of partitions of $n$ as defined above.
-  Let $X$ be a quasi-projective variety.
+  Denote by $P(n)$ the set of partitions of $n$ as defined above and let $X$ be a quasi-projective variety.
   Then:
   \begin{enumerate}[label=(\roman*)]
     \item The collection $\{ S_{\nu}^{n}X \}_{\nu \in P(n)}$ is a stratification of $S^{n}X$.
@@ -154,30 +157,30 @@ Then, for each partition $\nu$ of $n$, we define
       (x_{1}, \ldots, x_{k}) & \longmapsto (x_{1}, \ldots, x_{1}, \ldots, x_{k}, \ldots, x_{k})
     \end{align*}
     in which $x_{i}$ appears $\nu_{i}$ times on the right hand side for each $i \in \{1, \ldots, k \}$.
-    We may then compose this with the quotient morphism $\pi \colon X^{\times n} \to S^{n}X$ to obtain a $\mathbb{C}$-scheme morphism $h \colon X^{\times k} \to S^{n}X$.
+    We may then compose this with the quotient morphism $q \colon X^{\times n} \to S^{n}X$ to obtain a $\mathbb{C}$-scheme morphism $h \colon X^{\times k} \to S^{n}X$.
     Let $U \subseteq X^{\times k}$ be the dense open subset of tuples $(x_{1}, \ldots, x_{k})$ such that $x_{i} \neq x_{j}$ whenever $i \neq j$.
     Then we have $S^{n}_{\nu}X = h(U)$, and this is what we want to show to be an irreducible locally closed subset.
     Irreducibility follows from $U$ being irreducible, which in turn follows from $U$ being a dense open subset of the irreducible space $X^{\times k}$.
     To show that it is locally closed, we note first that $f(X^{\times k})$ is a closed subset in $X^{\times n}$.
-    And the quotient morphism $\pi$ is finite, in particular closed, so $h(X^{\times k})$ is also a closed subset of $S^{n}X$.
+    And the quotient morphism $q$ is finite, in particular closed, so $h(X^{\times k})$ is also a closed subset of $S^{n}X$.
     Next we look at the dense open subset $V \subseteq X^{\times n}$ of $n$-tuples of points in which there are at least $k$ distinct points, so that $f(U) = V \cap f(X^{\times k})$.
     This is a $\mathfrak{S}_{n}$-invariant open subset, which in turn has two implications that we are interested in.
-    First, $\pi(V)$ is open, because $\pi^{-1}(\pi(V)) = V$ and $S^{n}X$ carries the quotient topology induced by $\pi$.
-    Second, $\pi(V \cap Z) = \pi(V) \cap \pi(Z)$ for all $Z \subseteq X^{\times n}$, because if $\pi(v) = \pi(z)$ for $v \in V$ and $z \in Z$, then $z \in V$ as well.
+    First, $q(V)$ is open, because $q^{-1}(q(V)) = V$ and $S^{n}X$ carries the quotient topology induced by $q$.
+    Second, $q(V \cap Z) = q(V) \cap q(Z)$ for all $Z \subseteq X^{\times n}$, because if $q(v) = q(z)$ for $v \in V$ and $z \in Z$, then $z \in V$ as well.
     Therefore we can write
     \begin{align*}
       S_{\nu}^{n}X & = h(U) \\
-      & = \pi(f(U)) \\
-      & = \pi(V \cap f(X^{\times k})) \\
-      & = \pi(V) \cap \pi(f(X^{\times k})) \\
-      & = \pi(V) \cap h(X^{\times k}),
+      & = q(f(U)) \\
+      & = q(V \cap f(X^{\times k})) \\
+      & = q(V) \cap q(f(X^{\times k})) \\
+      & = q(V) \cap h(X^{\times k}),
     \end{align*}
-    expressing $S_{\nu}^{n}X$ as an interseciton of the open subset $\pi(V)$ and the closed subset $h(X^{\times k})$.
+    expressing $S_{\nu}^{n}X$ as an interseciton of the open subset $q(V)$ and the closed subset $h(X^{\times k})$.
     This proves that $S_{\nu}^{n}X$ is a locally closed subset of $S^{n}X$.
     Moreover, it also shows that $\dim(S_{\nu}^{n}X) = l(\nu)\dim(X)$, because $h$ has finite fibers over closed points.
     So we get $(ii)$.
     If $k = n$, i.e.~if $S^{n}_{\nu}X = S^{n}_{(1,\ldots, 1)}X$, then $f = \operatorname{id}_{X^{\times n}}$ and $U$ is the $\mathfrak{S}_{n}$-invariant dense open subset of $X^{\times n}$ consisting of tuples without any repetitions.
-    Since it is $\mathfrak{S}_{n}$-invariant, $\pi(U) = h(U)$ is a dense open subset as well, which proves $(iii)$.
+    Since it is $\mathfrak{S}_{n}$-invariant, $q(U) = h(U)$ is a dense open subset as well, which proves $(iii)$.
     
     Now we check that these irreducible, locally closed subsets form a stratification of $S^{n}X$.
     As sets, looking only at the closed points as usual, we can write
@@ -187,10 +190,10 @@ Then, for each partition $\nu$ of $n$, we define
     The claim is that
     \[ \overline{S^{n}_{\nu}X} = \left\{ \sum_{i=1}^{k} \nu_{i} [x_{i}] \in S^{n}X \right\}. \]
     So we allow more repetitions than the ones prescribed by the partition $\nu$.
-    Since $\pi$ is surjective, closed and continuous, we have
-    \[ \overline{S^{n}_{\nu}X} = \pi(\overline{\pi^{-1}(S^{n}_{\nu}X)}). \]
-    The preimage $\pi^{-1}(S^{n}_{\nu}X)$ consists of tuples $(x_{1}, \ldots, x_{n})$ in which there are exactly as many repetitions as prescribed by $\nu$, meaning that for each $i \in \{1, \ldots, k\}$ there exists some $x_{i} \in X$ such that $x_{i}$ appears exactly $\nu_{i}$ times in $(x_{1}, \ldots, x_{n})$.
-    The analytic topology is finer than the Zariski topology, so the Zariski closure of $\pi^{-1}(S^{n}_{\nu}X)$ contains the closure of $\pi^{-1}(S^{n}_{\nu}X)$ in the analytic topology.
+    Since $q$ is surjective, closed and continuous, we have
+    \[ \overline{S^{n}_{\nu}X} = q(\overline{q^{-1}(S^{n}_{\nu}X)}). \]
+    The preimage $q^{-1}(S^{n}_{\nu}X)$ consists of tuples $(x_{1}, \ldots, x_{n})$ in which there are exactly as many repetitions as prescribed by $\nu$, meaning that for each $i \in \{1, \ldots, k\}$ there exists some $x_{i} \in X$ such that $x_{i}$ appears exactly $\nu_{i}$ times in $(x_{1}, \ldots, x_{n})$.
+    The analytic topology is finer than the Zariski topology, so the Zariski closure of $q^{-1}(S^{n}_{\nu}X)$ contains the closure of $q^{-1}(S^{n}_{\nu}X)$ in the analytic topology.
     The closure in the analytic topology can be computed using limits of sequences, and we see that it consists of tuples $(x_{1}, \ldots, x_{n})$ in which there are at least as many repetitions as prescribed by $\nu$, i.e.~meaning precisely that after taking the quotient by the $\mathfrak{S}_{n}$ action we do get the claimed description.
     So we would like to check that this is also the Zariski closure, for which it suffices to show that this is a Zariski closed subset.
     This set is cut out by requiring a finite list of equalities between pairs of coordinates in the tuples of $X^{\times n}$, hence it is indeed Zariski closed.
@@ -206,25 +209,34 @@ Then, for each partition $\nu$ of $n$, we define
   \begin{proof}
     Let $U \subseteq X^{\times n}$ denote the dense and $\mathfrak{S}_{n}$-invariant open subset of tuples without any repetitions.
     Then $\mathfrak{S}_{n}$ acts freely on $U$.
-    This implies that the quotient morphism $\pi$ is locally free over $S^{n}_{(1,\ldots,1)}X$.
-    So regularity of $U = \pi^{-1}(S^{n}_{(1, \ldots, 1)}X)$ implies regularity of $S^{n}_{(1, \ldots, 1)}X$.
+    This implies that the quotient morphism $q$ is locally free over $S^{n}_{(1,\ldots,1)}X$.
+    So regularity of $U = q^{-1}(S^{n}_{(1, \ldots, 1)}X)$ implies regularity of $S^{n}_{(1, \ldots, 1)}X$.
+    \color{red} Careful with this argument! It is probably not true in general that the quotient of a smooth variety by a free finite gruop action is smooth. \color{black}
+    Probably better to argue topologically with properly discontinuous (was it called like this?) group actions, where we can find neighborhoods of points with disjoint translates, so that the quotient by such an action remains a manifold.
+    What about applying \cite[\href{https://stacks.math.columbia.edu/tag/02K5}{Tag 02K5}]{stacks-project} in the algebraic setting directly?
+    Can we not show at least that the quotient map is étale over $U$?
+    I think in some reference it was claimed to be locally free, and we know the target is normal.
   \end{proof}
 \end{lm}
 
-% TODO add \cite[Examples 3.5 and 3.6]{rot16}
-\color{red} Add \cite[Examples 3.5 and 3.6]{rot16} here! \color{black}
+\color{red} TODO add \cite[Examples 3.5 and 3.6]{rot16} here! \color{black}
 
 \section{Hilbert--Chow morphism}
 
 \begin{prop}[{\cite[\S 3.2]{leh00} or \cite[p.~41]{ber08}}]
-  Let $X$ be a quasi-projective surface and let $n \in \mathbb{N}_{>0}$.
-  Let $X^{[n]}$ be the Hilbert scheme of $n$-points on $X$ and let $S^{n}X$ be the $n$-th symmetric product of $X$.
-  Then the set-theoretic morphism defined on closed points as
+  Let $X$ be a quasi-projective surface.
+  Then the formula
   \begin{align*}
     \pi \colon X^{[n]} & \longrightarrow S^{n}X \\
     [Z] & \longmapsto \sum_{x \in X} \dim_{\mathbb{C}}(\mathscr{O}_{Z,x})[x] 
   \end{align*}
   defines a $\mathbb{C}$-scheme morphism called the \textit{Hilbert--Chow morphism}.
+  
+  \begin{proof}
+    \color{red}
+    TODO add proof!
+    \color{black}
+  \end{proof}
 \end{prop}
 
 \begin{exmp}
@@ -271,11 +283,19 @@ Then, for each partition $\nu$ of $n$, we define
   So in this case $[(A,B,v)]$ is uniquely determined by $[(\lambda_{1},\mu_{1})] + [(\lambda_{2}, \mu_{2})]$.
   This shows that $\pi$ is injective over the smooth dense open subset $V := S^{2}_{(1,1)}\mathbb{A}^{2}$.
   Since it is also surjective and $S^{2}_{(1,1)}$ is smooth, it is an isomorphism by a combination of various versions of Zariski's Main Theorem, cf.~\url{https://mathoverflow.net/a/264216}.
-  Using that we already know $(\mathbb{A}^{2})^{[2]}$ to be smooth from \cite[Theorem 1.9]{nak99}, we can also argue analytically to obtain the same conclusion, namely, that $\pi$ is an isomorphism over the smooth dense open subset $S^{2}_{(1,1)}\mathbb{A}^{2} \subseteq S^{2}\mathbb{A}^{2}$.
+  Using that we already know $(\mathbb{A}^{2})^{[2]}$ to be smooth from \cite[Theorem 18.7]{ms05} or from \cite[Theorem 1.9]{nak99}, we can also argue analytically to obtain the same conclusion, namely, that $\pi$ is an isomorphism over the smooth dense open subset $S^{2}_{(1,1)}\mathbb{A}^{2} \subseteq S^{2}\mathbb{A}^{2}$.
 
   The same holds for $n > 2$.
   This can be checked with the same arguments as above, only that the notation and the computations become a little less explicit, cf.~\cite[Example 1.12.(4)]{nak99}.
 \end{exmp}
+
+\begin{lm}\label{lm:overstratum}
+  Let $X$ be a smooth quasi-projective variety.
+  Then the Hilbert--Chow morphism $\pi$ is an isomorphism over the smooth open stratum $S^{n}_{(1,\ldots,1)}X$.
+  \begin{proof}
+    \color{red} TODO add proof! \color{black}
+  \end{proof}
+\end{lm}
 
 \section{Case of curves}
 
@@ -283,19 +303,18 @@ We have seen in \Cref{exmp:affineline} that $S^{n}\mathbb{A}^{1} \cong \mathbb{A
 We also have:
 
 \begin{exmp}\label{exmp:projectiveline}
-  Let $n \in \mathbb{N}_{>0}$.
-  Then $S^{n}(\mathbb{P}^{1}) \cong \mathbb{P}^{n}$.
+  $S^{n}(\mathbb{P}^{1}) \cong \mathbb{P}^{n}$.
 
-  \begin{proof}[Sketch]
-    This sketch of proof is taken from \cite[Example 3.4]{rot16}.
+  \begin{proof}
+    This proof is taken from \cite[Example 3.4]{rot16}.
     Consider a point
     \[ \sum_{i = 1}^{n} [[u_{i}:v_{i}]] \in S^{n}(\mathbb{P}^{1}). \]
     Then we consider the homogeneous polynomial
     \[ \prod_{i = 1}^{n} (u_{i}y - v_{i}x) = a_{n} x^{n} + a_{1} x^{n-1}y + \ldots + a_{n}y^{n}. \]
     The coefficients give us a point $[a_{0} : \ldots : a_{n} ] \in \mathbb{P}^{n}$.
-    % TODO why is this morphism algebraic?
-    \color{red} why is this morphism algebraic? \color{black}
-    And the point $[a_{0} : \ldots : a_{n}]$ determines uniquely the original unordered tuple as the set of roots of the corresponding homogeneous polynomial.
+    This formula defines a $\mathbb{C}$-scheme morphism $(\mathbb{P}^{1})^{\times n} \to \mathbb{P}^{n}$, because $a_{i}$ is a homogeneous polynomial in the variables $u_{1}, \ldots, u_{n}, v_{1}, \ldots, v_{n}$ for all $i \in \{ 1 , \ldots, n\}$.
+    It is moreover a symmetric polynomial by Vieta's formulas, so the universal property gives us the desired induced morphism $S^{n}(\mathbb{P}^{1}) \to \mathbb{P}^{n}$.
+    And the point $[a_{0} : \ldots : a_{n}]$ determines uniquely the original unordered tuple as the set of roots of the corresponding homogeneous polynomial, so it is an isomorphism because it is bijective, $\mathbb{P}^{n}$ is smooth and $\operatorname{char}{\mathbb{C}} = 0$, cf.~\url{https://mathoverflow.net/a/264216} again.
   \end{proof}
 \end{exmp}
 
@@ -303,7 +322,7 @@ In particular, both $\mathbb{A}^{1}$ and $\mathbb{P}^{1}$ have smooth symmetric 
 More generally:
 
 \begin{prop}[{\cite[Proposition 3.1]{rot16}}]
-  Let $n \in \mathbb{N}_{>0}$ and let $X$ be a smooth curve.
+  Let $X$ be a smooth curve.
   Then $S^{n}X$ is smooth.
 
   \begin{proof}
@@ -320,16 +339,54 @@ More generally:
     \[ (A^{G})_{q(\mathfrak{m})} = (A^{G})_{\mathfrak{m} \cap A^{G}} = (A_{\mathfrak{m}})^{G}. \]
     Taking completions commutes with taking $\mathfrak{S}_{n}$-invariants, so we also have
     \[ (A^{G})_{q(\mathfrak{m})}^{\hat{}} = (\hat{A}_{\mathfrak{m}})^{G}. \]
-    \color{red} Finish later! \color{black}
-    % TODO finish!
+    \color{red} TODO finish later! \color{black}
   \end{proof}
 \end{prop}
 
+Moreover, in the case of a curve $X$ as above, the Hilbert scheme $X^{[n]}$ is smooth as well and $\pi \colon X^{[n]} \to S^{n}X$ is an isomorphism.
+\color{red} TODO make this more precise and structured. \color{black}
+
 \section{Hilbert scheme of points on a surface}
+
+The goal in this section is to prove the following:
+
+\begin{thm}\label{thm:resolution}
+  Let $X$ be a smooth projective surface.
+  Then the Hilbert--Chow morphism $\pi \colon X^{[n]} \to S^{n}X$ is a resolution of singularities.
+\end{thm}
+
+In particular, we would like to ensure that $X^{[n]}$ is smooth.
+So if we also knew that $X^{[n]}$ is connected, then it would be necessarily irreducible, as the intersection of two distinct irreducible components would contradict smoothness.
+We have seen in \Cref{lm:overstratum} that $\pi$ is an isomorphism over the smooth dense open subset $S^{n}_{(1,\ldots,1)}X$, so that $\pi^{-1}(S^{n}_{(1, \ldots, 1)}X)$ is a dense open subset of the irreducible space $X^{[n]}$.
+Hence $\pi$ would be birational and we would have proven \Cref{thm:resolution}.
+
+Let us start then with the connectedness part:
+
+\begin{lm}\label{lm:connected}
+  In the situation of \Cref{thm:resolution}, $X^{[n]}$ is connected.
+
+  \begin{proof}
+    See \cite[Example 4.5.10]{hl97}.
+    \color{red} TODO add proof! \color{black}
+  \end{proof}
+\end{lm}
+
+Now that we know that our Hilbert scheme is connected, it remains to show only that it is smooth:
+
+\begin{lm}\label{lm:smoothness}
+  In the situation of \Cref{thm:resolution}, $X^{[n]}$ is smooth.
+
+  \begin{proof}
+    See \cite[Example 4.5.10]{hl97}.
+    \color{red} TODO add proof! \color{black}
+  \end{proof}
+\end{lm}
+
+As explained above, combining \Cref{lm:connected} and \Cref{lm:smoothness} we obtain \Cref{thm:resolution}.
 
 \appendix
 
-\section{Quotients of quasi-projective varieties by finite groups}\label{sec:quotient}
+\section{Quotients of varieties by finite groups}\label{sec:quotient}
 
 We will mostly follow the notes in \cite[Appendix A]{mus11} in this appendix.
 
@@ -346,55 +403,55 @@ Fortunately, in the case of finite groups, the various notions agree.
 
 \begin{defn}[Categorical quotient]
   Let $\sigma \colon X \times G \to X$ be an action of a finite group $G$ on a $\mathbb{C}$-scheme $X$.
-  A \textit{categorical quotient} of $X$ by $G$ is a pair $(Y,\pi)$ consisting of a $\mathbb{C}$-scheme $Y$ and a $\mathbb{C}$-scheme morphism $\pi \colon X \to Y$ with the following properties:
+  A \textit{categorical quotient} of $X$ by $G$ is a pair $(Y,q)$ consisting of a $\mathbb{C}$-scheme $Y$ and a $\mathbb{C}$-scheme morphism $q \colon X \to Y$ with the following properties:
   \begin{enumerate}[label=\roman*)]
-    \item $\pi$ is $G$-invariant, i.e.~we have $\pi \circ \sigma = \pi \circ p_{1}$, where $p_{1} \colon X \times G \to X$ is the projection.
-    \item $\pi$ is universal with respect to the property in $i)$, i.e.~for every pair $(Z,\psi)$ consisting of a $\mathbb{C}$-scheme $Z$ and a $G$-invariant $\mathbb{C}$-scheme morphism $\psi \colon X \to Z$, there exists a unique $\mathbb{C}$-scheme morphism $\bar{\psi} \colon Y \to Z$ such that $\bar{\psi} \circ \pi = \psi$.
+    \item $q$ is $G$-invariant, i.e.~we have $q \circ \sigma = q \circ p_{1}$, where $p_{1} \colon X \times G \to X$ is the projection.
+    \item $q$ is universal with respect to the property in $i)$, i.e.~for every pair $(Z,\psi)$ consisting of a $\mathbb{C}$-scheme $Z$ and a $G$-invariant $\mathbb{C}$-scheme morphism $\psi \colon X \to Z$, there exists a unique $\mathbb{C}$-scheme morphism $\bar{\psi} \colon Y \to Z$ such that $\bar{\psi} \circ q = \psi$.
   \end{enumerate}
 \end{defn}
 
 \begin{lm}\label{lm:uniquequotient}
   Let $\sigma \colon X \times G \to X$ be an action of a finite group $G$ on a $\mathbb{C}$-scheme $X$.
-  If a categorical quotient $(Y,\pi)$ exists, it is unique up to unique isomorphism.
-  That is, if $(Y', \pi')$ is another categorical quotient, then there exists a unique $\mathbb{C}$-scheme isomorphism $\bar{\pi}' \colon Y \to Y'$ such that $\pi' = \bar{\pi}' \circ \pi$.
+  If a categorical quotient $(Y,q)$ exists, it is unique up to unique isomorphism.
+  That is, if $(Y', q')$ is another categorical quotient, then there exists a unique $\mathbb{C}$-scheme isomorphism $\bar{q}' \colon Y \to Y'$ such that $q' = \bar{q}' \circ q$.
   
   \begin{proof}
-    Since the pair $(Y', \pi')$ satisfies the property $i)$ above, the universal property of $(Y, \pi)$ ensures the existence of a $\mathbb{C}$-scheme morphism $\bar{\pi}' \colon Y \to Y'$ such that $\pi' = \bar{\pi}' \circ \pi$.
+    Since the pair $(Y', q')$ satisfies the property $i)$ above, the universal property of $(Y, q)$ ensures the existence of a $\mathbb{C}$-scheme morphism $\bar{q}' \colon Y \to Y'$ such that $q' = \bar{q}' \circ q$.
     It remains to show that this is an isomorphism.
-    The roles of $(Y, \pi)$ and $(Y', \pi')$ are symmetric, so we can also find a $\mathbb{C}$-scheme morphism $\bar{\pi} \colon Y' \to Y$ making the following diagram commute:
+    The roles of $(Y, q)$ and $(Y', q')$ are symmetric, so we can also find a $\mathbb{C}$-scheme morphism $\bar{q} \colon Y' \to Y$ making the following diagram commute:
 
     \begin{center}
       \begin{tikzcd}
-        & & X \arrow[bend right=30]{dll}{\pi'} \arrow{dl}{\pi} \arrow{dr}{\pi'} \arrow[bend left=30]{drr}{\pi} & & \\
-        Y' \arrow{r}{\bar{\pi}} & Y \arrow{rr}{\bar{\pi}'} & & Y' \arrow{r}{\bar{\pi}} & Y
+        & & X \arrow[bend right=30]{dll}{q'} \arrow{dl}{q} \arrow{dr}{q'} \arrow[bend left=30]{drr}{q} & & \\
+        Y' \arrow{r}{\bar{q}} & Y \arrow{rr}{\bar{q}'} & & Y' \arrow{r}{\bar{q}} & Y
       \end{tikzcd}
     \end{center}
 
-    The uniqueness part of the universal property in $ii)$ above ensures that $\bar{\pi} \circ \bar{\pi}' = \operatorname{id}_{Y}$ and $\bar{\pi}' \circ \bar{\pi} = \operatorname{id}_{Y'}$, so $\bar{\pi}'$ is indeed a $\mathbb{C}$-scheme isomorphism.
+    The uniqueness part of the universal property in $ii)$ above ensures that $\bar{q} \circ \bar{q}' = \operatorname{id}_{Y}$ and $\bar{q}' \circ \bar{q} = \operatorname{id}_{Y'}$, so $\bar{q}'$ is indeed a $\mathbb{C}$-scheme isomorphism.
 
   \end{proof}
 \end{lm}
 
 \begin{rem}
-  In view of the uniqueness given by \Cref{lm:uniquequotient}, we will sometimes denote a categorical quotient by $(X/G, \pi)$.
+  In view of the uniqueness given by \Cref{lm:uniquequotient}, we will sometimes denote a categorical quotient by $(X/G, q)$.
 \end{rem}
 
 \begin{defn}[Geometric quotient]
   Let $\sigma \colon X \times G \to X$ be an action of a finite group $G$ on a finite type\footnote{This assumption makes condition $(2)$ below less cumbersome to formulate, cf.~\cite[Definition 0.6]{mfk94}.} $\mathbb{C}$-scheme $X$.
-  A \textit{geometric quotient} of $X$ by $G$ is a pair $(Y, \pi)$ consisting of a $\mathbb{C}$-scheme $Y$ and a $\mathbb{C}$-scheme morphism $\pi \colon X \to Y$ with the following properties:
+  A \textit{geometric quotient} of $X$ by $G$ is a pair $(Y, q)$ consisting of a $\mathbb{C}$-scheme $Y$ and a $\mathbb{C}$-scheme morphism $q \colon X \to Y$ with the following properties:
   \begin{enumerate}
-    \item $\pi$ is $G$-invariant, i.e.~property $i)$ above holds.
-    \item $\pi$ is surjective and the fibers of $\pi$ over closed points of $Y$ are precisely the orbits of the closed points of $X$.
-    \item $Y$ carries the quotient topology induced by $\pi$, i.e.~a subset $V \subseteq Y$ is open if and only if $\pi^{-1}(V) \subseteq X$ is open.
-    \item The structure sheaf $\mathscr{O}_{Y}$ is the subsheaf of $\pi_{*}\mathscr{O}_{X}$ consisting of $G$-invariant functions, i.e.~if $f \in \Gamma(V, \pi_{*}\mathscr{O}_{X}) = \Gamma(\pi^{-1}(V),\mathscr{O}_{X})$, then $f \in \Gamma(V, \mathscr{O}_{Y})$ if and only if
+    \item $q$ is $G$-invariant, i.e.~property $i)$ above holds.
+    \item $q$ is surjective and the fibers of $q$ over closed points of $Y$ are precisely the orbits of the closed points of $X$.
+    \item $Y$ carries the quotient topology induced by $q$, i.e.~a subset $V \subseteq Y$ is open if and only if $q^{-1}(V) \subseteq X$ is open.
+    \item The structure sheaf $\mathscr{O}_{Y}$ is the subsheaf of $q_{*}\mathscr{O}_{X}$ consisting of $G$-invariant functions, i.e.~if $f \in \Gamma(V, q_{*}\mathscr{O}_{X}) = \Gamma(q^{-1}(V),\mathscr{O}_{X})$, then $f \in \Gamma(V, \mathscr{O}_{Y})$ if and only if
 
       \begin{center}
         \begin{tikzcd}
-          \pi^{-1}(V) \times G \arrow{r}{\sigma} \arrow{d}{p_{1}} & \pi^{-1}(V) \arrow{d}{f} \\
-          \pi^{-1}(V) \arrow{r}{f} & \mathbb{A}^{1}
+          q^{-1}(V) \times G \arrow{r}{\sigma} \arrow{d}{p_{1}} & q^{-1}(V) \arrow{d}{f} \\
+          q^{-1}(V) \arrow{r}{f} & \mathbb{A}^{1}
         \end{tikzcd}
       \end{center}
-      commutes, where we regard the regular function$f$ as a $\mathbb{C}$-scheme morphism $f \colon \pi^{-1}(V) \to \mathbb{A}^{1}$.
+      commutes, where we regard the regular function$f$ as a $\mathbb{C}$-scheme morphism $f \colon q^{-1}(V) \to \mathbb{A}^{1}$.
     \end{enumerate}
 \end{defn}
 
@@ -403,8 +460,8 @@ Fortunately, in the case of finite groups, the various notions agree.
 \end{rem}
 
 \begin{prop}
-  Let $\sigma \colon X \times G \to X$ be an action of a finite group $G$ on a finite type $\mathbb{C}$-scheme $X$ and let $(Y, \pi)$ be a geometric quotient of $X$ by $G$.
-  Then $(Y, \pi)$ is also a categorical quotient.
+  Let $\sigma \colon X \times G \to X$ be an action of a finite group $G$ on a finite type $\mathbb{C}$-scheme $X$ and let $(Y, q)$ be a geometric quotient of $X$ by $G$.
+  Then $(Y, q)$ is also a categorical quotient.
 
   \begin{proof}
     We follow the proof given in \cite[Proposition 0.1]{mfk94}.
@@ -414,23 +471,23 @@ Fortunately, in the case of finite groups, the various notions agree.
 
     So let $\{ W_{i} \}_{i \in I}$ be an affine open cover of $Z$, say $W_{i} = \operatorname{Spec}(B_{i})$ for each $i \in I$.
     Since $\psi$ is $G$-invariant, each $U_{i} := \psi^{-1}(W_{i})$ is an invariant open subset in $X$.
-    Therefore $\pi^{-1}(\pi(\psi^{-1}(W_{i}))) = \psi^{-1}(W_{i})$.
-    Let us call $V_{i} := \pi(\psi^{-1}(W_{i}))$ for each $i \in I$.
-    Since $Y$ carries the quotient topology induced by $\pi$ and $\pi^{-1}(V_{i}) = \psi^{-1}(W_{i})$ is open in $X$, we deduce that $V_{i}$ is also open in $Y$ for each $i \in I$.
-    Surjectivity of $\pi$ ensures that $\{ V_{i} \}_{i \in I}$ is an open cover of $Y$.
+    Therefore $q^{-1}(q(\psi^{-1}(W_{i}))) = \psi^{-1}(W_{i})$.
+    Let us call $V_{i} := q(\psi^{-1}(W_{i}))$ for each $i \in I$.
+    Since $Y$ carries the quotient topology induced by $q$ and $q^{-1}(V_{i}) = \psi^{-1}(W_{i})$ is open in $X$, we deduce that $V_{i}$ is also open in $Y$ for each $i \in I$.
+    Surjectivity of $q$ ensures that $\{ V_{i} \}_{i \in I}$ is an open cover of $Y$.
 
     As usual with existence and uniqueness statements, it will be convenient to start by arguing the uniqueness, which will then likely give us some hints as to how to show the existence.
     Suppose that the desired factorization $\bar{\psi} \colon Y \to Z$ existed.
-    Then, since $\psi = \bar{\psi} \circ \pi$, we have
-    \[ \bar{\psi}(V_{i}) = \bar{\psi}(\pi(\psi^{-1}(W_{i}))) = \psi(\psi^{-1}(W_{i})) \subseteq W_{i} \]
+    Then, since $\psi = \bar{\psi} \circ q$, we have
+    \[ \bar{\psi}(V_{i}) = \bar{\psi}(q(\psi^{-1}(W_{i}))) = \psi(\psi^{-1}(W_{i})) \subseteq W_{i} \]
     for each $i \in I$.
-    So for each $i \in I$, our factorization $\bar{\psi} \colon Y \to Z$ would yield a morphism $\bar{\psi}_{i} \colon V_{i} \to W_{i}$ such that $\psi_{i} = \bar{\psi}_{i} \circ \pi_{i}$, where by $\pi_{i} \colon U_{i} \to V_{i}$ and $\psi_{i} \colon U_{i} \to W_{i}$ are the morphisms induced by $\pi$ and $\psi$ respectively.
+    So for each $i \in I$, our factorization $\bar{\psi} \colon Y \to Z$ would yield a morphism $\bar{\psi}_{i} \colon V_{i} \to W_{i}$ such that $\psi_{i} = \bar{\psi}_{i} \circ q_{i}$, where by $q_{i} \colon U_{i} \to V_{i}$ and $\psi_{i} \colon U_{i} \to W_{i}$ are the morphisms induced by $q$ and $\psi$ respectively.
     Since the target $W_{i} = \operatorname{Spec}(B_{i})$ of $\bar{\psi}_{i}$ is affine, \cite[Exercise II.2.4]{har77} tells us that $\bar{\psi}_{i}$ is uniquely determined by the correspdonding morphism of $\mathbb{C}$-algberas $h_{i} \colon B_{i} \to \Gamma(V_{i}, \mathscr{O}_{Y})$.
     Commutativity of the triangle of $\mathbb{C}$-schemes
     
     \begin{center}
       \begin{tikzcd}
-        U_{i} \arrow{r}{\psi_{i}} \arrow{d}{\pi_{i}} & W_{i} \\
+        U_{i} \arrow{r}{\psi_{i}} \arrow{d}{q_{i}} & W_{i} \\
         V_{i} \arrow[swap]{ur}{\bar{\psi}_{i}} & 
       \end{tikzcd}
     \end{center}
@@ -439,11 +496,11 @@ Fortunately, in the case of finite groups, the various notions agree.
     \begin{center}
       \begin{tikzcd}
         \Gamma(U_{i}, \mathscr{O}_{X}) & B_{i} \arrow[swap]{l}{\psi^{*}_{i}} \arrow{dl}{h_{i}} \\
-        \Gamma(V_{i}, \mathscr{O}_{Y}) \arrow{u}{\pi^{*}_{i}} & 
+        \Gamma(V_{i}, \mathscr{O}_{Y}) \arrow{u}{q^{*}_{i}} & 
       \end{tikzcd}
     \end{center}
 
-    But property $(4)$ above tells us that $\pi_{i}^{*}$ is the inclusion of the $G$-invariant regular functions on $U_{i}$, in particular an injective $\mathbb{C}$-algebra morphism.
+    But property $(4)$ above tells us that $q_{i}^{*}$ is the inclusion of the $G$-invariant regular functions on $U_{i}$, in particular an injective $\mathbb{C}$-algebra morphism.
     So each $h_{i}$ is uniquely determined by $\psi$, hence so is each $\bar{\psi}_{i}$ and hence so is $\bar{\psi}$ itself.
 
     Now to show existence the plan is first to show existence of the $h_{i}$ defined as above, and then check that the corresponding $\bar{\psi}_{i}$ glue together into a $\mathbb{C}$-scheme morphism $Y \to Z$.
@@ -522,10 +579,10 @@ Fortunately, in the case of finite groups, the various notions agree.
 \end{lm}
 
 \begin{lm}\label{lm:finitesurjective}
-  In the situation of \Cref{lm:finitetype}, the induced $\mathbb{C}$-scheme morphism $\pi \colon \operatorname{Spec}(A) \to \operatorname{Spec}(A^{G})$ is finite and surjective.
+  In the situation of \Cref{lm:finitetype}, the induced $\mathbb{C}$-scheme morphism $q \colon \operatorname{Spec}(A) \to \operatorname{Spec}(A^{G})$ is finite and surjective.
 
   \begin{proof}
-    It follows from the proof of \Cref{lm:finitetype} that $A$ is finitely generated as an $A^{G}$-module, so the induced morphism $\pi$ is finite by definition \cite[p.~84]{har77}.
+    It follows from the proof of \Cref{lm:finitetype} that $A$ is finitely generated as an $A^{G}$-module, so the induced morphism $q$ is finite by definition \cite[p.~84]{har77}.
     Surjectivity follows from \cite[\href{https://stacks.math.columbia.edu/tag/00GQ}{Tag 00GQ}]{stacks-project}.
   \end{proof}
 \end{lm}
@@ -536,16 +593,16 @@ Fortunately, in the case of finite groups, the various notions agree.
 \end{rem}
 
 \begin{lm}\label{lm:fibers}
-  In the situation of \Cref{lm:finitetype}, the fibers of $\pi$ over closed points of $Y$ are precisely the orbits of the closed points of $X$ under the action of $G$.
-  In particular, $\pi$ is $G$-invariant.
+  In the situation of \Cref{lm:finitetype}, the fibers of $q$ over closed points of $Y$ are precisely the orbits of the closed points of $X$ under the action of $G$.
+  In particular, $q$ is $G$-invariant.
 
   \begin{proof}
     Let $x \in X$ be a closed point.
-    Let us check first that the orbit $x \cdot G$ is contained in the fiber $\pi^{-1}(\pi(x))$.
+    Let us check first that the orbit $x \cdot G$ is contained in the fiber $q^{-1}(q(x))$.
     Let $\mathfrak{m} \subseteq A$ be the maximal ideal corresponding to $x$, i.e.
     \[ \mathfrak{m} = \{ f \in A \mid f(x) = 0 \}. \]
     Let $g \in G$.
-    Our goal is to show that $\pi(x) = \pi(x \cdot g)$.
+    Our goal is to show that $q(x) = q(x \cdot g)$.
     The maximal ideal corresponding to the point $x \cdot g$ is given by
     \[ \{ f \in A \mid f(x \cdot g) = 0 \} = \{ f \in A \mid (g \cdot f)(x) = 0 \} = \{ g\cdot f \mid f \in \mathfrak{m} \} = g \cdot \mathfrak{m}. \]
     So we need to show that
@@ -557,9 +614,9 @@ Fortunately, in the case of finite groups, the various notions agree.
       & = \{ f \in A^{G} \mid f \in \mathfrak{m} \} \\
       & = \mathfrak{m} \cap A^{G}. 
     \end{align*}
-    Hence $x \cdot G \subseteq \pi^{-1}(\pi(x))$.
+    Hence $x \cdot G \subseteq q^{-1}(q(x))$.
 
-    Conversely, let $x_{1}, x_{2} \in \pi^{-1}(\pi(x_{1}))$ be closed points with corresponding maximal ideals $\mathfrak{m}_{1}$ and $\mathfrak{m}_{2}$ respectively.
+    Conversely, let $x_{1}, x_{2} \in q^{-1}(q(x_{1}))$ be closed points with corresponding maximal ideals $\mathfrak{m}_{1}$ and $\mathfrak{m}_{2}$ respectively.
     The assumption that $x_{1}$ and $x_{2}$ are in the same fiber translates into the equality
     \[ \mathfrak{m}_{1} \cap A^{G} = \mathfrak{m}_{2} \cap A^{G}. \]
     We use this equality to show that
@@ -582,28 +639,28 @@ Fortunately, in the case of finite groups, the various notions agree.
 \end{lm}
 
 \begin{lm}\label{lm:topology}
-  In the situation of \Cref{lm:finitetype}, the topology on $\operatorname{Spec}(A^{G})$ is the quotient topology induced by $\pi$.
+  In the situation of \Cref{lm:finitetype}, the topology on $\operatorname{Spec}(A^{G})$ is the quotient topology induced by $q$.
   
   \begin{proof}
-    We need to show that a subset $U \subseteq \operatorname{Spec}(A^{G})$ is open as soon as $\pi^{-1}(U)$ is open.
-    So let $U \subseteq \operatorname{Spec}(A^{G})$ be a subset such that $\pi^{-1}(U)$ is open in $\operatorname{Spec}(A)$.
+    We need to show that a subset $U \subseteq \operatorname{Spec}(A^{G})$ is open as soon as $q^{-1}(U)$ is open.
+    So let $U \subseteq \operatorname{Spec}(A^{G})$ be a subset such that $q^{-1}(U)$ is open in $\operatorname{Spec}(A)$.
     Let $Z := \operatorname{Spec}(A^{G}) \setminus U$.
-    Then $\pi^{-1}(Z) = \operatorname{Spec}(A) \setminus \pi^{-1}(U)$, which by assumption is a closed subset in $\operatorname{Spec}(A)$.
-    By \Cref{lm:finitesurjective} the morphism $\pi$ is surjective, so $Z \subseteq \pi(\pi^{-1}(Z))$.
-    And $\pi(\pi^{-1}(Z)) \subseteq Z$ is always true, so we deduce that $\pi(\pi^{-1}(Z)) = Z$.
-    But again from \Cref{lm:finitesurjective} we know that $\pi$ is a finite morphism, hence a closed morphism of topological spaces.
+    Then $q^{-1}(Z) = \operatorname{Spec}(A) \setminus q^{-1}(U)$, which by assumption is a closed subset in $\operatorname{Spec}(A)$.
+    By \Cref{lm:finitesurjective} the morphism $q$ is surjective, so $Z \subseteq q(q^{-1}(Z))$.
+    And $q(q^{-1}(Z)) \subseteq Z$ is always true, so we deduce that $q(q^{-1}(Z)) = Z$.
+    But again from \Cref{lm:finitesurjective} we know that $q$ is a finite morphism, hence a closed morphism of topological spaces.
     So $Z$ is a closed subset and $U$ is open, as we wanted to show.
   \end{proof}
 \end{lm}
 
 \begin{lm}\label{lm:invariantslocalization}
   In the situation of \Cref{lm:finitetype}, let us denote $X = \operatorname{Spec}(A)$ and $Y = \operatorname{Spec}(A^{G})$.
-  Then $\mathscr{O}_{Y}$ is the subsheaf of $\pi_{*}\mathscr{O}_{X}$ consisting of invariant functions, i.e.~if $f \in \Gamma(V,\pi_{*}\mathscr{O}_{X}) = \Gamma(\pi^{-1}(V),\mathscr{O}_{X})$, then $f \in \Gamma(V, \mathscr{O}_{Y})$ if and only if the following diagram commutes:
+  Then $\mathscr{O}_{Y}$ is the subsheaf of $q_{*}\mathscr{O}_{X}$ consisting of invariant functions, i.e.~if $f \in \Gamma(V,q_{*}\mathscr{O}_{X}) = \Gamma(q^{-1}(V),\mathscr{O}_{X})$, then $f \in \Gamma(V, \mathscr{O}_{Y})$ if and only if the following diagram commutes:
   
   \begin{center}
     \begin{tikzcd}
-      \pi^{-1}(V) \times G \arrow{r}{\sigma} \arrow{d}{p_{1}} & \pi^{-1}(V) \arrow{d}{f} \\
-      \pi^{-1}(V) \arrow{r}{f} & \mathbb{A}^{1}.
+      q^{-1}(V) \times G \arrow{r}{\sigma} \arrow{d}{p_{1}} & q^{-1}(V) \arrow{d}{f} \\
+      q^{-1}(V) \arrow{r}{f} & \mathbb{A}^{1}.
     \end{tikzcd}
   \end{center}
 
@@ -614,23 +671,23 @@ Fortunately, in the case of finite groups, the various notions agree.
 \end{lm}
 
 \begin{cor}\label{cor:affinequotient}
-  In the situation of \Cref{lm:finitetype}, the induced morphism $\pi \colon \operatorname{Spec}(A) \to \operatorname{Spec}(A^{G})$ is a geometric quotient of $\operatorname{Spec}(A)$ by $G$.
+  In the situation of \Cref{lm:finitetype}, the induced morphism $q \colon \operatorname{Spec}(A) \to \operatorname{Spec}(A^{G})$ is a geometric quotient of $\operatorname{Spec}(A)$ by $G$.
 
   \begin{proof}
     Each of the necessary properties was already proven in the lemmas above:
     \begin{enumerate}
       \item $G$-invariance follows from \Cref{lm:fibers}.
       \item Surjectivity follows from \Cref{lm:finitesurjective}, and the fibers over closed points being precisely the orbits of closed points follows from \Cref{lm:fibers}.
-      \item We have seen that $\operatorname{Spec}(A^{G})$ carries the quotient topology induced by $\pi$ in \Cref{lm:topology}.
-      \item That the structure sheaf of $\operatorname{Spec}(A^{G})$ agrees with the subsheaf of $G$-invariant functions of $\pi_{*}\mathscr{O}_{\operatorname{Spec}(A)}$ was checked in \Cref{lm:invariantslocalization}.
+      \item We have seen that $\operatorname{Spec}(A^{G})$ carries the quotient topology induced by $q$ in \Cref{lm:topology}.
+      \item That the structure sheaf of $\operatorname{Spec}(A^{G})$ agrees with the subsheaf of $G$-invariant functions of $q_{*}\mathscr{O}_{\operatorname{Spec}(A)}$ was checked in \Cref{lm:invariantslocalization}.
     \end{enumerate}
-    So $\pi$ is indeed a geometric quotient.  
+    So $q$ is indeed a geometric quotient.  
   \end{proof}
 
 \end{cor}
 
 \begin{rem}\label{rem:loct2}
-  Recall from \Cref{rem:loct} that being a geometric quotient is local on the target, so in the situation of \Cref{cor:affinequotient} we can moreover say that $\pi|_{\pi^{-1}(V)} \colon \pi^{-1}(V) \to V$ is a geometric quotient of the $G$-invariant open $\pi^{-1}(V)$ by $G$ for every open subset $V \subseteq \operatorname{Spec}(A^{G})$.
+  Recall from \Cref{rem:loct} that being a geometric quotient is local on the target, so in the situation of \Cref{cor:affinequotient} we can moreover say that $q|_{q^{-1}(V)} \colon q^{-1}(V) \to V$ is a geometric quotient of the $G$-invariant open $q^{-1}(V)$ by $G$ for every open subset $V \subseteq \operatorname{Spec}(A^{G})$.
 \end{rem}
 
 \begin{lm}\label{lm:affinecover}
@@ -640,35 +697,35 @@ Fortunately, in the case of finite groups, the various notions agree.
 
   \begin{proof}
     For each $i \in I$ we get an action of $G$ on the affine scheme $U_{i}$, which is of finite type over $\mathbb{C}$.
-    By \Cref{cor:affinequotient} we may form the geometric quotient $\pi_{i} \colon U_{i} \to U_{i}/G$ for each $i \in I$.
+    By \Cref{cor:affinequotient} we may form the geometric quotient $q_{i} \colon U_{i} \to U_{i}/G$ for each $i \in I$.
     For $i, j \in I$ let us denote by $U_{i,j}$ the intersection $U_{i} \cap U_{j}$.
-    The geometric quotient $\pi_{i}$ is by definition surjective, so we have $\pi_{i}^{-1}(\pi_{i}(U_{i,j})) = U_{i,j}$.
-    And $U_{i}/G$ carries by definition the quotient topology induced by $\pi_{i}$, so $\pi_{i}(U_{i,j})$ is open in $U_{i}/G$.
-    We denote by $\pi_{i,j} \colon \pi_{i}^{-1}(\pi_{i}(U_{i,j})) \to \pi_{i}(U_{i,j})$ the corresponding corestriction for all $i, j \in I$.
-    Since geometric quotients are local on the target, both $\pi_{i,j}$ and $\pi_{j,i}$ are geometric quotients of $U_{i,j}$ by $G$.
+    The geometric quotient $q_{i}$ is by definition surjective, so we have $q_{i}^{-1}(q_{i}(U_{i,j})) = U_{i,j}$.
+    And $U_{i}/G$ carries by definition the quotient topology induced by $q_{i}$, so $q_{i}(U_{i,j})$ is open in $U_{i}/G$.
+    We denote by $q_{i,j} \colon q_{i}^{-1}(q_{i}(U_{i,j})) \to q_{i}(U_{i,j})$ the corresponding corestriction for all $i, j \in I$.
+    Since geometric quotients are local on the target, both $q_{i,j}$ and $q_{j,i}$ are geometric quotients of $U_{i,j}$ by $G$.
     We have seen that geometric quotients are categorical quotients, hence unique up to unique isomorphism, so this ensures the existence of uniquely determined isomorphisms
-    \[ \varphi_{i,j} \colon \pi_{i}(U_{i,j}) \cong \pi_{j}(U_{i,j}) \]
+    \[ \varphi_{i,j} \colon q_{i}(U_{i,j}) \cong q_{j}(U_{i,j}) \]
     for each $i, j \in I$.
     Uniqueness ensures that $\varphi_{i,j}^{-1} = \varphi_{j,i}$, so in order to glue it remains to show the cocycle condition.
     Let $i, j, k \in I$.
-    We need to show that $\varphi_{i,j}(\pi_{i}(U_{i,j})\cap \pi_{i}(U_{i,k})) = \pi_{j}(U_{i,j}) \cap \pi_{j}(U_{j,k})$ and that $\varphi_{i,k} = \varphi_{j,k} \circ \varphi_{i,j}$ on $\pi_{i}(U_{i,j}) \cap \pi_{i}(U_{i,k})$.
+    We need to show that $\varphi_{i,j}(q_{i}(U_{i,j})\cap q_{i}(U_{i,k})) = q_{j}(U_{i,j}) \cap q_{j}(U_{j,k})$ and that $\varphi_{i,k} = \varphi_{j,k} \circ \varphi_{i,j}$ on $q_{i}(U_{i,j}) \cap q_{i}(U_{i,k})$.
     Let $U_{i,j,k}$ denote $U_{i} \cap U_{j} \cap U_{k}$.
-    Then $\pi_{j}(U_{i,j}) \cap \pi_{j}(U_{j,k}) = \pi_{j}(U_{i,j,k})$, because $\pi_{j}(U_{i,j,k}) \subsetneq \pi_{j}(U_{i,j}) \cap \pi_{j}(U_{j,k})$ would mean that we can find $x \in U_{i,j} \setminus U_{i,j,k}$ and $y \in U_{j,k} \setminus U_{i,j,k}$ such that $\pi_{j}(x) = \pi_{j}(y)$; since $\pi_{j}$ is a geometric quotient, its fibers are precisely the $G$-orbits of points in $U_{j}$, and this would contradict $G$-invariance of $U_{i}$ as the following picture shows:
+    Then $q_{j}(U_{i,j}) \cap q_{j}(U_{j,k}) = q_{j}(U_{i,j,k})$, because $q_{j}(U_{i,j,k}) \subsetneq q_{j}(U_{i,j}) \cap q_{j}(U_{j,k})$ would mean that we can find $x \in U_{i,j} \setminus U_{i,j,k}$ and $y \in U_{j,k} \setminus U_{i,j,k}$ such that $q_{j}(x) = q_{j}(y)$; since $q_{j}$ is a geometric quotient, its fibers are precisely the $G$-orbits of points in $U_{j}$, and this would contradict $G$-invariance of $U_{i}$ as the following picture shows:
 
     \begin{figure}[H]
       \centering
       \includegraphics[scale=.9]{pictures/glueing.png}
     \end{figure}
 
-    So in this case we do have $\pi_{j}(U_{i,j,k}) = \pi_{j}(U_{i,j}) \cap \pi_{j}(U_{j,k})$.
-    And similarly $\pi_{i}(U_{i,j}) \cap \pi_{i}(U_{i,k}) = \pi_{i}(U_{i,j,k})$, so we need to show that $\varphi_{i,j}(\pi_{i}(U_{i,j,k})) = \pi_{j}(U_{i,j,k})$.
-    But by construction we have $\varphi_{i,j} \circ \pi_{i,j} = \pi_{j,i}$, and this implies the desired equality.
-    Hence $\varphi_{i,k}|_{\pi_{i}(U_{i,j,k})}$ and $\varphi_{j,k} \circ \varphi_{i,j}|_{\pi_{i}(U_{i,j,k})}$ are two isomorphisms between $\pi_{i}(U_{i,j,k})$ and $\pi_{k}(U_{i,k}) \cap \pi_{k}(U_{i,j}) = \pi_{k}(U_{i,j,k})$.
-    But the corestriction of each $\pi_{i}$ to $\pi_{i}(U_{i,j,k})$ is also a geometric quotient of $U_{i,j,k}$ by $G$, so there exist unique isomorphisms $\psi_{i,k} \colon \pi_{i}(U_{i,j,k}) \cong \pi_{k}(U_{i,j,k})$ under $U_{i,j,k}$.
-    In particular, since $\varphi_{i,k}|_{\pi_{i}(U_{i,j,k})}$ and $\varphi_{j,k} \circ \varphi_{i,j}|_{\pi_{i}(U_{i,j,k})}$ are two such isomorphisms, they must be equal, as we wanted to show.
-    Hence the cocycle condition is satisfied and we may glue the $\pi_{i}$ together to obtain a $\mathbb{C}$-scheme morphism $\pi \colon X \to Z$ for some $\mathbb{C}$-scheme $Z$ obtained by glueing the $U_{i}/G$ together \cite[Exercise II.2.12]{har77}.
-    Finally, since being a geometric quotient is local on the target, it suffices to show that this resulting morphism $\pi \colon X \to Z$ is a geometric quotient on an open cover of $Z$.
-    But by construction $Z$ has an open cover $\{ V_{i} \}_{i \in I}$ in which each $V_{i}$ is identified with $U_{i}/G$ in such a way that the corresponding corestriction $\pi|_{\pi^{-1}(V_{i})} \colon \pi^{-1}(V_{i}) \to V_{i}$ is identified with the geometric quotient $\pi_{i} \colon U_{i} \to U_{i}/G$, so we are done.
+    So in this case we do have $q_{j}(U_{i,j,k}) = q_{j}(U_{i,j}) \cap q_{j}(U_{j,k})$.
+    And similarly $q_{i}(U_{i,j}) \cap q_{i}(U_{i,k}) = q_{i}(U_{i,j,k})$, so we need to show that $\varphi_{i,j}(q_{i}(U_{i,j,k})) = q_{j}(U_{i,j,k})$.
+    But by construction we have $\varphi_{i,j} \circ q_{i,j} = q_{j,i}$, and this implies the desired equality.
+    Hence $\varphi_{i,k}|_{q_{i}(U_{i,j,k})}$ and $\varphi_{j,k} \circ \varphi_{i,j}|_{q_{i}(U_{i,j,k})}$ are two isomorphisms between $q_{i}(U_{i,j,k})$ and $q_{k}(U_{i,k}) \cap q_{k}(U_{i,j}) = q_{k}(U_{i,j,k})$.
+    But the corestriction of each $q_{i}$ to $q_{i}(U_{i,j,k})$ is also a geometric quotient of $U_{i,j,k}$ by $G$, so there exist unique isomorphisms $\psi_{i,k} \colon q_{i}(U_{i,j,k}) \cong q_{k}(U_{i,j,k})$ under $U_{i,j,k}$.
+    In particular, since $\varphi_{i,k}|_{q_{i}(U_{i,j,k})}$ and $\varphi_{j,k} \circ \varphi_{i,j}|_{q_{i}(U_{i,j,k})}$ are two such isomorphisms, they must be equal, as we wanted to show.
+    Hence the cocycle condition is satisfied and we may glue the $q_{i}$ together to obtain a $\mathbb{C}$-scheme morphism $q \colon X \to Z$ for some $\mathbb{C}$-scheme $Z$ obtained by glueing the $U_{i}/G$ together \cite[Exercise II.2.12]{har77}.
+    Finally, since being a geometric quotient is local on the target, it suffices to show that this resulting morphism $q \colon X \to Z$ is a geometric quotient on an open cover of $Z$.
+    But by construction $Z$ has an open cover $\{ V_{i} \}_{i \in I}$ in which each $V_{i}$ is identified with $U_{i}/G$ in such a way that the corresponding corestriction $q|_{q^{-1}(V_{i})} \colon q^{-1}(V_{i}) \to V_{i}$ is identified with the geometric quotient $q_{i} \colon U_{i} \to U_{i}/G$, so we are done.
   \end{proof}
 \end{lm}
 
@@ -697,7 +754,7 @@ Fortunately, in the case of finite groups, the various notions agree.
 
 \begin{thm}\label{thm:quotient}
   Let $\sigma \colon X \times G \to X$ be an action of a finite group on a quasi-projective $\mathbb{C}$-scheme.
-  Then the geometric quotient $\pi \colon X \to X/G$ of $X$ by $G$ exists.
+  Then the geometric quotient $q \colon X \to X/G$ of $X$ by $G$ exists.
   The resulting $\mathbb{C}$-scheme $X/G$ is separated and of finite type over $\mathbb{C}$.
   Moreover, let $\mathbf{P}$ be any of the following properties:
   \begin{enumerate}[label=(\alph*)]
@@ -717,18 +774,18 @@ Fortunately, in the case of finite groups, the various notions agree.
     The orbit of every closed point $x \in X$ is contained in some affine open subset $U_{x}$ by \Cref{lm:avoidpoints}.
     It may be the case that $U_{x}$ is not yet $G$-invariant, but in any case the open neighborhood $\cap_{g \in G} U_{x}\cdot g$ of $x$ is $G$-invariant.
     Since $X$ is quasi-projective over $\mathbb{C}$, it is also separated, so the intersection of finitely many affine open subsets is again an affine open subset.
-    Therefore we are able to find a $G$-invariant affine open neighborhood around each closed point of $X$, and by \Cref{lm:affinecover} the geometric quotient $\pi \colon X \to X/G$ of $X$ by $G$ exists.
+    Therefore we are able to find a $G$-invariant affine open neighborhood around each closed point of $X$, and by \Cref{lm:affinecover} the geometric quotient $q \colon X \to X/G$ of $X$ by $G$ exists.
 
     We show next separatedness of $X/G$ over $\mathbb{C}$.
-    Note that $\pi \colon X \to X/G$ is finite and surjective, because we may check these properties on an open cover of the target and by construction of $X/G$ we may then assume that we are in the situation of \Cref{lm:finitesurjective}.
+    Note that $q \colon X \to X/G$ is finite and surjective, because we may check these properties on an open cover of the target and by construction of $X/G$ we may then assume that we are in the situation of \Cref{lm:finitesurjective}.
     We can then apply \cite[\href{https://stacks.math.columbia.edu/tag/09MQ}{Tag 09MQ}]{stacks-project} to deduce separatedness of $X/G$ over $\mathbb{C}$.
 
-    The construction of $X/G$ combined with \Cref{lm:finitetype} shows that $X/G$ is locally of finite type over $\mathbb{C}$, and since $X$ is quasi-compact and $\pi$ is surjective, so is $X/G$.
+    The construction of $X/G$ combined with \Cref{lm:finitetype} shows that $X/G$ is locally of finite type over $\mathbb{C}$, and since $X$ is quasi-compact and $q$ is surjective, so is $X/G$.
     Hence $X/G$ is of finite type over $\mathbb{C}$.
     
     About the remaining properties $\mathbf{P}$ in the statement:
     \begin{enumerate}[label=(\alph*)]
-      \item Since $\pi$ is surjective, so $X/G$ is irreducible as soon as $X$ is.
+      \item Since $q$ is surjective, so $X/G$ is irreducible as soon as $X$ is.
       \item Reducedness can be checked locally on $X/G$, so by construction of $X/G$ we may assume that we are in the situation of \Cref{cor:affinequotient}.
         But the corresponding ring morphism $A^{G} \to A$ is just the inclusion, so $A^{G}$ is reduced as soon as $A$ is reduced.
       \item The same argument as for reducedness applies, or one can also argue using that being integral is equivalent to being reduced and irreducible.
