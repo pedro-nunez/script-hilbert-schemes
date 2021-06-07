@@ -45,7 +45,7 @@
 \renewcommand*{\urladdrname}{\itshape Homepage}
 \urladdr{\normalfont\href{https://home.mathematik.uni-freiburg.de/nunez/}{https://home.mathematik.uni-freiburg.de/nunez}}
 \thanks{The author gratefully acknowledges support by the DFG-Graduiertenkolleg GK1821 ``Cohomological Methods in Geometry'' at the University of Freiburg.}
-\date{\today}
+\date{8th June 2021}
 
 \setcounter{tocdepth}{1}
 \sloppy
@@ -69,10 +69,6 @@
 
 \tableofcontents
 
-\begin{center}
-  \textcolor{gray}{---parts in gray will be omitted during the talk---}
-\end{center}
-
 \setcounter{section}{-1}
 
 \section{Conventions and notation}
@@ -95,7 +91,7 @@ To avoid repetitions we can remove the closed subset of all tuples with at least
 To forget about the order of the tuples we may quotient out by the action of $\mathfrak{S}_{n}$ permuting the factors.
 This gives us a smooth variety parametrizing unordered tuples of $n$-points on $X$, but we would now like to compactify this parameter space.
 
-A natural candidate would be the quotient $S^{n}X$ of the whole $X^{\times n}$ by the $\mathfrak{S}_{n}$ action.
+A natural candidate would be the quotient $S^{n}X$ of the whole $X^{\times n}$ by the $\mathfrak{S}_{n}$-action.
 But $S^{n}X$ has singularities, so instead we look at the Hilbert scheme of points $X^{[n]}$.
 We will see that there is a morphism $\pi \colon X^{[n]} \to S^{n}X$, called the \textit{Hilbert--Chow} morphism, which is a resolution of singularities.
 
@@ -107,7 +103,7 @@ We will see that there is a morphism $\pi \colon X^{[n]} \to S^{n}X$, called the
 \end{defn}
 
 \begin{rem}
-  Quotients of varieties by algebraic actions of finite groups are discussed in \Cref{sec:quotient}.
+  Quotients of quasi-projective varieties by algebraic actions of finite groups are discussed in \Cref{sec:quotient}.
   It is shown in \Cref{thm:quotient} that the quotient $S^{n}X$ exists as a scheme and is in fact a quasi-projective variety.
   The fibers of the quotient morphism over closed points are precisely the orbits of closed points in $X$, and the quotient space carries the quotient topology induced by the quotient morphism.
   Moreover, let $\mathbf{P}$ be any of the following properties:
@@ -133,10 +129,10 @@ We will see that there is a morphism $\pi \colon X^{[n]} \to S^{n}X$, called the
 In order to show later that the yet-to-be-defined Hilbert--Chow morphism $\pi \colon X^{[n]} \to S^{n}X$ is a resolution of singularities in the case of surfaces, it will be convenient to consider the following stratification of $S^{n}X$.
 
 Let $k \in \mathbb{N}_{>0}$ such that $k \leq n$.
-Consider a tuple $\nu = (\nu_{1}, \ldots, \nu_{k})$ be with $\nu_{1} \geq \nu_{2} \geq \ldots \geq \nu_{k} > 0$ such that $n = \nu_{1} + \ldots + \nu_{k}$.
+Consider a tuple $\nu = (\nu_{1}, \ldots, \nu_{k})$ with $\nu_{1} \geq \nu_{2} \geq \ldots \geq \nu_{k} > 0$ such that $n = \nu_{1} + \ldots + \nu_{k}$.
 Call this a \textit{partition of $n$} of \textit{length} $l(\nu) := k$.
 Then, for each partition $\nu$ of $n$, we define
-\[ S^{n}_{\nu}X := \left\{ \quad \sum_{i = 1}^{k} \nu_{i}[x_{i}] \in S^{n}X \quad \middle| \quad x_{i} \neq x_{j} \text{ for } i \neq j \quad \right\}. \]
+\[ S^{n}_{\nu}X := \left\{ \quad \sum_{i = 1}^{l(\nu)} \nu_{i}[x_{i}] \in S^{n}X \quad \middle| \quad x_{i} \neq x_{j} \text{ for } i \neq j \quad \right\}. \]
 
 \begin{lm}\label{lm:stratification}
   Denote by $P(n)$ the set of partitions of $n$ as defined above and let $X$ be a quasi-projective variety.
@@ -150,7 +146,6 @@ Then, for each partition $\nu$ of $n$, we define
     Let $\nu \in P(n)$ be a partition of length $k$.
     We have only defined $S^{n}_{\nu}X$ as a subset of closed points in $S^{n}X$, so let us first check that it is in fact an irreducible and locally closed subset of the set of closed points in $S^{n}X$.
     By definition there are natural numbers $\nu_{1} \geq \nu_{2} \geq \ldots \geq \nu_{k} > 0$ such that $n = \nu_{1} + \ldots + \nu_{k}$ and $\nu = (\nu_{1},\ldots, \nu_{k})$.
-    Let $X^{\times k}$ and $X^{\times n}$ denote the $k$-fold and $n$-fold products of $X$ with itself respectively.
     Consider the $\mathbb{C}$-scheme morphism
     \begin{align*}
       f \colon X^{\times k} & \longrightarrow X^{\times n} \\
@@ -188,18 +183,19 @@ Then, for each partition $\nu$ of $n$, we define
     It remains to show that if $S^{n}_{\nu'}X$ intersects the closure of $S^{n}_{\nu}X$ in $S^{n}X$, then $S^{n}_{\nu'}X$ is contained in this closure.
     First we compute the closure of $S^{n}_{\nu}X$ in $S^{n}X$.
     The claim is that
-    \[ \overline{S^{n}_{\nu}X} = \left\{ \sum_{i=1}^{k} \nu_{i} [x_{i}] \in S^{n}X \right\}. \]
-    So we allow more repetitions than the ones prescribed by the partition $\nu$.
+    \[ \overline{S^{n}_{\nu}X} = \left\{ \sum_{i=1}^{k} \nu_{i} [x_{i}] \in S^{n}X \right\}, \]
+    where $k = l(\nu)$.
+    So we may have more repetitions than the ones originally prescribed by the partition $\nu$.
     Since $q$ is surjective, closed and continuous, we have
     \[ \overline{S^{n}_{\nu}X} = q(\overline{q^{-1}(S^{n}_{\nu}X)}). \]
     The preimage $q^{-1}(S^{n}_{\nu}X)$ consists of tuples $(x_{1}, \ldots, x_{n})$ in which there are exactly as many repetitions as prescribed by $\nu$, meaning that for each $i \in \{1, \ldots, k\}$ there exists some $x_{i} \in X$ such that $x_{i}$ appears exactly $\nu_{i}$ times in $(x_{1}, \ldots, x_{n})$.
     The analytic topology is finer than the Zariski topology, so the Zariski closure of $q^{-1}(S^{n}_{\nu}X)$ contains the closure of $q^{-1}(S^{n}_{\nu}X)$ in the analytic topology.
-    The closure in the analytic topology can be computed using limits of sequences, and we see that it consists of tuples $(x_{1}, \ldots, x_{n})$ in which there are at least as many repetitions as prescribed by $\nu$, i.e.~meaning precisely that after taking the quotient by the $\mathfrak{S}_{n}$ action we do get the claimed description.
+    The closure in the analytic topology can be computed using limits of sequences, and we see that it consists of tuples $(x_{1}, \ldots, x_{n})$ in which there are at least as many repetitions as prescribed by $\nu$, i.e.~meaning precisely that after taking the quotient by the $\mathfrak{S}_{n}$-action we do get the claimed description.
     So we would like to check that this is also the Zariski closure, for which it suffices to show that this is a Zariski closed subset.
     This set is cut out by requiring a finite list of equalities between pairs of coordinates in the tuples of $X^{\times n}$, hence it is indeed Zariski closed.
     This proves that the closure is described as we claimed above.
     Now if $\sum_{i=1}^{l(\nu')}\nu_{i}'[x_{i}]$ is an element in $S^{n}_{\nu'}X$ which belongs also to $\overline{S^{n}_{\nu}X}$, then $\nu'$ prescribes at least as many repetitions as $\nu$ does in the sense made precise earlier.
-    Therefore $s^{n}_{\nu'}X \subseteq \overline{S^{n}_{\nu}X}$, which is what we needed to show and concludes the proof of $(i)$.
+    Therefore $S^{n}_{\nu'}X \subseteq \overline{S^{n}_{\nu}X}$, which is what we needed to show and concludes the proof of $(i)$.
   \end{proof}
 \end{lm}
 
@@ -208,18 +204,122 @@ Then, for each partition $\nu$ of $n$, we define
   
   \begin{proof}
     Let $U \subseteq X^{\times n}$ denote the dense and $\mathfrak{S}_{n}$-invariant open subset of tuples without any repetitions.
-    Then $\mathfrak{S}_{n}$ acts freely on $U$.
-    This implies that the quotient morphism $q$ is locally free over $S^{n}_{(1,\ldots,1)}X$.
-    So regularity of $U = q^{-1}(S^{n}_{(1, \ldots, 1)}X)$ implies regularity of $S^{n}_{(1, \ldots, 1)}X$.
-    \color{red} Careful with this argument! It is probably not true in general that the quotient of a smooth variety by a free finite gruop action is smooth. \color{black}
-    Probably better to argue topologically with properly discontinuous (was it called like this?) group actions, where we can find neighborhoods of points with disjoint translates, so that the quotient by such an action remains a manifold.
-    What about applying \cite[\href{https://stacks.math.columbia.edu/tag/02K5}{Tag 02K5}]{stacks-project} in the algebraic setting directly?
-    Can we not show at least that the quotient map is étale over $U$?
-    I think in some reference it was claimed to be locally free, and we know the target is normal.
+    Then the finite group $\mathfrak{S}_{n}$ acts freely on $U$.
+    This implies that the quotient morphism $q$ is locally free over $S^{n}_{(1,\ldots,1)}X$, see Theorem (4.16) in \url{https://www.math.ru.nl/~bmoonen/BookAV/Quotients.pdf}.
+    Since each fiber over $S^{n}_{(1, \ldots, 1)}X$ consists of exactly $\deg(q)$ points, $q$ is also unramified over $S^{n}_{(1, \ldots, 1)}X$.
+    Flat and unramified implies étale \cite[Exercise III.10.3]{har77}, so the morphism $q$ is also smooth over $S^{n}_{(1, \ldots, 1)}X$.
+    We may now apply \cite[\href{https://stacks.math.columbia.edu/tag/02K5}{Tag 02K5}]{stacks-project} to conclude that $S^{n}_{(1, \ldots, 1)}X \to \operatorname{Spec}(\mathbb{C})$ is smooth as well, i.e.~$S^{n}_{(1, \ldots, 1)}X$ is smooth.
+
+    One could also argue analytic locally using the fact that free actions of finite groups on Hausdorff spaces are properly discontinuous, cf.~\cite[Exercise III.7.1]{bre97}.
   \end{proof}
 \end{lm}
 
-\color{red} TODO add \cite[Examples 3.5 and 3.6]{rot16} here! \color{black}
+\begin{exmp}
+  Let us look at the case of $X = \mathbb{A}^{2}$ and $n = 2$.
+  We want to study the singularities of $S^{2}\mathbb{A}^{2}$.
+  By \Cref{lm:smoothstratum} we only need to study the points outside of $S^{2}_{(1,1)}\mathbb{A}^{2}$.
+  Consider for example the point $2[(0,0)]$.
+  We know that $S^{2}\mathbb{A}^{2}$ has dimension $4$, because it is the quotient of the $4$-dimensional variety $\mathbb{A}^{2} \times \mathbb{A}^{2}$ by the action of a finite group.
+  More precisely, if we identify $(\mathbb{A}^{2})^{\times 2}$ with $\mathbb{A}^{4}$ and $\mathfrak{S}_{2}$ with $\mathbb{Z}/2\mathbb{Z}$, the action of $1 + 2\mathbb{Z} \in \mathbb{Z}/2\mathbb{Z}$ on the coordinate ring $A := \mathbb{C}[x_{1}, y_{1}, x_{2}, y_{2}]$ is given by the $\mathbb{C}$-algebra homomorphism uniquely determined by
+  \begin{align*}
+    x_{1} & \mapsto x_{2}, \\
+    y_{1} & \mapsto y_{2}, \\
+    x_{2} & \mapsto x_{1}, \\
+    y_{2} & \mapsto y_{1}.
+  \end{align*}
+  The coordinate ring of $S^{2}\mathbb{A}^{2}$ is then the subring of $\mathbb{Z}/2\mathbb{Z}$-invariants.
+  For example, the following polynomials are invariant under this action:
+  \begin{align*}
+    x_{1} + x_{2}, \\
+    y_{1} + y_{2}, \\
+    x_{1}x_{2}, \\
+    y_{1}y_{2}.
+  \end{align*}
+  These all belong to the ideal $\mathfrak{m}$ of the point $2[(0,0)]$, because this point is the image of $(0,0,0,0) \in \mathbb{A}^{4}$ and the quotient morphism is obtained by intersecting each prime ideal with the subring of $\mathbb{Z}/2\mathbb{Z}$-invariants.
+  But the polynomial $x_{1}y_{1} + x_{2}y_{2}$ is also in $\mathfrak{m}$, and we claim that these $5$ polynomials are $\kappa(\mathfrak{m})$-linearly independent in $\mathfrak{m}/\mathfrak{m}^{2}$.
+  Since $\mathfrak{m}$ is maximal, we can write $\kappa(\mathfrak{m}) = (A^{\mathbb{Z}/2\mathbb{Z}})/\mathfrak{m}$.
+  So suppose we have polynomials $f_{1}, \ldots, f_{4} \in A^{\mathbb{Z}/2\mathbb{Z}}$ such that there exists some polynomial $g \in \mathfrak{m}^{2}$ such that
+  \[ x_{1}y_{1} + x_{2}y_{2} + f_{1}(x_{1} + x_{2}) + f_{2}(y_{1} + y_{2}) + f_{3}x_{1}x_{2} + f_{4}y_{1}y_{2} = g. \]
+  Since polynomials in $\mathfrak{m}$ have zero constant term, any non-zero monomial appearing as a term of $g$ has total degree at least $2$.
+  We claim first that the total degree $2$ part of $g$ has to be zero.
+  Indeed, we can argue by contradiction looking at the total degree $2$ part of the previous equation.
+  The only homogeneous polynomials of total degree $1$ in $\mathfrak{m}$ are the $\mathbb{C}$-linear combinations of $x_{1} + x_{2}$ and $y_{1} + y_{2}$.
+  So assuming that the total degree $2$ part of $g$ is zero, we may write the total degree $2$ part of the previous equation as
+  \begin{align*}
+    x_{1}y_{1} + x_{2}y_{2} + (\lambda_{1}x_{1} + \mu_{1}y_{1} + \lambda_{1} x_{2} + \mu_{1} y_{2})(x_{1} + x_{2}) \\
+    + (\lambda_{2} x_{1} + \mu_{2} y_{1} + \lambda_{2} x_{2} + \mu_{2} y_{2})(y_{1} + y_{2}) + \lambda x_{1}x_{2} + \mu y_{1} y_{2} = 0 
+  \end{align*}
+  for some $\lambda, \mu, \lambda_{1}, \lambda_{2}, \mu_{1}, \mu_{2} \in \mathbb{C}$.
+  Writing out the product we see that the coefficient of $x_{1}^{2}$ is $\lambda_{1}$, which must therefore be zero.
+  And similarly, the coefficient of $y_{1}^{2}$ is $\mu_{2}$, which must then be zero.
+  Grouping coefficients we obtain the system of equations
+  \[
+    \begin{cases}
+      \lambda = 0 \\
+      \mu = 0 \\
+      \mu_{1} + \lambda_{2} = 0 \\
+      1 + \mu_{1} + \lambda_{2} = 0
+    \end{cases}
+  \]
+  The system does not have any solution, so we reach the desired contradiction.
+  Therefore $g$ must have a non-zero homogeneous total degree $2$ part.
+  As explained above, this has to be the product of two $\mathbb{C}$-linear combinations of $x_{1} + x_{2}$ and $y_{1} + y_{2}$, say, the product of $\alpha_{1}(x_{1} + x_{2}) + \beta_{1}(y_{1} + y_{2})$ and $\alpha_{2}(x_{1} + x_{2}) + \beta_{2}(y_{1} + y_{2})$ with $\alpha_{1}, \beta_{1}, \alpha_{2}, \beta_{2} \in \mathbb{C}$.
+  With the same notation as above for the left hand side of the equation we would obtain the system of equations
+  \[
+    \begin{cases}
+      1 + \mu_{1} + \lambda_{2} - \alpha_{1} \beta_{2} - \alpha_{2} \beta_{1} = 0 \\
+      \lambda_{1} - \alpha_{1} \alpha_{2} = 0 \\
+      \lambda + 2 \lambda_{1} - 2 \alpha_{1} \alpha_{2} = 0 \\
+      \mu_{2} - \beta_{1} \beta_{2} =  0 \\
+      \mu + 2 \mu_{2} - 2 \beta_{1} \beta_{2} = 0 \\
+      \mu_{1} + \lambda_{2} - \alpha_{1} \beta_{2} - \alpha_{2} \beta_{1} = 0
+    \end{cases}
+  \]
+  The system still does not have any solution, so we have a contradiction in any case.
+  Therefore the $5$ polynomials are $\kappa(\mathfrak{m})$-linearly independent in $\mathfrak{m}/\mathfrak{m}^{2}$, which shows that $2[(0,0)]$ is a singular point in $S^{2}\mathbb{A}^{2}$.
+
+  More generally, the same arguments show that $S^{n}\mathbb{A}^{2}$ is singular at $n[(0,\ldots,0)]$ for any $n \geq 2$, cf.~\cite[Example 3.5]{rot16}.
+  But for $n = 2$ we can still say a bit more about the geometry of the singularities, so let us do that following \cite[Example 3.6]{rot16}.
+  We consider the basis $(1, 0, 1, 0)$, $(0, 1, 0, 1)$, $(1, 0, -1, 0)$ and $(0, 1, 0, -1)$ on $\mathbb{A}^{4}$, so that the action of $\mathbb{Z}/2\mathbb{Z}$ on the new coordinate ring $R = \mathbb{C}[x, y, u, v]$ is given by
+  \begin{align*}
+    x \mapsto x, \\
+    y \mapsto y, \\
+    u \mapsto -u, \\
+    v \mapsto -v.
+  \end{align*}
+  We can think now of this action on $\mathbb{A}^{4} \cong \mathbb{A}^{2} \times \mathbb{A}^{2}$ as acting only on the second factor, which is the one corresponding to the coordinates $u$ and $v$.
+  We check first what the quotient is in this case.
+  A $\mathbb{Z}/2\mathbb{Z}$-invariant polynomial in $\mathbb{C}[u,v]$ can have only monomials of even total degree.
+  Indeed, the monomials $u^{2}$, $uv$ and $v^{2}$ are all in $\mathbb{C}[u,v]^{\mathbb{Z}/2\mathbb{Z}}$, so all the monomials of even total degree are in this subalgebra as well, i.e.~$\mathbb{C}[u^{2}, uv, v^{2}] \subseteq \mathbb{C}[u,v]^{\mathbb{Z}/2\mathbb{Z}}$.
+  If $f(u,v)$ is a $\mathbb{Z}/2\mathbb{Z}$-invariant polynomial, we may substract from it all its even total degree monomials.
+  The result will be a $\mathbb{Z}/2\mathbb{Z}$-invariant polynomial $h$ with the property that $h(-u,-v) = -h(u,v)$ for all $(u, v) \in \mathbb{A}^{2}$.
+  It follows from $\mathbb{Z}/2\mathbb{Z}$-invariance that we must have $h(u,v) = 0$ for all $(u, v) \in \mathbb{A}^{2}$, hence $h = 0$ and $f \in \mathbb{C}[u^{2},uv,v^{2}]$.
+  This shows that the coordinate ring of the quotient of $\mathbb{A}^{2}$ by this $\mathbb{Z}/2\mathbb{Z}$-action is $\mathbb{C}[u^{2}, uv, v^{2}]$.
+  We have a surjective $\mathbb{C}$-algebra homomorphism
+  \begin{align*}
+    \phi \colon \mathbb{C}[a,b,c] & \longrightarrow \mathbb{C}[u^{2}, uv, v^{2}] \\
+    a & \longmapsto u^{2}, \\
+    b & \longmapsto uv, \\
+    c & \longmapsto v^{2}.
+  \end{align*}
+  So we may rewrite the coordinate ring of the quotient as $\mathbb{C}[a,b,c]/\ker(\phi)$.
+  We have $(b^{2} - ac) \subseteq \ker(\phi)$, so $V(\ker(\phi)) \subseteq V(b^{2} - ac)$ in $\mathbb{A}^{3}$.
+  But both of them are irreducible closed subsets of $\mathbb{A}^{3}$ of the same dimension, so they must be equal.
+  Since both $(b^{2} - ac)$ and $\ker(\phi)$ are prime ideals, this implies that they are equal.
+  So the coordinate ring of the quotient is $\mathbb{C}[a,b,c]/(b^{2} - ac)$ and we see that the quotient is the cone over the smooth conic $\{ [a:b:c] \in \mathbb{P}^{2} \mid b^{2} - ac \}$ \cite[Exercise I.2.10]{har77}.
+  
+  Let us denote $G := \mathbb{Z}/2\mathbb{Z}$.
+  Coming back to the $G$-action on $\mathbb{A}^{2} \times \mathbb{A}^{2}$, we consider the $G$-invariant morphism $\mathbb{A}^{2} \times \mathbb{A}^{2} \to \mathbb{A}^{2} \times (\mathbb{A}^{2}/G)$, which is given by the universal property of the product applied to the projection $p_{1} \colon \mathbb{A}^{2} \times \mathbb{A}^{2} \to \mathbb{A}^{2}$ and the composition of the projection $p_{2} \colon \mathbb{A}^{2} \times \mathbb{A}^{2} \to \mathbb{A}^{2}$ and the quotient $q_{2} \colon \mathbb{A}^{2} \to \mathbb{A}^{2}/G$, where this last quotient morphisms corresponds to the action that we were discussing earlier, i.e.~$\mathbb{A}^{2}/G$ is the cone over the conic above.
+  This morphism is indeed $G$-invariant, because $G$ acts trivially on the first factor.
+  So we obtain a $\mathbb{C}$-scheme morphism
+  \[ \psi \colon \mathbb{A}^{4}/G \to \mathbb{A}^{2} \times (\mathbb{A}^{2}/G). \]
+  We claim that it is an isomorphism.
+  Indeed, it follows from the explicit description of closed points in the quotient by the action of a finite group that $\psi$ is bijective on closed points.
+  Moreover, the right hand side is normal, because it is the product of two normal varieties, cf.~\url{https://mathoverflow.net/a/2058/99436}.
+  This already implies that $\psi$ is an isomorphism; see \url{https://mathoverflow.net/a/264216} for a detailed argument combining various versions of Zariski's Main Theorem.
+
+  Putting all the discussion above together, we see that the quotient of $\mathbb{A}^{4}$ by the $\mathbb{Z}/2\mathbb{Z}$-action is the product of the affine plane and the cone over a smooth conic, hence giving a more explicit description of the singularities of the quotient.
+\end{exmp}
 
 \section{Hilbert--Chow morphism}
 
@@ -313,7 +413,7 @@ We also have:
     \[ \prod_{i = 1}^{n} (u_{i}y - v_{i}x) = a_{n} x^{n} + a_{1} x^{n-1}y + \ldots + a_{n}y^{n}. \]
     The coefficients give us a point $[a_{0} : \ldots : a_{n} ] \in \mathbb{P}^{n}$.
     This formula defines a $\mathbb{C}$-scheme morphism $(\mathbb{P}^{1})^{\times n} \to \mathbb{P}^{n}$, because $a_{i}$ is a homogeneous polynomial in the variables $u_{1}, \ldots, u_{n}, v_{1}, \ldots, v_{n}$ for all $i \in \{ 1 , \ldots, n\}$.
-    It is moreover a symmetric polynomial by Vieta's formulas, so the universal property gives us the desired induced morphism $S^{n}(\mathbb{P}^{1}) \to \mathbb{P}^{n}$.
+    It is moreover a symmetric polynomial by Cardano--Vieta's formulas, so the universal property gives us the desired induced morphism $S^{n}(\mathbb{P}^{1}) \to \mathbb{P}^{n}$.
     And the point $[a_{0} : \ldots : a_{n}]$ determines uniquely the original unordered tuple as the set of roots of the corresponding homogeneous polynomial, so it is an isomorphism because it is bijective, $\mathbb{P}^{n}$ is smooth and $\operatorname{char}{\mathbb{C}} = 0$, cf.~\url{https://mathoverflow.net/a/264216} again.
   \end{proof}
 \end{exmp}
@@ -337,9 +437,34 @@ More generally:
     Let $\mathfrak{m} \in \operatorname{Spec}(A)$.
     Since taking $G$-invariants commutes with localization \cite[Exercise 5.12]{am69} we have
     \[ (A^{G})_{q(\mathfrak{m})} = (A^{G})_{\mathfrak{m} \cap A^{G}} = (A_{\mathfrak{m}})^{G}. \]
-    Taking completions commutes with taking $\mathfrak{S}_{n}$-invariants, so we also have
-    \[ (A^{G})_{q(\mathfrak{m})}^{\hat{}} = (\hat{A}_{\mathfrak{m}})^{G}. \]
-    \color{red} TODO finish later! \color{black}
+    We check next that taking subrings of $G$-invariants commutes with completions, so that $\widehat{(A^{G})_{q(\mathfrak{m})}} = (\widehat{A_{\mathfrak{m}}})^{G}$.
+
+    Let us first check that it commutes with forming quotient rings.
+    Let $I \subseteq R$ be an ideal $I$ of a ring $R$ on which the finite group $G$ acts from the left.
+    Then there is an induced $G$-action on $R/I$ given by $g\cdot (r + I) := (g\cdot r) + I$.
+    The kernel of the induced ring morphism
+    \begin{align*}
+      \phi \colon R^{G} & \longrightarrow (R/I)^{G} \\
+      r & \longmapsto r + I
+    \end{align*}
+    is then precisely $I\cap R^{G}$.
+    So we would be done if we showed surjectivity of $\phi$.
+    Let $r + I$ be a $G$-invariant element in $R/I$, so that $g \cdot r - r \in I$ for all $g \in G$.
+    Since $G$ is finite, we may consider the $G$-invariant element $\prod_{g \in G} (g\cdot r) \in R^{G}$.
+    Now $\prod_{g \in G}(g \cdot r) = (\prod_{g \in G} g) \cdot r$, so that $\prod_{g \in G}(g\cdot r) - r \in I$ by $G$-invariance of $r + I$.
+    Hence $\phi(\prod_{g \in G}(g \cdot r)) = r + I$, showing surjectivity.
+
+    With this result available, we try to show next commutativity of taking $G$-invariants and completions.
+    The inverse system of rings $\phi_{m} \colon A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m+1} \to A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m}$ induces an inverse system of rings $\bar{\phi}_{m} \colon (A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m+1})^{G} \to (A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m})^{G}$, which can be seen directly from the explicit description of the action induced on the quotient given above.
+    By definition $\widehat{A_{\mathfrak{m}}} = \varprojlim_{m} A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m}$, which can be explicitly described as
+    \[ \{ (\xi_{m})_{m \in \mathbb{N}} \mid \phi_{m}(\xi_{m+1}) = \xi_{m} \} \subseteq \prod_{m \in \mathbb{N}} A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m}. \]
+    The induced $G$-action on each $A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m}$ makes each $\phi_{m}$ $G$-equivariant; this can be checked from the explicit description above.
+    This implies that there is an induced $G$-action on the inverse limit, which is given by the corresponding $G$-action on each factor.
+    The $G$-invariants in $\widehat{A_{\mathfrak{m}}}$ are therefore the tuples $(\xi_{m})_{m \in \mathbb{N}} \in \prod_{m \in \mathbb{N}} A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m}$ such that for all $m \in \mathbb{N}$, the element $\xi_{m}$ is $G$-invariant.
+    If we use the identifications $(A/I^{m})^{G} = A^{G}/(I^{m} \cap A^{G})$ previously shown, then we can identify
+    \[ (\widehat{A_{\mathfrak{m}}})^{G} = \varprojlim_{m} A^{G}/(I^{m} \cap A^{G}). \]
+    again using the explicit construction of the completion as an inverse limit, and using that $q(\mathfrak{m}) = \mathfrak{m} \cap A^{G}$ by definition.
+    \color{red} TODO finish; cf.~with Artin--Rees lemma! \color{black}
   \end{proof}
 \end{prop}
 
@@ -366,8 +491,35 @@ Let us start then with the connectedness part:
   In the situation of \Cref{thm:resolution}, $X^{[n]}$ is connected.
 
   \begin{proof}
-    See \cite[Example 4.5.10]{hl97}.
-    \color{red} TODO add proof! \color{black}
+    We sketch the proofs in \cite[Example 4.5.10]{hl97} and in \cite[Lemma 3.7]{leh00}, which use the methods from \cite{es98}.
+    We refer to these references for further details.
+
+    The idea is to proceed by induction on $n$ using the ``incidence variety''
+    \[ X^{[n,n+1]} := \{ (Z_{1}, Z_{2}) \mid Z_{1} \subseteq Z_{2} \} \subseteq X^{[n]} \times X^{[n+1]}. \]
+    Consider the morphism
+    \begin{align*}
+      \phi \colon X^{[n, n+1]} & \longrightarrow X^{[n]} \\
+      (Z_{1}, Z_{2}) & \longmapsto Z_{1},
+    \end{align*}
+    the morphism
+    \begin{align*}
+      \psi \colon X^{[n, n+1]} & \longrightarrow X^{[n+1]} \\
+      (Z_{1}, Z_{2}) & \longmapsto Z_{2},
+    \end{align*}
+    and the morphism $\rho \colon X^{[n, n+1]} \to X$ which sends a pair $(Z_{1}, Z_{2})$ to the point of $X$ by which the subschemes $Z_{1}$ and $Z_{2}$ differ.
+    Let $X^{[n]} \times X \supseteq \mathcal{X}^{[n]} \to X^{[n]}$ be the universal family, which has the subscheme $Z \subseteq X$ as the fiber over a point $Z \in X^{[n]}$, i.e.
+    \[ \mathcal{X}^{[n]} = \{ (Z,x) \mid x \in Z \} \subseteq X^{[n]} \times X. \]
+    The fiber of $\Phi := \phi \times \rho \colon X^{[n,n+1]} \to X^{[n]} \times X$ over a point $(Z, x)$, not necessarily with $x \in Z$, is given by the pairs $(Z,Z')$ such that $Z'$ is obtained from $Z$ by ``adding'' the point $x$.
+    If $\mathscr{I}_{Z}$ denotes the ideal sheaf of $Z$ in $X$, then this procedure of adding the point $x$ can be translated into giving a surjection $\lambda \colon \mathscr{I}_{Z}(x) = (\mathscr{I}_{Z})_{x}/\mathfrak{m}_{x}(\mathscr{I}_{Z})_{x} \to \kappa(x) = \mathbb{C}$; the subscheme $Z'$ would then be given by the kernel of the composition $\mathscr{I}_{Z} \to \mathscr{I}_{Z}(x) \to \kappa(x)$.
+    Conversely, the ideal sheaf $\mathscr{I}_{Z}$ determines the surjection $\lambda$ uniquely up to non-zero scalar.
+    Indeed, the quotient $\mathscr{I}_{Z}/\mathscr{I}_{Z'}$ is isomorphic to the structure sheaf of the reduced point $x \in X$ by which $Z$ and $Z'$ differ.
+    Since $x$ is a closed point, we may identify this structure sheaf with the residue field $\kappa(x)$, because the field of fractions of the integral domain $A/\mathfrak{p}$ is isomorpic to $A_{\mathfrak{p}}/\mathfrak{p}A_{\mathfrak{p}}$ for any ring $A$ and any prime ideal $\mathfrak{p} \subseteq A$.
+    The desired surjection corresponds to a choice of such an isomorphism, and the choices are precisely the non-zero scalars.
+    Therefore the fibers of $\Phi$ are projective spaces, and in particular connected.
+
+    If $n = 1$, then $X^{[1]} = X$ is connected by assumption.
+    Assuming by induction that $X^{[n]}$ is connected for $n \geq 1$, we see now that $\Phi \colon X^{[n, n+1]} \to X^{[n]} \times X$ is a surjective morphism with connected fibers onto a connected space.
+    This implies that $X^{[n, n+1]}$ is itself connected, and since $\psi \colon X^{[n,n+1]} \to X^{[n+1]}$ is surjective and continuous, $X^{[n+1]}$ is connected as well.
   \end{proof}
 \end{lm}
 
@@ -377,12 +529,16 @@ Now that we know that our Hilbert scheme is connected, it remains to show only t
   In the situation of \Cref{thm:resolution}, $X^{[n]}$ is smooth.
 
   \begin{proof}
-    See \cite[Example 4.5.10]{hl97}.
-    \color{red} TODO add proof! \color{black}
+    We sketch the proof in \cite[Example 4.5.10]{hl97}.
+    The idea is to compute the dimension of the Zariski tangent space at every point of $Z \in X^{[n]}$ using the isomorphisms $T_{Z}X^{[n]} \cong \operatorname{Hom}(\mathscr{I}_{Z}, \mathscr{O}_{Z})$.
   \end{proof}
 \end{lm}
 
 As explained above, combining \Cref{lm:connected} and \Cref{lm:smoothness} we obtain \Cref{thm:resolution}.
+
+\begin{rem}
+  There are other ways to prove that $X^{[n]}$ is smooth and irreducible, see \cite[Theorem 1.15]{nak99} or \cite[Theorem 18.7]{ms05}.
+\end{rem}
 
 \appendix
 
@@ -565,7 +721,7 @@ Fortunately, in the case of finite groups, the various notions agree.
     In order to construct such $B$, we first note that the inclusion $A^{G} \subseteq A$ is an integral ring extension.
     Indeed, every $a \in A$ is a root of the monic polynomial
     \[ P_{a}(t) := \prod_{g \in G}(t - \rho(g)(a)), \]
-    whose coefficients are in $A^{G}$ by Vieta's formulas.
+    whose coefficients are in $A^{G}$ by Cardano--Vieta's formulas.
     Let $\alpha_{1}, \ldots, \alpha_{m} \in A$ be generators of $A$ as an algebra over $\mathbb{C}$.
     Let $\{ c_{i,j} \}_{j = 0}^{d_{i}}$ be the coefficients of $P_{\alpha_{i}}$ for each $i \in \{1, \ldots, m\}$.
     Then define $B$ to be the $\mathbb{C}$-subalgebra of $A$ generated by all these coefficients $\{ c_{1,0}, \ldots, c_{1,d_{1}}, c_{2,0}, \ldots, c_{m,d_{m}} \}$.
