@@ -86,12 +86,7 @@ Let us fix the natural number $n > 0$ from now on.
 \section{Introduction}
 
 We would like to parametrize unordered tuples of $n$-points on a smooth projective surface $X$.
-The product $X^{\times n}$ gives us ordered tuples with potential repetitions.
-To avoid repetitions we can remove the closed subset of all tuples with at least two equal points; this gives us a dense open subset of the product.
-To forget about the order of the tuples we may quotient out by the action of $\mathfrak{S}_{n}$ permuting the factors.
-This gives us a smooth variety parametrizing unordered tuples of $n$-points on $X$, but we would now like to compactify this parameter space.
-
-A natural candidate would be the quotient $S^{n}X$ of the whole $X^{\times n}$ by the $\mathfrak{S}_{n}$-action.
+A natural candidate for parameter space would be the quotient $S^{n}X$ of the product $X^{\times n}$ by the $\mathfrak{S}_{n}$-action permuting the factors.
 But $S^{n}X$ has singularities, so instead we look at the Hilbert scheme of points $X^{[n]}$.
 We will see that there is a morphism $\pi \colon X^{[n]} \to S^{n}X$, called the \textit{Hilbert--Chow} morphism, which is a resolution of singularities.
 
@@ -323,7 +318,7 @@ Then, for each partition $\nu$ of $n$, we define
 
 \section{Hilbert--Chow morphism}
 
-\begin{prop}[{\cite[\S 3.2]{leh00} or \cite[p.~41]{ber08}}]
+\begin{prop}
   Let $X$ be a quasi-projective surface.
   Then the formula
   \begin{align*}
@@ -333,9 +328,40 @@ Then, for each partition $\nu$ of $n$, we define
   defines a $\mathbb{C}$-scheme morphism called the \textit{Hilbert--Chow morphism}.
   
   \begin{proof}
-    \color{red}
-    TODO add proof!
-    \color{black}
+    We sketch the construction of the corresponding morphism following \cite[\S 3.2]{leh00}.
+    A similar but slightly different construction of the same morphism can be found in \cite[p.~41]{ber08}; the core of the argument seems to be essentially the same but the reduction steps are not exactly the same.
+    The idea in any case is to define $\pi$ at the level of representable functors and then obtain the morphism at the level of varieties by Yoneda.
+    Let $\mathcal{H}ilb^{n}_{X}$ be the functor represented by $X^{[n]}$ and let $h_{S^{n}X}$ be the functor represented by $S^{n}X$.
+    We want a natural transformation $\eta \colon \mathcal{H}ilb^{n}_{X} \to S^{n}X$.
+    To define such a natural transformation we construct for each $\mathbb{C}$-scheme $S$ and each flat family $Z \in \mathcal{H}ilb^{n}_{X}(S)$ a canonical $\mathbb{C}$-scheme morphism $S \to S^{n}X$.
+    Since we are going to construct something canonical, it suffices to construct it locally on $S$; then the resulting canonical morphisms will agree on the intersections and will glue to yield the desired morphism.
+
+    We want to reduce to the case in which $X$ and $S$ are affine.
+    Let then $s_{0} \in S$ be a closed point.
+    The corresponding closed subscheme $Z_{s_{0}} \subseteq X$ consists of finitely many points, perhaps with some multiplicity.
+    By \Cref{lm:avoidpoints} we may find an affine open subset $U = \operatorname{Spec}(A) \subseteq X$ such that $Z_{s_{0}} \subseteq U$.
+    Let $p \colon Z \to S$ denote the restriction of the projection $S \times X \to S$, which is a flat finite morphism of degree $n$.
+    Consider the closed subset $(S \times (X\setminus U)) \cap Z \subseteq Z$.
+    Since $p$ is closed, the image of this closed subset is closed in $S$ as well.
+    Let $V'$ be its complement and let $s \in V'$ be a closed point.
+    Then $Z_{s} \subseteq U$, because
+    \[ p^{-1}(S \setminus p((S \times (X \setminus U)) \cap Z)) \subseteq Z \setminus ((S \times (X \setminus U)) \cap Z) \subseteq S \times U. \]
+    Take now $V = \operatorname{Spec}(B)$ an affine open neighborhood of $s_{0}$ inside $V'$ and consider $Z_{V} := Z \cap (V \times U) = p^{-1}(V)$.
+    Since $p$ is finite, $Z_{V} = \operatorname{Spec}(C)$ is affine; this also follows from $Z_{V}$ being a closed subscheme of the affine scheme $V \times U = \operatorname{Spec}(A \otimes_{\mathbb{C}} B)$, which exhibits $C$ as a quotient ring $(A \otimes_{\mathbb{C}} B)/I$ for some ideal $I \subseteq A \otimes_{\mathbb{C}}B$.
+    Since $p$ is flat and finite of degree $n$, it is finite locally free of rank $n$ \cite[\href{https://stacks.math.columbia.edu/tag/02KB}{Tag 02KB}]{stacks-project}; so up to making $V$ a bit smaller we may assume that $C$ is a free $B$-module of rank $n$. 
+    Given $a \in A$, we may look at the $B$-linear endomorphism of $C$ given by multiplication with $a$ modulo $I$.
+    This gives us a canonical ring morphism $f \colon A \to \operatorname{End}_{B}(C)$, which in turn induces a canonical ring morphism
+    \[ A^{\otimes_{\mathbb{C}} n} \to \operatorname{End}_{B}(C^{\otimes_{B} n}). \]
+    The subring of invariants $(A^{\otimes_{\mathbb{C}} n})^{\mathfrak{S}_{n}}$ acts on the submodule of antisymmetric tensors in $C^{\otimes_{B} n}$, which is a free $B$-module of rank $1$.
+    This gives us for every $\mathfrak{S}_{n}$-invariant tensor in $A^{\otimes_{\mathbb{C}} n}$ a $B$-linear endomorphism of this free $B$-module of rank $1$, hence an element in $b$.
+    That is, we have a canonical ring morphism
+    \[ \varphi \colon (A^{\otimes_{\mathbb{C}} n})^{\mathfrak{S}_{n}} \to B, \]
+    as we wanted.
+    The element $b \in B$ that we obtain from an $\mathfrak{S}_{n}$-invariant tensor $a_{1} \otimes \ldots \otimes a_{n} \in A^{\otimes_{\mathbb{C}}n}$ is given by
+    \[ \frac{1}{n!}\operatorname{coeff}(t_{1} \cdots t_{n}, \det(t_{1}f(a_{1}) + \cdots + t_{n}f(a_{n}))), \]
+    see also \cite[Proposition 2.17]{ber08}.
+
+    Some manipulation with antisymmetric tensors and symmetric products of direct products of rings shows that this construction yields the desired result over closed points, see \cite[p.~9]{leh00}.
   \end{proof}
 \end{prop}
 
@@ -379,7 +405,7 @@ Then, for each partition $\nu$ of $n$, we define
   Assume without loss of generality that $\lambda_{1} \neq \lambda_{2}$.
   Then $A$ is diagonalizable, so we may find a representative of $[(A,B,v)]$ in which $a = 0$.
   Call it $(A,B,v)$ again.
-  Then the commutativity of $A$ and $B$ imposes the relation $(\lambda_{1}-\lambda_{2})b = 0$, and since $\lambda_{1} - \lambda_{2} \neq 0$ we must have $b = 0$ as well.
+  Now $B$ may not be triangular anymore a priori, but since $B$ commutes with the diagonal matrix $A$ and the eigenvalues of $A$ are all distinct, $B$ is in fact diagonal as well, as a direct computation shows.
   So in this case $[(A,B,v)]$ is uniquely determined by $[(\lambda_{1},\mu_{1})] + [(\lambda_{2}, \mu_{2})]$.
   This shows that $\pi$ is injective over the smooth dense open subset $V := S^{2}_{(1,1)}\mathbb{A}^{2}$.
   Since it is also surjective and $S^{2}_{(1,1)}$ is smooth, it is an isomorphism by a combination of various versions of Zariski's Main Theorem, cf.~\url{https://mathoverflow.net/a/264216}.
@@ -389,15 +415,7 @@ Then, for each partition $\nu$ of $n$, we define
   This can be checked with the same arguments as above, only that the notation and the computations become a little less explicit, cf.~\cite[Example 1.12.(4)]{nak99}.
 \end{exmp}
 
-\begin{lm}\label{lm:overstratum}
-  Let $X$ be a smooth quasi-projective variety.
-  Then the Hilbert--Chow morphism $\pi$ is an isomorphism over the smooth open stratum $S^{n}_{(1,\ldots,1)}X$.
-  \begin{proof}
-    \color{red} TODO add proof! \color{black}
-  \end{proof}
-\end{lm}
-
-\section{Case of curves}
+\section{Symmetric products of curves}
 
 We have seen in \Cref{exmp:affineline} that $S^{n}\mathbb{A}^{1} \cong \mathbb{A}^{n}$.
 We also have:
@@ -421,57 +439,20 @@ We also have:
 In particular, both $\mathbb{A}^{1}$ and $\mathbb{P}^{1}$ have smooth symmetric products.
 More generally:
 
-\begin{prop}[{\cite[Proposition 3.1]{rot16}}]
+\begin{prop}[{\cite[Proposition 3.1]{rot16}}]\label{prop:curves}
   Let $X$ be a smooth curve.
   Then $S^{n}X$ is smooth.
 
   \begin{proof}
     We have seen this already in the case of $\mathbb{A}^{1}$ in \Cref{exmp:affineline}.
-    The idea is to reduce to this case arguing locally analytically.
+    The idea is to reduce to this case arguing locally analytically, because in the analytic topology we have $X \cong \mathbb{A}^{1}$ locally.
     The completion of the algebraic local ring at a closed point is isomorphic to the completion of the analytic local ring at the corresponding point of the associated complex analytic space \cite[Proposition 3]{ser56}.
     A noetherian local ring is regular if and only if its completion is regular \cite[\href{https://stacks.math.columbia.edu/tag/07NY}{Tag 07NY}]{stacks-project}.
-    Let $Z := X^{\times n}$ be the $n$-fold product of the curve $X$ with itself, so that $W := S^{n}X$ is the quotient of $Z$ by the action of $G := \mathfrak{S}_{n}$ which permutes the factors in $Z$.
-    Let $q \colon Z \to W$ be the quotient morphism.
-    The statement is local on $W$, so we may assume that $W$ is affine, hence that $Z$ is affine as well because $q$ is finite.
-    Say $Z = \operatorname{Spec}(A)$, $W = \operatorname{Spec}(A^{G})$ and $q = (-) \cap A^{G}$, cf.~\Cref{cor:affinequotient}.
-    Let $\mathfrak{m} \in \operatorname{Spec}(A)$.
-    Since taking $G$-invariants commutes with localization \cite[Exercise 5.12]{am69} we have
-    \[ (A^{G})_{q(\mathfrak{m})} = (A^{G})_{\mathfrak{m} \cap A^{G}} = (A_{\mathfrak{m}})^{G}. \]
-    We check next that taking subrings of $G$-invariants commutes with completions, so that $\widehat{(A^{G})_{q(\mathfrak{m})}} = (\widehat{A_{\mathfrak{m}}})^{G}$.
-
-    Let us first check that it commutes with forming quotient rings.
-    Let $I \subseteq R$ be an ideal $I$ of a ring $R$ on which the finite group $G$ acts from the left.
-    Then there is an induced $G$-action on $R/I$ given by $g\cdot (r + I) := (g\cdot r) + I$.
-    The kernel of the induced ring morphism
-    \begin{align*}
-      \phi \colon R^{G} & \longrightarrow (R/I)^{G} \\
-      r & \longmapsto r + I
-    \end{align*}
-    is then precisely $I\cap R^{G}$.
-    So we would be done if we showed surjectivity of $\phi$.
-    Let $r + I$ be a $G$-invariant element in $R/I$, so that $g \cdot r - r \in I$ for all $g \in G$.
-    Since $G$ is finite, we may consider the $G$-invariant element $\prod_{g \in G} (g\cdot r) \in R^{G}$.
-    Now $\prod_{g \in G}(g \cdot r) = (\prod_{g \in G} g) \cdot r$, so that $\prod_{g \in G}(g\cdot r) - r \in I$ by $G$-invariance of $r + I$.
-    Hence $\phi(\prod_{g \in G}(g \cdot r)) = r + I$, showing surjectivity.
-
-    With this result available, we try to show next commutativity of taking $G$-invariants and completions.
-    The inverse system of rings $\phi_{m} \colon A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m+1} \to A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m}$ induces an inverse system of rings $\bar{\phi}_{m} \colon (A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m+1})^{G} \to (A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m})^{G}$, which can be seen directly from the explicit description of the action induced on the quotient given above.
-    By definition $\widehat{A_{\mathfrak{m}}} = \varprojlim_{m} A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m}$, which can be explicitly described as
-    \[ \{ (\xi_{m})_{m \in \mathbb{N}} \mid \phi_{m}(\xi_{m+1}) = \xi_{m} \} \subseteq \prod_{m \in \mathbb{N}} A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m}. \]
-    The induced $G$-action on each $A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m}$ makes each $\phi_{m}$ $G$-equivariant; this can be checked from the explicit description above.
-    This implies that there is an induced $G$-action on the inverse limit, which is given by the corresponding $G$-action on each factor.
-    The $G$-invariants in $\widehat{A_{\mathfrak{m}}}$ are therefore the tuples $(\xi_{m})_{m \in \mathbb{N}} \in \prod_{m \in \mathbb{N}} A_{\mathfrak{m}}/(\mathfrak{m}A_{\mathfrak{m}})^{m}$ such that for all $m \in \mathbb{N}$, the element $\xi_{m}$ is $G$-invariant.
-    If we use the identifications $(A/I^{m})^{G} = A^{G}/(I^{m} \cap A^{G})$ previously shown, then we can identify
-    \[ (\widehat{A_{\mathfrak{m}}})^{G} = \varprojlim_{m} A^{G}/(I^{m} \cap A^{G}). \]
-    again using the explicit construction of the completion as an inverse limit, and using that $q(\mathfrak{m}) = \mathfrak{m} \cap A^{G}$ by definition.
-    \color{red} TODO finish; cf.~with Artin--Rees lemma! \color{black}
+    Finally, taking subrings of invariants commutes with completions of local rings, because it commutes more generally with flat base change, cf.~the answer in \url{https://math.stackexchange.com/questions/853019/quotient-of-smooth-variety-is-smooth-if-fixed-point-set-is-a-divisor}.
   \end{proof}
 \end{prop}
 
-Moreover, in the case of a curve $X$ as above, the Hilbert scheme $X^{[n]}$ is smooth as well and $\pi \colon X^{[n]} \to S^{n}X$ is an isomorphism.
-\color{red} TODO make this more precise and structured. \color{black}
-
-\section{Hilbert scheme of points on a surface}
+\section{Hilbert--Chow morphism on surfaces}
 
 The goal in this section is to prove the following:
 
@@ -482,10 +463,24 @@ The goal in this section is to prove the following:
 
 In particular, we would like to ensure that $X^{[n]}$ is smooth.
 So if we also knew that $X^{[n]}$ is connected, then it would be necessarily irreducible, as the intersection of two distinct irreducible components would contradict smoothness.
-We have seen in \Cref{lm:overstratum} that $\pi$ is an isomorphism over the smooth dense open subset $S^{n}_{(1,\ldots,1)}X$, so that $\pi^{-1}(S^{n}_{(1, \ldots, 1)}X)$ is a dense open subset of the irreducible space $X^{[n]}$.
+The following \Cref{lm:overstratum} shows that $\pi$ is an isomorphism over the smooth dense open subset $S^{n}_{(1,\ldots,1)}X$, so that $\pi^{-1}(S^{n}_{(1, \ldots, 1)}X)$ is a dense open subset of the irreducible space $X^{[n]}$.
 Hence $\pi$ would be birational and we would have proven \Cref{thm:resolution}.
 
-Let us start then with the connectedness part:
+\begin{lm}\label{lm:overstratum}
+  Let $X$ be a smooth quasi-projective surface.
+  Then the Hilbert--Chow morphism $\pi$ is an isomorphism over the smooth open stratum $S^{n}_{(1,\ldots,1)}X$.
+  \begin{proof}
+    We use again \url{https://mathoverflow.net/a/264216} to reduce the problem to checking bijectivity on closed points over the smooth open stratum.
+    Recall that connectedness of $X^{[n]}$ is going to be proven in \Cref{lm:connected}, so bijectivity is indeed all there is left to show.
+    A closed subscheme $Z \subseteq X$ over a point in this open smooth stratum is suppoerted at $n$ points and has length $n$.
+    So there is no choice but to put over each point the corresponding structure sheaf, i.e.
+    \[ \mathscr{O}_{Z} = \bigoplus_{i = 1}^{n} \kappa(x_{i}) \]
+    where on the right hand side we mean the corresponding skyscraper sheaves.
+    Thus $\pi$ is bijective on closed points over $S^{n}_{(1, \ldots, 1)}X$.
+  \end{proof}
+\end{lm}
+
+Let us discuss then the connectedness part:
 
 \begin{lm}\label{lm:connected}
   In the situation of \Cref{thm:resolution}, $X^{[n]}$ is connected.
@@ -516,6 +511,15 @@ Let us start then with the connectedness part:
     Since $x$ is a closed point, we may identify this structure sheaf with the residue field $\kappa(x)$, because the field of fractions of the integral domain $A/\mathfrak{p}$ is isomorpic to $A_{\mathfrak{p}}/\mathfrak{p}A_{\mathfrak{p}}$ for any ring $A$ and any prime ideal $\mathfrak{p} \subseteq A$.
     The desired surjection corresponds to a choice of such an isomorphism, and the choices are precisely the non-zero scalars.
     Therefore the fibers of $\Phi$ are projective spaces, and in particular connected.
+\begin{lm}\label{lm:overstratum}
+  Let $X$ be a smooth quasi-projective surface.
+  Then the Hilbert--Chow morphism $\pi$ is an isomorphism over the smooth open stratum $S^{n}_{(1,\ldots,1)}X$.
+  \begin{proof}
+    We use again \url{https://mathoverflow.net/a/264216} to reduce the problem to checking bijectivity on closed points over the smooth open stratum.
+    The fact that $X^{[n]}$
+  \end{proof}
+\end{lm}
+
 
     If $n = 1$, then $X^{[1]} = X$ is connected by assumption.
     Assuming by induction that $X^{[n]}$ is connected for $n \geq 1$, we see now that $\Phi \colon X^{[n, n+1]} \to X^{[n]} \times X$ is a surjective morphism with connected fibers onto a connected space.
@@ -529,15 +533,19 @@ Now that we know that our Hilbert scheme is connected, it remains to show only t
   In the situation of \Cref{thm:resolution}, $X^{[n]}$ is smooth.
 
   \begin{proof}
-    We sketch the proof in \cite[Example 4.5.10]{hl97}.
-    The idea is to compute the dimension of the Zariski tangent space at every point of $Z \in X^{[n]}$ using the isomorphisms $T_{Z}X^{[n]} \cong \operatorname{Hom}(\mathscr{I}_{Z}, \mathscr{O}_{Z})$.
+    We argue analytic locally as in \Cref{prop:curves}.
+    If $\pi(Z) = \sum_{i = 1}^{k} \nu_{i} [x_{i}]$ with $x_{i} \neq x_{j}$ for $i \neq j$, then analytic locally we may find disjoint open neighborhoods of the $x_{i}$ in $X$, so we obtain an isomorphism $X^{[n]} \cong \prod_{i = 1}^{k} X^{[\nu_{i}]}$ around the point $Z$.
+    Therefore it suffices to show smoothness around a point $Z$ such that $\pi(Z) = n [x]$ for some $x \in X$, and this allows us to replace $X$ by $\mathbb{A}^{2}$, because in the analytic topology there is an open neighborhood of $x \in X$ which is isomorphic to $\mathbb{A}^{2}$.
+    Smoothness follows then from explicit descriptions of $(\mathbb{A}^{2})^{[n]}$ seen in previous talks, see \cite[Theorem 1.9]{nak99} or \cite[Theorem 18.7]{ms05}.
   \end{proof}
 \end{lm}
 
 As explained above, combining \Cref{lm:connected} and \Cref{lm:smoothness} we obtain \Cref{thm:resolution}.
 
 \begin{rem}
-  There are other ways to prove that $X^{[n]}$ is smooth and irreducible, see \cite[Theorem 1.15]{nak99} or \cite[Theorem 18.7]{ms05}.
+  One can also prove smoothness of $X^{[n]}$ with a direct computation of the dimension of
+  \[ T_{Z}X^{[n]} \cong \operatorname{Hom}(\mathscr{{I}_{Z}, \mathscr{O}_{X}}), \]
+  see \cite[Example 4.5.10]{hl97}.
 \end{rem}
 
 \appendix
