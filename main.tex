@@ -64,7 +64,7 @@
 \maketitle
 
 \begin{abstract}
-  Script for the seventh talk of the seminar on Heisenberg algebras and Hilbert schemes of points on surfaces organized by Mara Ungureanu during the Summer Term 2021 at the University of Freiburg.
+  Notes for the $7$-th talk of the seminar on Heisenberg algebras and Hilbert schemes of points on surfaces organized by Mara Ungureanu during the Summer Term 2021 at the University of Freiburg.
 \end{abstract}
 
 \tableofcontents
@@ -117,12 +117,11 @@ We will see that there is a morphism $\pi \colon X^{[n]} \to S^{n}X$, called the
   \begin{proof}
     Indeed, it follows from \Cref{cor:affinequotient} that
     \[ S^{n}(\mathbb{A}^{1}) = \operatorname{Spec}\left(\mathbb{C}[x_{1}, \ldots, x_{n}]^{\mathfrak{S}_{n}}\right), \]
-    so the claim follows from the \href{https://en.wikipedia.org/wiki/Elementary_symmetric_polynomial#Fundamental_theorem_of_symmetric_polynomials}{fundamental theorem of symmetric polynomials}.
+    so the claim follows from the fundamental theorem of symmetric polynomials.
   \end{proof}
 \end{exmp}
 
 In order to show later that the yet-to-be-defined Hilbert--Chow morphism $\pi \colon X^{[n]} \to S^{n}X$ is a resolution of singularities in the case of surfaces, it will be convenient to consider the following stratification of $S^{n}X$.
-
 Let $k \in \mathbb{N}_{>0}$ such that $k \leq n$.
 Consider a tuple $\nu = (\nu_{1}, \ldots, \nu_{k})$ with $\nu_{1} \geq \nu_{2} \geq \ldots \geq \nu_{k} > 0$ such that $n = \nu_{1} + \ldots + \nu_{k}$.
 Call this a \textit{partition of $n$} of \textit{length} $l(\nu) := k$.
@@ -215,7 +214,7 @@ Then, for each partition $\nu$ of $n$, we define
   By \Cref{lm:smoothstratum} we only need to study the points outside of $S^{2}_{(1,1)}\mathbb{A}^{2}$.
   Consider for example the point $2[(0,0)]$.
   We know that $S^{2}\mathbb{A}^{2}$ has dimension $4$, because it is the quotient of the $4$-dimensional variety $\mathbb{A}^{2} \times \mathbb{A}^{2}$ by the action of a finite group.
-  More precisely, if we identify $(\mathbb{A}^{2})^{\times 2}$ with $\mathbb{A}^{4}$ and $\mathfrak{S}_{2}$ with $\mathbb{Z}/2\mathbb{Z}$, the action of $1 + 2\mathbb{Z} \in \mathbb{Z}/2\mathbb{Z}$ on the coordinate ring $A := \mathbb{C}[x_{1}, y_{1}, x_{2}, y_{2}]$ is given by the $\mathbb{C}$-algebra homomorphism uniquely determined by
+  More precisely, if we identify $(\mathbb{A}^{2})^{\times 2}$ with $\mathbb{A}^{4}$ and $\mathfrak{S}_{2}$ with $\mathbb{Z}/2\mathbb{Z}$, the action of $1 + 2\mathbb{Z} \in \mathbb{Z}/2\mathbb{Z}$ on the coordinate ring $A := \mathbb{C}[x_{1}, y_{1}, x_{2}, y_{2}]$ is given by the $\mathbb{C}$-algebra morphism uniquely determined by
   \begin{align*}
     x_{1} & \mapsto x_{2}, \\
     y_{1} & \mapsto y_{2}, \\
@@ -236,7 +235,7 @@ Then, for each partition $\nu$ of $n$, we define
   So suppose we have polynomials $f_{1}, \ldots, f_{4} \in A^{\mathbb{Z}/2\mathbb{Z}}$ such that there exists some polynomial $g \in \mathfrak{m}^{2}$ such that
   \[ x_{1}y_{1} + x_{2}y_{2} + f_{1}(x_{1} + x_{2}) + f_{2}(y_{1} + y_{2}) + f_{3}x_{1}x_{2} + f_{4}y_{1}y_{2} = g. \]
   Since polynomials in $\mathfrak{m}$ have zero constant term, any non-zero monomial appearing as a term of $g$ has total degree at least $2$.
-  We claim first that the total degree $2$ part of $g$ has to be zero.
+  We claim first that the total degree $2$ part of $g$ has to be non-zero.
   Indeed, we can argue by contradiction looking at the total degree $2$ part of the previous equation.
   The only homogeneous polynomials of total degree $1$ in $\mathfrak{m}$ are the $\mathbb{C}$-linear combinations of $x_{1} + x_{2}$ and $y_{1} + y_{2}$.
   So assuming that the total degree $2$ part of $g$ is zero, we may write the total degree $2$ part of the previous equation as
@@ -275,7 +274,7 @@ Then, for each partition $\nu$ of $n$, we define
 
   More generally, the same arguments show that $S^{n}\mathbb{A}^{2}$ is singular at $n[(0,\ldots,0)]$ for any $n \geq 2$, cf.~\cite[Example 3.5]{rot16}.
   But for $n = 2$ we can still say a bit more about the geometry of the singularities, so let us do that following \cite[Example 3.6]{rot16}.
-  We consider the basis $(1, 0, 1, 0)$, $(0, 1, 0, 1)$, $(1, 0, -1, 0)$ and $(0, 1, 0, -1)$ on $\mathbb{A}^{4}$, so that the action of $\mathbb{Z}/2\mathbb{Z}$ on the new coordinate ring $R = \mathbb{C}[x, y, u, v]$ is given by
+  We consider the basis $(1, 0, 1, 0)$, $(0, 1, 0, 1)$, $(1, 0, -1, 0)$ and $(0, 1, 0, -1)$ on $\mathbb{A}^{4}$, so that the action of $\mathbb{Z}/2\mathbb{Z}$ on the new coordinate ring $R := \mathbb{C}[x, y, u, v]$ is given by
   \begin{align*}
     x \mapsto x, \\
     y \mapsto y, \\
@@ -290,7 +289,7 @@ Then, for each partition $\nu$ of $n$, we define
   The result will be a $\mathbb{Z}/2\mathbb{Z}$-invariant polynomial $h$ with the property that $h(-u,-v) = -h(u,v)$ for all $(u, v) \in \mathbb{A}^{2}$.
   It follows from $\mathbb{Z}/2\mathbb{Z}$-invariance that we must have $h(u,v) = 0$ for all $(u, v) \in \mathbb{A}^{2}$, hence $h = 0$ and $f \in \mathbb{C}[u^{2},uv,v^{2}]$.
   This shows that the coordinate ring of the quotient of $\mathbb{A}^{2}$ by this $\mathbb{Z}/2\mathbb{Z}$-action is $\mathbb{C}[u^{2}, uv, v^{2}]$.
-  We have a surjective $\mathbb{C}$-algebra homomorphism
+  We have a surjective $\mathbb{C}$-algebra morphism
   \begin{align*}
     \phi \colon \mathbb{C}[a,b,c] & \longrightarrow \mathbb{C}[u^{2}, uv, v^{2}] \\
     a & \longmapsto u^{2}, \\
@@ -357,7 +356,7 @@ Then, for each partition $\nu$ of $n$, we define
     That is, we have a canonical ring morphism
     \[ \varphi \colon (A^{\otimes_{\mathbb{C}} n})^{\mathfrak{S}_{n}} \to B, \]
     as we wanted.
-    The element $b \in B$ that we obtain from an $\mathfrak{S}_{n}$-invariant tensor $a_{1} \otimes \ldots \otimes a_{n} \in A^{\otimes_{\mathbb{C}}n}$ is given by
+    The element $b \in B$ that we obtain from a tensor $a_{1} \otimes \ldots \otimes a_{n} \in A^{\otimes_{\mathbb{C}}n}$ is given by
     \[ \frac{1}{n!}\operatorname{coeff}(t_{1} \cdots t_{n}, \det(t_{1}f(a_{1}) + \cdots + t_{n}f(a_{n}))), \]
     see also \cite[Proposition 2.17]{ber08}.
 
@@ -448,7 +447,7 @@ More generally:
     The idea is to reduce to this case arguing locally analytically, because in the analytic topology we have $X \cong \mathbb{A}^{1}$ locally.
     The completion of the algebraic local ring at a closed point is isomorphic to the completion of the analytic local ring at the corresponding point of the associated complex analytic space \cite[Proposition 3]{ser56}.
     A noetherian local ring is regular if and only if its completion is regular \cite[\href{https://stacks.math.columbia.edu/tag/07NY}{Tag 07NY}]{stacks-project}.
-    Finally, taking subrings of invariants commutes with completions of local rings, because it commutes more generally with flat base change, cf.~the answer in \url{https://math.stackexchange.com/questions/853019/quotient-of-smooth-variety-is-smooth-if-fixed-point-set-is-a-divisor}.
+    Finally, taking subrings of invariants commutes with completions of local rings, because it commutes more generally with flat base change, cf.~\url{https://math.stackexchange.com/a/2706992}.
   \end{proof}
 \end{prop}
 
@@ -467,14 +466,13 @@ The following \Cref{lm:overstratum} shows that $\pi$ is an isomorphism over the 
 Hence $\pi$ would be birational and we would have proven \Cref{thm:resolution}.
 
 \begin{lm}\label{lm:overstratum}
-  Let $X$ be a smooth quasi-projective surface.
-  Then the Hilbert--Chow morphism $\pi$ is an isomorphism over the smooth open stratum $S^{n}_{(1,\ldots,1)}X$.
+  In the situation of \Cref{thm:resolution}, the Hilbert--Chow morphism $\pi$ is an isomorphism over the smooth open stratum $S^{n}_{(1,\ldots,1)}X$.
   \begin{proof}
     We use again \url{https://mathoverflow.net/a/264216} to reduce the problem to checking bijectivity on closed points over the smooth open stratum.
     Connectedness of $X^{[n]}$ is going to be proven in \Cref{lm:connected}, so bijectivity is indeed all there is left to show.
     A closed subscheme $Z \subseteq X$ over a point in this open smooth stratum is suppoerted at $n$ points and has length $n$.
     So there is no choice but to put over each point the corresponding structure sheaf, i.e.
-    \[ \mathscr{O}_{Z} = \bigoplus_{i = 1}^{n} \kappa(x_{i}) \]
+    \[ \mathscr{O}_{Z} = \bigoplus_{i = 1}^{n} \kappa(x_{i}), \]
     where on the right hand side we mean the corresponding skyscraper sheaves.
     Thus $\pi$ is bijective on closed points over $S^{n}_{(1, \ldots, 1)}X$.
   \end{proof}
@@ -511,15 +509,6 @@ Let us discuss then the connectedness part:
     Since $x$ is a closed point, we may identify this structure sheaf with the residue field $\kappa(x)$, because the field of fractions of the integral domain $A/\mathfrak{p}$ is isomorpic to $A_{\mathfrak{p}}/\mathfrak{p}A_{\mathfrak{p}}$ for any ring $A$ and any prime ideal $\mathfrak{p} \subseteq A$.
     The desired surjection corresponds to a choice of such an isomorphism, and the choices are precisely the non-zero scalars.
     Therefore the fibers of $\Phi$ are projective spaces, and in particular connected.
-\begin{lm}\label{lm:overstratum}
-  Let $X$ be a smooth quasi-projective surface.
-  Then the Hilbert--Chow morphism $\pi$ is an isomorphism over the smooth open stratum $S^{n}_{(1,\ldots,1)}X$.
-  \begin{proof}
-    We use again \url{https://mathoverflow.net/a/264216} to reduce the problem to checking bijectivity on closed points over the smooth open stratum.
-    The fact that $X^{[n]}$
-  \end{proof}
-\end{lm}
-
 
     If $n = 1$, then $X^{[1]} = X$ is connected by assumption.
     Assuming by induction that $X^{[n]}$ is connected for $n \geq 1$, we see now that $\Phi \colon X^{[n, n+1]} \to X^{[n]} \times X$ is a surjective morphism with connected fibers onto a connected space.
@@ -534,7 +523,7 @@ Now that we know that our Hilbert scheme is connected, it remains to show only t
 
   \begin{proof}
     We argue analytic locally as in \Cref{prop:curves}.
-    If $\pi(Z) = \sum_{i = 1}^{k} \nu_{i} [x_{i}]$ with $x_{i} \neq x_{j}$ for $i \neq j$, then analytic locally we may find disjoint open neighborhoods of the $x_{i}$ in $X$, so we obtain an isomorphism $X^{[n]} \cong \prod_{i = 1}^{k} X^{[\nu_{i}]}$ around the point $Z$.
+    If $\pi(Z) = \sum_{i = 1}^{k} \nu_{i} [x_{i}]$ with $x_{i} \neq x_{j}$ for $i \neq j$, then analytic locally we may find disjoint open neighborhoods $U_{i}$ of the $x_{i}$ in $X$, so we obtain an isomorphism $X^{[n]} \cong \prod_{i = 1}^{k} U_{i}^{[\nu_{i}]}$ around the point $Z$.
     Therefore it suffices to show smoothness around a point $Z$ such that $\pi(Z) = n [x]$ for some $x \in X$, and this allows us to replace $X$ by $\mathbb{A}^{2}$, because in the analytic topology there is an open neighborhood of $x \in X$ which is isomorphic to $\mathbb{A}^{2}$.
     Smoothness follows then from explicit descriptions of $(\mathbb{A}^{2})^{[n]}$ seen in previous talks, see \cite[Theorem 1.9]{nak99} or \cite[Theorem 18.7]{ms05}.
   \end{proof}
@@ -556,21 +545,22 @@ We will mostly follow the notes in \cite[Appendix A]{mus11} in this appendix.
 
 \begin{rem}
   Let $G$ be a finite group and let $X = \operatorname{Spec}{A}$ be an affine variety.
-  An action of $G$ on $A$ by $\mathbb{C}$-algebra automorphisms \textit{from the left} is the same as an aciton of $G$ on $X$ by $\mathbb{C}$-scheme morphisms \textit{from the right}.
+  An action of $G$ on $A$ by $\mathbb{C}$-algebra morphisms \textit{from the left} is the same as an aciton of $G$ on $X$ by $\mathbb{C}$-scheme morphisms \textit{from the right}.
   The two things are more explicitly related as follows:
   \[ (g \cdot f)(x) = f(x \cdot g). \]
 \end{rem}
 
-From now on, by an \textit{action} of a finite group $G$ on a $\mathbb{C}$-scheme (resp.~on a $\mathbb{C}$-algebra) we will always mean a right action via $\mathbb{C}$-algebra morphisms (resp.~a left action via $\mathbb{C}$-scheme morphisms).
+From now on, by an \textit{action} of a finite group $G$ on a $\mathbb{C}$-scheme (resp.~on a $\mathbb{C}$-algebra) we will always mean a right action via $\mathbb{C}$-scheme morphisms (resp.~a left action via $\mathbb{C}$-algebra morphisms).
+
 There are various notions of quotients in algebraic geometry, cf.~\cite[\S 0.1]{mfk94}.
 Fortunately, in the case of finite groups, the various notions agree.
 
 \begin{defn}[Categorical quotient]
   Let $\sigma \colon X \times G \to X$ be an action of a finite group $G$ on a $\mathbb{C}$-scheme $X$.
   A \textit{categorical quotient} of $X$ by $G$ is a pair $(Y,q)$ consisting of a $\mathbb{C}$-scheme $Y$ and a $\mathbb{C}$-scheme morphism $q \colon X \to Y$ with the following properties:
-  \begin{enumerate}[label=\roman*)]
-    \item $q$ is $G$-invariant, i.e.~we have $q \circ \sigma = q \circ p_{1}$, where $p_{1} \colon X \times G \to X$ is the projection.
-    \item $q$ is universal with respect to the property in $i)$, i.e.~for every pair $(Z,\psi)$ consisting of a $\mathbb{C}$-scheme $Z$ and a $G$-invariant $\mathbb{C}$-scheme morphism $\psi \colon X \to Z$, there exists a unique $\mathbb{C}$-scheme morphism $\bar{\psi} \colon Y \to Z$ such that $\bar{\psi} \circ q = \psi$.
+  \begin{enumerate}[label=\textit{\roman*)}]
+    \item The morphism $q$ is $G$-invariant, i.e.~we have $q \circ \sigma = q \circ p_{1}$, where $p_{1} \colon X \times G \to X$ is the projection.
+    \item The morphism $q$ is universal with respect to the property in $i)$, i.e.~for every pair $(Z,\psi)$ consisting of a $\mathbb{C}$-scheme $Z$ and a $G$-invariant $\mathbb{C}$-scheme morphism $\psi \colon X \to Z$, there exists a unique $\mathbb{C}$-scheme morphism $\bar{\psi} \colon Y \to Z$ such that $\bar{\psi} \circ q = \psi$.
   \end{enumerate}
 \end{defn}
 
@@ -586,7 +576,7 @@ Fortunately, in the case of finite groups, the various notions agree.
 
     \begin{center}
       \begin{tikzcd}
-        & & X \arrow[bend right=30]{dll}{q'} \arrow{dl}{q} \arrow{dr}{q'} \arrow[bend left=30]{drr}{q} & & \\
+        & & X \arrow[swap, bend right=30]{dll}{q'} \arrow[swap]{dl}{q} \arrow{dr}{q'} \arrow[bend left=30]{drr}{q} & & \\
         Y' \arrow{r}{\bar{q}} & Y \arrow{rr}{\bar{q}'} & & Y' \arrow{r}{\bar{q}} & Y
       \end{tikzcd}
     \end{center}
@@ -604,9 +594,9 @@ Fortunately, in the case of finite groups, the various notions agree.
   Let $\sigma \colon X \times G \to X$ be an action of a finite group $G$ on a finite type\footnote{This assumption makes condition $(2)$ below less cumbersome to formulate, cf.~\cite[Definition 0.6]{mfk94}.} $\mathbb{C}$-scheme $X$.
   A \textit{geometric quotient} of $X$ by $G$ is a pair $(Y, q)$ consisting of a $\mathbb{C}$-scheme $Y$ and a $\mathbb{C}$-scheme morphism $q \colon X \to Y$ with the following properties:
   \begin{enumerate}
-    \item $q$ is $G$-invariant, i.e.~property $i)$ above holds.
-    \item $q$ is surjective and the fibers of $q$ over closed points of $Y$ are precisely the orbits of the closed points of $X$.
-    \item $Y$ carries the quotient topology induced by $q$, i.e.~a subset $V \subseteq Y$ is open if and only if $q^{-1}(V) \subseteq X$ is open.
+    \item The morphism $q$ is $G$-invariant, i.e.~property $i)$ above holds.
+    \item The morphism $q$ is surjective and the fibers of $q$ over closed points of $Y$ are precisely the orbits of the closed points of $X$.
+    \item The scheme $Y$ carries the quotient topology induced by $q$, i.e.~a subset $V \subseteq Y$ is open if and only if $q^{-1}(V) \subseteq X$ is open.
     \item The structure sheaf $\mathscr{O}_{Y}$ is the subsheaf of $q_{*}\mathscr{O}_{X}$ consisting of $G$-invariant functions, i.e.~if $f \in \Gamma(V, q_{*}\mathscr{O}_{X}) = \Gamma(q^{-1}(V),\mathscr{O}_{X})$, then $f \in \Gamma(V, \mathscr{O}_{Y})$ if and only if
 
       \begin{center}
@@ -630,11 +620,11 @@ Fortunately, in the case of finite groups, the various notions agree.
   \begin{proof}
     We follow the proof given in \cite[Proposition 0.1]{mfk94}.
     Suppose we are given another pair $(Z, \psi)$ with the property $i)$ above, i.e.~such that $\psi \colon X \to Z$ is a $G$-invariant $\mathbb{C}$-scheme morphism.
-    Recall from \cite[Exercise II.2.4]{har77} that if $Z = \operatorname{Spec}(B)$ was affine, then $\mathbb{C}$-scheme morphisms $Y \to Z$ correspond bijectively to $\mathbb{C}$-algebra morphisms $B \to \Gamma(Y,\mathscr{O}_{Y})$.
+    Recall from \cite[Exercise II.2.4]{har77} that if $Z = \operatorname{Spec}(B)$ was affine, then $\mathbb{C}$-scheme morphisms $Y \to Z$ would correspond bijectively to $\mathbb{C}$-algebra morphisms $B \to \Gamma(Y,\mathscr{O}_{Y})$.
     The idea is to use this combined with our understanding of $\Gamma(Y,\mathscr{O}_{Y})$ given by property $(4)$ above.
 
     So let $\{ W_{i} \}_{i \in I}$ be an affine open cover of $Z$, say $W_{i} = \operatorname{Spec}(B_{i})$ for each $i \in I$.
-    Since $\psi$ is $G$-invariant, each $U_{i} := \psi^{-1}(W_{i})$ is an invariant open subset in $X$.
+    Since $\psi$ is $G$-invariant, each $U_{i} := \psi^{-1}(W_{i})$ is a $G$-invariant open subset in $X$.
     Therefore $q^{-1}(q(\psi^{-1}(W_{i}))) = \psi^{-1}(W_{i})$.
     Let us call $V_{i} := q(\psi^{-1}(W_{i}))$ for each $i \in I$.
     Since $Y$ carries the quotient topology induced by $q$ and $q^{-1}(V_{i}) = \psi^{-1}(W_{i})$ is open in $X$, we deduce that $V_{i}$ is also open in $Y$ for each $i \in I$.
@@ -645,7 +635,7 @@ Fortunately, in the case of finite groups, the various notions agree.
     Then, since $\psi = \bar{\psi} \circ q$, we have
     \[ \bar{\psi}(V_{i}) = \bar{\psi}(q(\psi^{-1}(W_{i}))) = \psi(\psi^{-1}(W_{i})) \subseteq W_{i} \]
     for each $i \in I$.
-    So for each $i \in I$, our factorization $\bar{\psi} \colon Y \to Z$ would yield a morphism $\bar{\psi}_{i} \colon V_{i} \to W_{i}$ such that $\psi_{i} = \bar{\psi}_{i} \circ q_{i}$, where by $q_{i} \colon U_{i} \to V_{i}$ and $\psi_{i} \colon U_{i} \to W_{i}$ are the morphisms induced by $q$ and $\psi$ respectively.
+    So for each $i \in I$, our factorization $\bar{\psi} \colon Y \to Z$ would yield a morphism $\bar{\psi}_{i} \colon V_{i} \to W_{i}$ such that $\psi_{i} = \bar{\psi}_{i} \circ q_{i}$, where $q_{i} \colon U_{i} \to V_{i}$ and $\psi_{i} \colon U_{i} \to W_{i}$ are the morphisms induced by $q$ and $\psi$ respectively.
     Since the target $W_{i} = \operatorname{Spec}(B_{i})$ of $\bar{\psi}_{i}$ is affine, \cite[Exercise II.2.4]{har77} tells us that $\bar{\psi}_{i}$ is uniquely determined by the correspdonding morphism of $\mathbb{C}$-algberas $h_{i} \colon B_{i} \to \Gamma(V_{i}, \mathscr{O}_{Y})$.
     Commutativity of the triangle of $\mathbb{C}$-schemes
     
@@ -690,9 +680,10 @@ Fortunately, in the case of finite groups, the various notions agree.
 \end{prop}
 
 \begin{lm}\label{lm:finitetype}
-  Let $G$ be a finite group.
-  Let $A$ be a finite type $\mathbb{C}$-algebra and assume that the group $G$ acts on $A$ from the left by $\mathbb{C}$-algebra automorphisms.
+  Let $G$ be a finite group acting on a $\mathbb{C}$-algebra $A$ of finite type over $\mathbb{C}$.
   Then the set of invariant elements $A^{G}$ is a $\mathbb{C}$-subalgebra of $A$ which is of finite type over $\mathbb{C}$.
+  In particular, $X := \operatorname{Spec}(A)$ and $Y := \operatorname{Spec}(A^{G})$ are finite type $\mathbb{C}$-schemes.
+  We denote by $q \colon X \to Y$ the $\mathbb{C}$-scheme morphism induced by the inclusion $A^{G} \subseteq A$.
 
   \begin{proof}
     Let $\rho \colon G \to \operatorname{Aut}_{\mathbb{C}}(A)$ be the given left action.
@@ -700,16 +691,16 @@ Fortunately, in the case of finite groups, the various notions agree.
     \[ A^{G} := \bigcap_{g \in G} \{ a \in A \mid \rho(g)(a) = a \} \]
     is a $\mathbb{C}$-subalgebra of $A$.
     \begin{itemize}
-      \item $A^{G} \subseteq A$ is a subgroup.
+      \item The subset $A^{G} \subseteq A$ is a subgroup.
         Indeed, since $\rho(g)$ is a ring morphism for every $g \in G$, we have $0 \in A^{G}$.
         And if $a_{1}, a_{2} \in A^{G}$ and $g \in G$, then it follows again from $\rho(g)$ being a ring morphism that
         \[ \rho(g)(a_{1}+a_{2}) = \rho(g)(a_{1}) + \rho(g)(a_{2}) = a_{1} + a_{2}. \]
-      \item $A^{G} \subseteq A$ is a subring.
+      \item The subset $A^{G} \subseteq A$ is a subring.
         We have seen already that it is a subgroup.
         Since $\rho(g)$ is a ring morphism for every $g \in G$, we also have $1 \in A^{G}$, so it remains only to show that $A^{G}$ is closed under products.
         If $a_{1}, a_{2} \in A^{G}$ and $g \in G$, then using once again that $\rho(g)$ is a ring morphism we see that
         \[ \rho(g)(a_{1}a_{2}) = \rho(g)(a_{1})\rho(g)(a_{2}) = a_{1}a_{2}. \]
-      \item $A^{G} \subseteq A$ is a $\mathbb{C}$-vector subspace.
+      \item The subset $A^{G} \subseteq A$ is a $\mathbb{C}$-vector subspace.
         We have seen already that it is a subgroup, so it remains only to show that $A^{G}$ is closed under scalar product.
         If $a \in A^{G}$, $\lambda \in \mathbb{C}$ and $g \in G$, then we use the assumption that $\rho(g)$ is $\mathbb{C}$-linear to deduce that
         \[ \rho(g)(\lambda a) = \lambda \rho(g)(a) = \lambda a. \]
@@ -729,7 +720,7 @@ Fortunately, in the case of finite groups, the various notions agree.
     In order to construct such $B$, we first note that the inclusion $A^{G} \subseteq A$ is an integral ring extension.
     Indeed, every $a \in A$ is a root of the monic polynomial
     \[ P_{a}(t) := \prod_{g \in G}(t - \rho(g)(a)), \]
-    whose coefficients are in $A^{G}$ by Cardano--Vieta's formulas.
+    whose coefficients are in $A^{G}$ by the Cardano--Vieta formulas.
     Let $\alpha_{1}, \ldots, \alpha_{m} \in A$ be generators of $A$ as an algebra over $\mathbb{C}$.
     Let $\{ c_{i,j} \}_{j = 0}^{d_{i}}$ be the coefficients of $P_{\alpha_{i}}$ for each $i \in \{1, \ldots, m\}$.
     Then define $B$ to be the $\mathbb{C}$-subalgebra of $A$ generated by all these coefficients $\{ c_{1,0}, \ldots, c_{1,d_{1}}, c_{2,0}, \ldots, c_{m,d_{m}} \}$.
@@ -743,11 +734,11 @@ Fortunately, in the case of finite groups, the various notions agree.
 \end{lm}
 
 \begin{lm}\label{lm:finitesurjective}
-  In the situation of \Cref{lm:finitetype}, the induced $\mathbb{C}$-scheme morphism $q \colon \operatorname{Spec}(A) \to \operatorname{Spec}(A^{G})$ is finite and surjective.
+  In the situation of \Cref{lm:finitetype}, the $\mathbb{C}$-scheme morphism $q \colon X \to Y$ is finite and surjective.
 
   \begin{proof}
     It follows from the proof of \Cref{lm:finitetype} that $A$ is finitely generated as an $A^{G}$-module, so the induced morphism $q$ is finite by definition \cite[p.~84]{har77}.
-    Surjectivity follows from \cite[\href{https://stacks.math.columbia.edu/tag/00GQ}{Tag 00GQ}]{stacks-project}.
+    Surjectivity follows from the going-up theorem, or more precisely from one of the steps in its proof \cite[Theorem 5.10]{am69}.
   \end{proof}
 \end{lm}
 
@@ -803,7 +794,7 @@ Fortunately, in the case of finite groups, the various notions agree.
 \end{lm}
 
 \begin{lm}\label{lm:topology}
-  In the situation of \Cref{lm:finitetype}, the topology on $\operatorname{Spec}(A^{G})$ is the quotient topology induced by $q$.
+  In the situation of \Cref{lm:finitetype}, the topology on $Y$ is the quotient topology induced by $q \colon X \to Y$.
   
   \begin{proof}
     We need to show that a subset $U \subseteq \operatorname{Spec}(A^{G})$ is open as soon as $q^{-1}(U)$ is open.
@@ -818,8 +809,7 @@ Fortunately, in the case of finite groups, the various notions agree.
 \end{lm}
 
 \begin{lm}\label{lm:invariantslocalization}
-  In the situation of \Cref{lm:finitetype}, let us denote $X = \operatorname{Spec}(A)$ and $Y = \operatorname{Spec}(A^{G})$.
-  Then $\mathscr{O}_{Y}$ is the subsheaf of $q_{*}\mathscr{O}_{X}$ consisting of invariant functions, i.e.~if $f \in \Gamma(V,q_{*}\mathscr{O}_{X}) = \Gamma(q^{-1}(V),\mathscr{O}_{X})$, then $f \in \Gamma(V, \mathscr{O}_{Y})$ if and only if the following diagram commutes:
+  In the situation of \Cref{lm:finitetype}, the structure sheaf $\mathscr{O}_{Y}$ is the subsheaf of $q_{*}\mathscr{O}_{X}$ consisting of invariant functions, i.e.~if $f \in \Gamma(V,q_{*}\mathscr{O}_{X}) = \Gamma(q^{-1}(V),\mathscr{O}_{X})$, then $f \in \Gamma(V, \mathscr{O}_{Y})$ if and only if the following diagram commutes:
   
   \begin{center}
     \begin{tikzcd}
@@ -835,15 +825,15 @@ Fortunately, in the case of finite groups, the various notions agree.
 \end{lm}
 
 \begin{cor}\label{cor:affinequotient}
-  In the situation of \Cref{lm:finitetype}, the induced morphism $q \colon \operatorname{Spec}(A) \to \operatorname{Spec}(A^{G})$ is a geometric quotient of $\operatorname{Spec}(A)$ by $G$.
+  In the situation of \Cref{lm:finitetype}, the pair $(Y,q)$ is a geometric quotient of $X$ by $G$.
 
   \begin{proof}
     Each of the necessary properties was already proven in the lemmas above:
     \begin{enumerate}
       \item $G$-invariance follows from \Cref{lm:fibers}.
       \item Surjectivity follows from \Cref{lm:finitesurjective}, and the fibers over closed points being precisely the orbits of closed points follows from \Cref{lm:fibers}.
-      \item We have seen that $\operatorname{Spec}(A^{G})$ carries the quotient topology induced by $q$ in \Cref{lm:topology}.
-      \item That the structure sheaf of $\operatorname{Spec}(A^{G})$ agrees with the subsheaf of $G$-invariant functions of $q_{*}\mathscr{O}_{\operatorname{Spec}(A)}$ was checked in \Cref{lm:invariantslocalization}.
+      \item We have seen that $Y$ carries the quotient topology induced by $q$ in \Cref{lm:topology}.
+      \item That the structure sheaf of $Y$ agrees with the subsheaf of $G$-invariant functions of $q_{*}\mathscr{O}_{X}$ was checked in \Cref{lm:invariantslocalization}.
     \end{enumerate}
     So $q$ is indeed a geometric quotient.  
   \end{proof}
@@ -851,7 +841,7 @@ Fortunately, in the case of finite groups, the various notions agree.
 \end{cor}
 
 \begin{rem}\label{rem:loct2}
-  Recall from \Cref{rem:loct} that being a geometric quotient is local on the target, so in the situation of \Cref{cor:affinequotient} we can moreover say that $q|_{q^{-1}(V)} \colon q^{-1}(V) \to V$ is a geometric quotient of the $G$-invariant open $q^{-1}(V)$ by $G$ for every open subset $V \subseteq \operatorname{Spec}(A^{G})$.
+  Recall from \Cref{rem:loct} that being a geometric quotient is local on the target, so in the situation of \Cref{cor:affinequotient} we can moreover say that $q|_{q^{-1}(V)} \colon q^{-1}(V) \to V$ is a geometric quotient of the $G$-invariant open $q^{-1}(V)$ by $G$ for every open subset $V \subseteq Y$.
 \end{rem}
 
 \begin{lm}\label{lm:affinecover}
@@ -863,7 +853,8 @@ Fortunately, in the case of finite groups, the various notions agree.
     For each $i \in I$ we get an action of $G$ on the affine scheme $U_{i}$, which is of finite type over $\mathbb{C}$.
     By \Cref{cor:affinequotient} we may form the geometric quotient $q_{i} \colon U_{i} \to U_{i}/G$ for each $i \in I$.
     For $i, j \in I$ let us denote by $U_{i,j}$ the intersection $U_{i} \cap U_{j}$.
-    The geometric quotient $q_{i}$ is by definition surjective, so we have $q_{i}^{-1}(q_{i}(U_{i,j})) = U_{i,j}$.
+    Since $U_{i}$ and $U_{j}$ are $G$-invariant, so is $U_{i,j}$.
+    Thus we have $q_{i}^{-1}(q_{i}(U_{i,j})) = U_{i,j}$.
     And $U_{i}/G$ carries by definition the quotient topology induced by $q_{i}$, so $q_{i}(U_{i,j})$ is open in $U_{i}/G$.
     We denote by $q_{i,j} \colon q_{i}^{-1}(q_{i}(U_{i,j})) \to q_{i}(U_{i,j})$ the corresponding corestriction for all $i, j \in I$.
     Since geometric quotients are local on the target, both $q_{i,j}$ and $q_{j,i}$ are geometric quotients of $U_{i,j}$ by $G$.
@@ -878,10 +869,10 @@ Fortunately, in the case of finite groups, the various notions agree.
 
     \begin{figure}[H]
       \centering
-      \includegraphics[scale=.9]{pictures/glueing.png}
+      \includegraphics[scale=.75]{pictures/glueing.png}
     \end{figure}
 
-    So in this case we do have $q_{j}(U_{i,j,k}) = q_{j}(U_{i,j}) \cap q_{j}(U_{j,k})$.
+    So in this case we do have $q_{j}(U_{i,j}) \cap q_{j}(U_{j,k}) = q_{j}(U_{i,j,k})$.
     And similarly $q_{i}(U_{i,j}) \cap q_{i}(U_{i,k}) = q_{i}(U_{i,j,k})$, so we need to show that $\varphi_{i,j}(q_{i}(U_{i,j,k})) = q_{j}(U_{i,j,k})$.
     But by construction we have $\varphi_{i,j} \circ q_{i,j} = q_{j,i}$, and this implies the desired equality.
     Hence $\varphi_{i,k}|_{q_{i}(U_{i,j,k})}$ and $\varphi_{j,k} \circ \varphi_{i,j}|_{q_{i}(U_{i,j,k})}$ are two isomorphisms between $q_{i}(U_{i,j,k})$ and $q_{k}(U_{i,k}) \cap q_{k}(U_{i,j}) = q_{k}(U_{i,j,k})$.
@@ -897,7 +888,7 @@ Fortunately, in the case of finite groups, the various notions agree.
   Let $X$ be a quasi-projective $\mathbb{C}$-scheme and let $x_{1},\ldots, x_{m} \in X$ be finitely many closed points.
   Then there exists an affine open subset $U \subseteq X$ such that $x_{i} \in U$ for all $i \in \{ 1, \ldots, m\}$.
   \begin{proof}
-    We reproduce here the argument given in the notes that we are following most of the time, cited above.
+    We reproduce here the argument given in \cite[Appendix A]{mus11}.
     We regard $X$ as a locally closed subset of some $\mathbb{P}^{n}$.
     Then we look at its Zariski closure $\bar{X}$.
     If we find a hypersurface $H \subseteq \mathbb{P}^{n}$ which contains $\bar{X} \setminus X$ but not $x_{1}, \ldots, x_{m}$, then we are done, because $\mathbb{P}^{n} \setminus H$ is affine\footnote{If $H$ is a hyperplane, then $\mathbb{P}^{n} \setminus H \cong \mathbb{A}^{n}$.
@@ -913,13 +904,14 @@ Fortunately, in the case of finite groups, the various notions agree.
     And $x_{i} \not \in \bar{X} \setminus X$, because $x_{i} \in X$ by assumption.
     So in any case we have $I \not \subset \mathfrak{p}_{i}$.
     Hence we may apply graded prime avoidance to deduce the existence of a homogeneous polynomial of positive degree $f \in I$ which is not in any of the $\mathfrak{p}_{i}$, i.e.~such that $x_{i}$ is not in the hypersurface defined by $f$ for any $i \in \{1, \ldots, m\}$.
+    And since $f \in I$, we have $(f) \subseteq I$, thus $\bar{X} \setminus X \subseteq V(I) \subseteq V(f)$.
   \end{proof}
 \end{lm}
 
 \begin{thm}\label{thm:quotient}
   Let $\sigma \colon X \times G \to X$ be an action of a finite group on a quasi-projective $\mathbb{C}$-scheme.
   Then the geometric quotient $q \colon X \to X/G$ of $X$ by $G$ exists.
-  The resulting $\mathbb{C}$-scheme $X/G$ is separated and of finite type over $\mathbb{C}$.
+  The resulting $\mathbb{C}$-scheme $X/G$ is separated and of finite type\footnote{In fact it is again quasi-projective, cf.~\cite[Proposition IV.1.5]{knu71}.} over $\mathbb{C}$.
   Moreover, let $\mathbf{P}$ be any of the following properties:
   \begin{enumerate}[label=(\alph*)]
     \item irreducible,
@@ -949,10 +941,10 @@ Fortunately, in the case of finite groups, the various notions agree.
     
     About the remaining properties $\mathbf{P}$ in the statement:
     \begin{enumerate}[label=(\alph*)]
-      \item Since $q$ is surjective, so $X/G$ is irreducible as soon as $X$ is.
+      \item Since $q$ is surjective, $X/G$ is irreducible as soon as $X$ is.
       \item Reducedness can be checked locally on $X/G$, so by construction of $X/G$ we may assume that we are in the situation of \Cref{cor:affinequotient}.
         But the corresponding ring morphism $A^{G} \to A$ is just the inclusion, so $A^{G}$ is reduced as soon as $A$ is reduced.
-      \item The same argument as for reducedness applies, or one can also argue using that being integral is equivalent to being reduced and irreducible.
+      \item The same argument as for reducedness applies for integrality, or one can also argue using that being integral is equivalent to being reduced and irreducible, see \cite[Proposition II.3.1]{har77}.
       \item Normality can again be checked locally on $X/G$, so we may assume that we are in the situation of \Cref{cor:affinequotient}.
         We need to show that $A^{G}$ is an integrally closed domain if $A$ is an integrally closed domain.
         For this we use compatibility of taking $G$-invariant subrings with localization \cite[Exercise 5.12]{am69}.
